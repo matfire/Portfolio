@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body {
+	margin: 0;
+	padding: 0;
+}
+body {
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	@apply text-black dark:text-white bg-slate-300 dark:bg-slate-700;
+}
+
+main {
+	flex: 1;
+}
