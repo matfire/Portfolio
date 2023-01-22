@@ -7,7 +7,7 @@
 
 <section>
 	<p>Hej, my name's <span class="font-bold">Matteo</span> and I'm a fullstack web developer.</p>
-	<a href="#" download="matteo_gassend_cv.pdf">This is my CV</a>
+	<a href="/cv.pdf" download="matteo_gassend_cv.pdf">This is my CV</a>
 </section>
 
 <section id="projects" class="w-full">
