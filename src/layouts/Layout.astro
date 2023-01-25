@@ -4,10 +4,11 @@ export interface Props {
 }
 
 const { title } = Astro.props;
+const theme = "dark"
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme={theme}>
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
@@ -16,22 +17,26 @@ const { title } = Astro.props;
 		<title>{title}</title>
 	</head>
 	<body>
+		<header></header>
 		<main>
 			<slot />
 		</main>
+		<footer>
+			&copy; {new Date().getFullYear()} Matteo Gassend - all rights reserved
+		</footer>
 	</body>
 </html>
 <style is:global>
-	:root {
-		--accent: 124, 58, 237;
-		--accent-gradient: linear-gradient(45deg, rgb(var(--accent)), #da62c4 30%, white 60%);
+	html, body {
+		padding: 0;
+		margin: 0;
 	}
-	html {
-		font-family: system-ui, sans-serif;
-		background-color: #F6F6F6;
+	body {
+		height: 100vh;
+		display: flex;
+		flex-direction: column;
 	}
-	code {
-		font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-			Bitstream Vera Sans Mono, Courier New, monospace;
+	main {
+		flex: 1;
 	}
 </style>

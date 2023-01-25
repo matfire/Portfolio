@@ -1,16 +1,25 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
+import ProjectCard from '../components/ProjectCard.astro';
+import { get } from './api/articles';
+import type { Article } from '../utils/article.type';
+import ArticleCard from '../components/ArticleCard.astro';
 
-// const articles = await (await fetch("/api/articles")).json()
+const {articles} = await (await get()).json()
 const projects = (await getCollection("projects")).slice(0, 3)
-console.log(projects)
 
 ---
 
 <Layout title="Matteo Gassend">
-    {projects.map((e) => <div>
-            <p>{e.data.title}</p>
-            <a href={`/projects/${e.slug}`}>Read More</a>
-        </div>)}
+    <section>
+        <h2 class="text-center font-bold text-2xl">Look ma, I wrote this!</h2>
+        {articles.map((e: Article) => <ArticleCard article={e} />)}
+    </section>
+    <section>
+        <h2 class="text-center font-bold text-2xl">Look ma, I made this!</h2>
+        <div class="w-full grid grid-cols-1 md:grid-cols-3 gap-4">
+            {projects.map((e) => <ProjectCard project={e} />)}
+        </div>
+    </section>
 </Layout>

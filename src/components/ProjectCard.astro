@@ -1,0 +1,21 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+export interface Props {
+	project: CollectionEntry<"projects">;
+}
+
+const { project } = Astro.props;
+const theme = "dark"
+---
+
+<div class="card lg:card-side bg-base-100 shadow-xl">
+    {project.data.image && <figure><img src={project.data.image} alt={project.data.title}/></figure>}
+    <div class="card-body">
+      <h2 class="card-title">{project.data.title}</h2>
+      <p>{project.data.summary}</p>
+      <div class="card-actions justify-end">
+        <a  href={`/projects/${project.slug}`} class="btn btn-primary">Read More &rArr;</a>
+      </div>
+    </div>
+</div>

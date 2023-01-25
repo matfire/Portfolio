@@ -4,7 +4,7 @@ import { getEntryBySlug } from "astro:content";
 const {slug} = Astro.params
 
 const project = await getEntryBySlug("projects", slug!);
-if (!project)
+if (project === undefined)
     Astro.redirect("/")
 const { Content } = await project!.render();
 
