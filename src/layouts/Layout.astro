@@ -1,4 +1,7 @@
 ---
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+
 export interface Props {
 	title: string;
 }
@@ -17,12 +20,14 @@ const theme = "dark"
 		<title>{title}</title>
 	</head>
 	<body>
-		<header></header>
+		<header>
+			<Header />
+		</header>
 		<main>
 			<slot />
 		</main>
 		<footer>
-			&copy; {new Date().getFullYear()} Matteo Gassend - all rights reserved
+			<Footer />
 		</footer>
 	</body>
 </html>

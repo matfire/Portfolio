@@ -1,5 +1,6 @@
 ---
 import { getEntryBySlug } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
 
 const {slug} = Astro.params
 
@@ -9,6 +10,8 @@ if (project === undefined)
 const { Content } = await project!.render();
 
 ---
-
-<h1>{project.data.title}</h1>
-<Content />
+<Layout title={`Matteo Gassend - ${project.data.title}`}>
+    <h1>{project.data.title}</h1>
+    <img src={project.data.image} class="w-full h-96 object-cover" />
+    <Content />
+</Layout>
