@@ -1,0 +1,16 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+// const articles = await (await fetch("/api/articles")).json()
+const projects = (await getCollection("projects")).slice(0, 3)
+console.log(projects)
+
+---
+
+<Layout title="Matteo Gassend">
+    {projects.map((e) => <div>
+            <p>{e.data.title}</p>
+            <a href={`/projects/${e.slug}`}>Read More</a>
+        </div>)}
+</Layout>

@@ -1,0 +1,14 @@
+---
+import { getEntryBySlug } from "astro:content";
+
+const {slug} = Astro.params
+
+const project = await getEntryBySlug("projects", slug!);
+if (!project)
+    Astro.redirect("/")
+const { Content } = await project!.render();
+
+---
+
+<h1>{project.data.title}</h1>
+<Content />
