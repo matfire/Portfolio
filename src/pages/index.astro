@@ -18,8 +18,13 @@ const projects = (await getCollection("projects")).slice(0, 3)
     </section>
     <section>
         <h2 class="text-center font-bold text-2xl">Look ma, I made this!</h2>
-        <div class="w-full grid grid-cols-1 md:grid-cols-3 gap-4">
-            {projects.map((e) => <ProjectCard project={e} />)}
+        <div class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {projects.map((e) => 
+                <ProjectCard project={e} />
+                )}
+        </div>
+        <div class="flex justify-center w-full">
+            <a href="/projects">See More</a>
         </div>
     </section>
 </Layout>

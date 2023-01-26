@@ -1,13 +1,15 @@
 ---
-title: Sirius
-productionUrl: https://sirius.nirah.tech
-githubUrl: https://github.com/matfire/Sirius
-summary: your eye in the sky
+title: Vivi
+productionUrl: https://vivi.nirah.tech
+githubUrl: https://github.com/vivitek
+summary: network monitoring made easy
 image: /sirius_img.webp
 stack:
 - typescript
+- react
 - graphql
-- svelte
+- python
+- docker
 ---
 
 This application allows users to track the ISS Position in the sky in near real time, and to setup notifications for when it crosses a marked point

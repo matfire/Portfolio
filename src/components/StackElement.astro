@@ -1,0 +1,36 @@
+---
+import { Icon } from 'astro-icon'
+export interface Props {
+    name: string;
+}
+
+const {name} = Astro.props
+
+let icon = "?"
+
+switch(name) {
+        case "typescript":
+            icon = "mdi:language-typescript"
+            break
+        case "svelte":
+            icon = "simple-icons:svelte"
+            break
+        case "graphql":
+            icon = "mdi:graphql"
+            break
+        case "react":
+            icon = "mdi:react"
+            break
+        case "docker":
+            icon = "mdi:docker"
+            break
+        case "python":
+            icon = "mdi:language-python"
+            break
+        default:
+            icon = "iconoir:file-not-found"
+            break
+    }
+
+---
+<Icon name={icon}  />
