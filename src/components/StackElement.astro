@@ -6,7 +6,7 @@ export interface Props {
 
 const {name} = Astro.props
 
-let icon = "?"
+let icon = "iconoir:file-not-found"
 
 switch(name) {
         case "typescript":
@@ -33,7 +33,9 @@ switch(name) {
     }
 
 ---
-<div class="h-full w-full flex flex-col justify-center items-center">
-    <Icon name={icon}  />
+<div class="h-12 flex flex-col justify-center items-center">
+    <div class="h-8 w-8">
+        <Icon name={icon}  />
+    </div>
     <span>{name}</span>
 </div>

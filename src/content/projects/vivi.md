@@ -1,6 +1,5 @@
 ---
 title: Vivi
-productionUrl: https://vivi.nirah.tech
 githubUrl: https://github.com/vivitek
 summary: network monitoring made easy
 image: /sirius_img.webp
