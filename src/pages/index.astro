@@ -1,22 +1,24 @@
 ---
-import Layout from "../layouts/Layout.astro";
 import { getCollection } from "astro:content";
-import ProjectCard from "../components/ProjectCard.astro";
+import {Image} from "@astrojs/image/components"
+import Layout from "../layouts/Layout.astro";
 import { get } from "./api/articles";
 import type { Article } from "../utils/article.type";
+import ProjectCard from "../components/ProjectCard.astro";
 import ArticleCard from "../components/ArticleCard.astro";
+import profilePic from "../images/profile.webp"
 
 const { articles } = await (await get()).json();
 const projects = (await getCollection("projects")).slice(0, 3);
 ---
 
 <Layout title="Matteo Gassend">
-  <div class="w-full flex flex-col md:flex-row h-full scroll-smooth">
+  <div class="w-full flex flex-col md:flex-row h-full">
     <div
       class="order-last sticky z-10 md:z-0 bottom-0 md:relative md:order-first md:w-1/3 md:h-full shadow-md pl-0 md:pl-2"
     >
       <nav class="md:hidden"></nav>
-      <nav>
+      <nav class="hidden md:block sticky top-0">
         <ul class="flex flex-col">
           <li class="menu__item"><a href="#about">About Me</a></li>
           <li class="menu__item"><a href="#projects">Projects</a></li>
@@ -32,7 +34,10 @@ const projects = (await getCollection("projects")).slice(0, 3);
     </div>
     <div class="w-full pl-2">
       <section id="about">
-        <h1 class="text-3xl">Hello, my name is <b>Matteo</b></h1>
+        <div class="flex flex-col md:flex-row items-center justify-evenly mt-3">
+          <h1 class="text-3xl">Hello, my name is <b>Matteo</b></h1>
+          <Image src={profilePic} alt="matteo gassend" height={500} class="order-first md:order-last rounded-full h-80 w-auto grayscale hover:grayscale-0 transition-all duration-200" />
+        </div>
         <p>
           I am a fullstack developer with 3 years of experience in the industry. <br
           /> I have a passion for creating innovative and efficient solutions using
@@ -46,10 +51,6 @@ const projects = (await getCollection("projects")).slice(0, 3);
           and teams I work with.
         </p>
       </section>
-      <section id="articles">
-        <h2 class="text-center font-bold text-2xl">Look ma, I wrote this!</h2>
-        {articles.map((e: Article) => <ArticleCard article={e} />)}
-      </section>
       <section id="projects">
         <h2 class="text-center font-bold text-2xl">Look ma, I made this!</h2>
         <div
@@ -60,6 +61,10 @@ const projects = (await getCollection("projects")).slice(0, 3);
         <div class="flex justify-center w-full">
           <a rel="prefetch" href="/projects">See More</a>
         </div>
+      </section>
+      <section id="articles">
+        <h2 class="text-center font-bold text-2xl">Look ma, I wrote this!</h2>
+        {articles.map((e: Article) => <ArticleCard article={e} />)}
       </section>
     </div>
   </div>
