@@ -39,6 +39,7 @@ const projects = (await getCollection('projects'))
         <div class="flex flex-col md:flex-row items-center justify-evenly mt-3">
           <h1 class="text-3xl">Hello, my name is <b>Matteo</b></h1>
           <Image
+            loading="eager"
             src={profilePic}
             alt="matteo gassend"
             height={500}
