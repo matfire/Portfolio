@@ -8,6 +8,7 @@ const projectsCollection = defineCollection({
         stack: z.array(z.string()),
         image: z.string().optional(),
         productionUrl: z.string().optional(),
+        epitech: z.boolean().default(false),
         githubUrl: z.string().optional()
     })
 })
