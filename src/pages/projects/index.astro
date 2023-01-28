@@ -1,12 +1,17 @@
 ---
-import { getCollection } from "astro:content";
-import ProjectCard from "../../components/ProjectCard.astro";
-import Layout from "../../layouts/Layout.astro";
-const projects = await getCollection("projects")
+import {getCollection} from 'astro:content';
+import {A} from '../../../.svelte-kit/output/client/_app/immutable/chunks/index-faf0ea35';
+import ProjectCard from '../../components/ProjectCard.astro';
+import Layout from '../../layouts/Layout.astro';
+const projects = (await getCollection('projects')).sort(
+  (a, b) => b.data.date - a.data.date
+);
 ---
 
 <Layout title="Matteo Gassend - Projects">
-    <div class="w-full gap-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 px-2">
-        {projects.map((e) => <ProjectCard project={e} />)}
-    </div>
+  <div
+    class="w-full gap-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 px-2"
+  >
+    {projects.map((e) => <ProjectCard project={e} />)}
+  </div>
 </Layout>
