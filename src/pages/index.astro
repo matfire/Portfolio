@@ -1,15 +1,17 @@
 ---
-import { getCollection } from "astro:content";
-import {Image} from "@astrojs/image/components"
-import Layout from "../layouts/Layout.astro";
-import { get } from "./api/articles";
-import type { Article } from "../utils/article.type";
-import ProjectCard from "../components/ProjectCard.astro";
-import ArticleCard from "../components/ArticleCard.astro";
-import profilePic from "../images/profile.webp"
+import {getCollection} from 'astro:content';
+import {Image} from '@astrojs/image/components';
+import Layout from '../layouts/Layout.astro';
+import {get} from './api/articles';
+import type {Article} from '../utils/article.type';
+import ProjectCard from '../components/ProjectCard.astro';
+import ArticleCard from '../components/ArticleCard.astro';
+import profilePic from '../images/profile.webp';
 
-const { articles } = await (await get()).json();
-const projects = (await getCollection("projects")).slice(0, 3);
+const {articles} = await (await get()).json();
+const projects = (await getCollection('projects'))
+  .sort((a, b) => b.data.date - a.data.date)
+  .slice(0, 3);
 ---
 
 <Layout title="Matteo Gassend">
@@ -36,19 +38,31 @@ const projects = (await getCollection("projects")).slice(0, 3);
       <section id="about">
         <div class="flex flex-col md:flex-row items-center justify-evenly mt-3">
           <h1 class="text-3xl">Hello, my name is <b>Matteo</b></h1>
-          <Image src={profilePic} alt="matteo gassend" height={500} class="order-first md:order-last rounded-full h-80 w-auto grayscale hover:grayscale-0 transition-all duration-200" />
+          <Image
+            src={profilePic}
+            alt="matteo gassend"
+            height={500}
+            aspectRatio={1.33}
+            class="order-first md:order-last rounded-full h-80 w-auto grayscale hover:grayscale-0 transition-all duration-200"
+          />
         </div>
         <p>
-          I am a fullstack developer with 3 years of experience in the industry. <br
-          /> I have a passion for creating innovative and efficient solutions using
-          the latest technologies. <br /> My expertise includes [list key skills
-          and technologies you possess] and I have experience working on a variety
-          of projects, from [examples of types of projects you've worked on].<br
-          /> I am a quick learner and am always eager to take on new challenges.
-          In addition to my technical skills, I am a strong team player and have
-          excellent communication and problem-solving abilities.<br /> I am excited
-          to continue my career in this field and make a positive impact on the projects
-          and teams I work with.
+          I am a fullstack developer with {new Date().getFullYear() - 2018} years
+          of experience in the industry.
+        </p>
+        <p>
+          I have a passion for creating innovative and efficient solutions using
+          the latest technologies.
+        </p><p>
+          My expertise includes all things related to:
+          <ul class="list-disc">
+            <li>Javascript</li>
+            <li>HTML/CSS</li>
+            <li>Python</li>
+            <li>Relational (and not) Databases</li>
+          </ul>
+          and I have experience working on a variety of projects, from [examples
+          of types of projects you've worked on].
         </p>
       </section>
       <section id="projects">

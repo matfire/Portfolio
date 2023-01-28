@@ -4,6 +4,7 @@ productionUrl: https://sirius.nirah.tech
 githubUrl: https://github.com/matfire/Sirius
 summary: your eye in the sky
 image: /sirius_img.webp
+date: 2021-10-14
 stack:
 - typescript
 - graphql

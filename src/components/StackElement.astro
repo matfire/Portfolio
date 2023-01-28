@@ -1,41 +1,53 @@
 ---
-import { Icon } from 'astro-icon'
+import {Icon} from 'astro-icon';
 export interface Props {
-    name: string;
+  name: string;
 }
 
-const {name} = Astro.props
+const {name} = Astro.props;
 
-let icon = "iconoir:file-not-found"
+let icon = 'iconoir:file-not-found';
 
-switch(name) {
-        case "typescript":
-            icon = "mdi:language-typescript"
-            break
-        case "svelte":
-            icon = "simple-icons:svelte"
-            break
-        case "graphql":
-            icon = "mdi:graphql"
-            break
-        case "react":
-            icon = "mdi:react"
-            break
-        case "docker":
-            icon = "mdi:docker"
-            break
-        case "python":
-            icon = "mdi:language-python"
-            break
-        default:
-            icon = "iconoir:file-not-found"
-            break
-    }
-
+switch (name) {
+  case 'typescript':
+    icon = 'mdi:language-typescript';
+    break;
+  case 'svelte':
+    icon = 'simple-icons:svelte';
+    break;
+  case 'graphql':
+    icon = 'mdi:graphql';
+    break;
+  case 'react':
+    icon = 'mdi:react';
+    break;
+  case 'docker':
+    icon = 'mdi:docker';
+    break;
+  case 'python':
+    icon = 'mdi:language-python';
+    break;
+  case 'html':
+    icon = 'mdi:language-html5';
+    break;
+  case 'css':
+    icon = 'mdi:language-css3';
+    break;
+  case 'javascript':
+    icon = 'mdi:language-javascript';
+    break;
+  case 'postgresql':
+    icon = 'carbon:database-postgresql';
+    break;
+  default:
+    icon = 'iconoir:file-not-found';
+    break;
+}
 ---
+
 <div class="h-12 flex flex-col justify-center items-center">
-    <div class="h-8 w-8">
-        <Icon name={icon}  />
-    </div>
-    <span>{name}</span>
+  <div class="h-8 w-8">
+    <Icon name={icon} />
+  </div>
+  <span>{name}</span>
 </div>
