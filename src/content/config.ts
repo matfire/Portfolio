@@ -20,7 +20,8 @@ const educationCollection = defineCollection({
         graduation: z.date().transform((v) => new Date(v)),
         schoolName: z.string(),
         country: z.string(),
-        city: z.string()
+        city: z.string(),
+        logo: z.string()
     })
 })
 

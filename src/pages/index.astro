@@ -12,6 +12,9 @@ const {articles} = await (await get()).json();
 const projects = (await getCollection('projects'))
   .sort((a, b) => b.data.date - a.data.date)
   .slice(0, 3);
+
+const education = (await getCollection("education")).sort((a, b) => b.data.graduation - a.data.graduation).slice(0,3)
+
 ---
 
 <Layout title="Matteo Gassend">
@@ -85,7 +88,9 @@ const projects = (await getCollection('projects'))
 
       </section>
       <section id="education">
-
+        <div class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {education.map((e) => <p>{e.data.title}</p>)}
+        </div>
       </section>
     </div>
   </div>
