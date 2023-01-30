@@ -7,6 +7,7 @@ import type {Article} from '../utils/article.type';
 import ProjectCard from '../components/ProjectCard.astro';
 import ArticleCard from '../components/ArticleCard.astro';
 import profilePic from '../images/profile.webp';
+import EducationCard from '../components/EducationCard.astro';
 
 const {articles} = await (await get()).json();
 const projects = (await getCollection('projects'))
@@ -89,7 +90,7 @@ const education = (await getCollection("education")).sort((a, b) => b.data.gradu
       </section>
       <section id="education">
         <div class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {education.map((e) => <p>{e.data.title}</p>)}
+          {education.map((e) => <EducationCard education={e} />)}
         </div>
       </section>
     </div>
