@@ -13,6 +13,27 @@ const projectsCollection = defineCollection({
     })
 })
 
+const educationCollection = defineCollection({
+    schema: z.object({
+        title:z.string(),
+        begin: z.date().transform((v) => new Date(v)),
+        graduation: z.date().transform((v) => new Date(v)),
+        schoolName: z.string(),
+        country: z.string(),
+        city: z.string()
+    })
+})
+
+const experienceCollection = defineCollection({
+    schema: z.object({
+        companyName: z.string(),
+        begin: z.date().transform((v) => new Date(v)),
+        end: z.date().transform((v) => new Date(v)),
+        role: z.string(),
+        skills: z.array(z.string())
+    })
+})
+
 const articlesCollection = defineCollection({
     schema: z.object({
         title: z.string(),
@@ -24,5 +45,7 @@ const articlesCollection = defineCollection({
 
 export const collections = {
     'projects': projectsCollection,
-    'articles': articlesCollection
+    'articles': articlesCollection,
+    'education': educationCollection,
+    'experience': experienceCollection
 }
