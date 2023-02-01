@@ -73,7 +73,7 @@ const certicates = (await getCollection("certifications")).sort((a, b) => b.data
       <section id="projects">
         <h2 class="text-center font-bold text-2xl">I worked on things like these</h2>
         <div
-          class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+          class="section__grid"
         >
           {projects.map((e) => <ProjectCard project={e} />)}
         </div>
@@ -89,12 +89,12 @@ const certicates = (await getCollection("certifications")).sort((a, b) => b.data
 
       </section>
       <section id="education">
-        <div class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="section__grid">
           <!-- {education.map((e) => <EducationCard education={e} />)} -->
         </div>
       </section>
       <section id="certications">
-        <div class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="section__grid">
           {certicates.map((e) => <p>{e.data.title}</p>)}
         </div>
       </section>
@@ -105,5 +105,8 @@ const certicates = (await getCollection("certifications")).sort((a, b) => b.data
 <style>
   .menu__item {
     @apply px-2 py-3 hover:-translate-y-2 transform transition-all hover:shadow-md;
+  }
+  .section__grid {
+    @apply w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4;
   }
 </style>
