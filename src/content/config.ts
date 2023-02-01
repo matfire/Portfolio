@@ -35,6 +35,15 @@ const experienceCollection = defineCollection({
     })
 })
 
+const certificationCollection = defineCollection({
+    schema: z.object({
+        title: z.string(),
+        rank: z.string(),
+        institution: z.string(),
+        obtentionYear: z.number()
+    })
+})
+
 const articlesCollection = defineCollection({
     schema: z.object({
         title: z.string(),
@@ -48,5 +57,6 @@ export const collections = {
     'projects': projectsCollection,
     'articles': articlesCollection,
     'education': educationCollection,
-    'experience': experienceCollection
+    'experience': experienceCollection,
+    'certifications': certificationCollection
 }

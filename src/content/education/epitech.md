@@ -5,5 +5,5 @@ graduation: 2022-12-31
 schoolName: Epitech
 country: France
 city: Lyon
-logo: /schools/epitech.webp
+logo: /epitech.webp
 ---

@@ -15,7 +15,7 @@ const projects = (await getCollection('projects'))
   .slice(0, 3);
 
 const education = (await getCollection("education")).sort((a, b) => b.data.graduation - a.data.graduation).slice(0,3)
-
+const certicates = (await getCollection("certifications")).sort((a, b) => b.data.obtentionYear - a.data.obtentionYear).slice(0,3)
 ---
 
 <Layout title="Matteo Gassend">
@@ -71,18 +71,18 @@ const education = (await getCollection("education")).sort((a, b) => b.data.gradu
         </p>
       </section>
       <section id="projects">
-        <h2 class="text-center font-bold text-2xl">Look ma, I made this!</h2>
+        <h2 class="text-center font-bold text-2xl">I worked on things like these</h2>
         <div
           class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
         >
           {projects.map((e) => <ProjectCard project={e} />)}
         </div>
         <div class="flex justify-center w-full">
-          <a rel="prefetch" href="/projects">See More</a>
+          <a rel="prefetch" href="/projects">More projects</a>
         </div>
       </section>
       <section id="articles">
-        <h2 class="text-center font-bold text-2xl">Look ma, I wrote this!</h2>
+        <h2 class="text-center font-bold text-2xl">I like to write things from time to time</h2>
         {articles.map((e: Article) => <ArticleCard article={e} />)}
       </section>
       <section id="experience">
@@ -90,7 +90,12 @@ const education = (await getCollection("education")).sort((a, b) => b.data.gradu
       </section>
       <section id="education">
         <div class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {education.map((e) => <EducationCard education={e} />)}
+          <!-- {education.map((e) => <EducationCard education={e} />)} -->
+        </div>
+      </section>
+      <section id="certications">
+        <div class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {certicates.map((e) => <p>{e.data.title}</p>)}
         </div>
       </section>
     </div>
