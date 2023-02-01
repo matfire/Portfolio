@@ -1,7 +1,29 @@
-<footer class="footer items-center p-4 bg-neutral text-neutral-content">
-    <div class="items-center grid-flow-col">
-      <p>Copyright © {new Date().getFullYear()} - All right reserved</p>
-    </div> 
-    <div class="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
+---
+import { Icon } from "astro-icon";
+---
+
+<footer class="items-center p-4">
+    <div>
+      <ul class="flex">
+        <li>
+          <a href="https://github.com/matfire"
+            ><Icon class="social__icon" name="mdi:github" /></a
+          >
+        </li>
+        <li>
+          <a href="https://twitter.com/matgassend"
+            ><Icon class="social__icon" name="mdi:twitter" /></a
+          >
+        </li>
+      </ul>
     </div>
-  </footer>
+  <div class="items-center grid-flow-col">
+    <p>Copyright © {new Date().getFullYear()} - All right reserved</p>
+  </div>
+</footer>
+
+<style>
+  .social__icon {
+    @apply h-8 w-8;
+  }
+</style>
