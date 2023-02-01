@@ -27,14 +27,15 @@ const certicates = (await getCollection("certifications")).sort((a, b) => b.data
       <nav class="hidden md:block sticky top-0">
         <ul class="flex flex-col">
           <li class="menu__item"><a href="#about">About Me</a></li>
-          <li class="menu__item"><a href="#projects">Projects</a></li>
           <li class="menu__item"><a href="#skills">Skills</a></li>
+          <li class="menu__item"><a href="#projects">Projects</a></li>
+          <li class="menu__item"><a href="#articles">Articles</a></li>
           <li class="menu__item"><a href="#experience">Experience</a></li>
           <li class="menu__item"><a href="#education">Education</a></li>
           <li class="menu__item">
             <a href="#certifications">Certifications</a>
           </li>
-          <li class="menu__item"><a href="#contacts">Contacts</a></li>
+          <li class="menu__item"><a href="#contact">Contacts</a></li>
         </ul>
       </nav>
     </div>
@@ -70,6 +71,7 @@ const certicates = (await getCollection("certifications")).sort((a, b) => b.data
           of types of projects you've worked on].
         </p>
       </section>
+      <section id="skills"></section>
       <section id="projects">
         <h2 class="section__title">I worked on things like these</h2>
         <div
@@ -97,6 +99,9 @@ const certicates = (await getCollection("certifications")).sort((a, b) => b.data
         <div class="section__grid">
           {certicates.map((e) => <p>{e.data.title}</p>)}
         </div>
+      </section>
+      <section id="contact">
+
       </section>
     </div>
   </div>
