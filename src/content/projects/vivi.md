@@ -2,6 +2,7 @@
 title: Vivi
 githubUrl: https://github.com/vivitek
 summary: network monitoring made easy
+epitech: true
 image: /sirius_img.webp
 date: 2022-01-01
 stack:

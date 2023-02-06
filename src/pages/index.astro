@@ -8,6 +8,7 @@ import ProjectCard from '../components/ProjectCard.astro';
 import ArticleCard from '../components/ArticleCard.astro';
 import profilePic from '../images/profile.webp';
 import EducationCard from '../components/EducationCard.astro';
+import CertificateCard from '../components/CertificateCard.astro';
 
 const {articles} = await (await get()).json();
 const projects = (await getCollection('projects'))
@@ -91,13 +92,15 @@ const certicates = (await getCollection("certifications")).sort((a, b) => b.data
 
       </section>
       <section id="education">
+        <h2 class="section__title">Here's where I studied</h2>
         <div class="section__grid">
-          <!-- {education.map((e) => <EducationCard education={e} />)} -->
+          {education.map((e) => <EducationCard education={e} />)}
         </div>
       </section>
-      <section id="certications">
+      <section id="certifications">
+        <h2 class="section__title">Certificates</h2>
         <div class="section__grid">
-          {certicates.map((e) => <p>{e.data.title}</p>)}
+          {certicates.map((e) => <CertificateCard certificate={e} />)}
         </div>
       </section>
       <section id="contact">
