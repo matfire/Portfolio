@@ -1,0 +1,19 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import StackElement from './StackElement.astro';
+
+export interface Props {
+    experience: CollectionEntry<"experience">
+}
+
+const {experience} = Astro.props
+
+---
+
+<div class="transition hover:-translate-y-2 hover:shadow-lg duration-200">
+    <h4>{experience.data.role}</h4>
+    <h5>{experience.data.companyName}</h5>
+    <div class="w-full flex justify-evenly">
+        {experience.data.skills.map((e) => <StackElement name={e} />)}
+    </div>
+</div>

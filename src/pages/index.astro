@@ -9,6 +9,7 @@ import ArticleCard from '../components/ArticleCard.astro';
 import profilePic from '../images/profile.webp';
 import EducationCard from '../components/EducationCard.astro';
 import CertificateCard from '../components/CertificateCard.astro';
+import ExpCard from '../components/ExpCard.astro';
 
 const {articles} = await (await get()).json();
 const projects = (await getCollection('projects'))
@@ -17,6 +18,7 @@ const projects = (await getCollection('projects'))
 
 const education = (await getCollection("education")).sort((a, b) => b.data.graduation - a.data.graduation).slice(0,3)
 const certicates = (await getCollection("certifications")).sort((a, b) => b.data.obtentionYear - a.data.obtentionYear).slice(0,3)
+const experiences = (await getCollection("experience")).sort((a, b) => b.data.begin - a.data.begin).slice(0,3)
 ---
 
 <Layout title="Matteo Gassend">
@@ -40,7 +42,7 @@ const certicates = (await getCollection("certifications")).sort((a, b) => b.data
         </ul>
       </nav>
     </div>
-    <div class="w-full pl-2">
+    <div class="w-full pl-2 space-y-2 lg:space-y-12">
       <section id="about">
         <div class="flex flex-col md:flex-row items-center justify-evenly mt-3">
           <h1 class="text-3xl">Hello, my name is <b>Matteo</b></h1>
@@ -89,7 +91,10 @@ const certicates = (await getCollection("certifications")).sort((a, b) => b.data
         {articles.map((e: Article) => <ArticleCard article={e} />)}
       </section>
       <section id="experience">
-
+        <h2 class="section__title">This is where I worked</h2>
+        <div class="section__grid">
+          {experiences.map((e) => <ExpCard experience={e} />)}
+        </div>
       </section>
       <section id="education">
         <h2 class="section__title">Here's where I studied</h2>
