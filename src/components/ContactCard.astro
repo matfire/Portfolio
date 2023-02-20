@@ -1,0 +1,48 @@
+---
+---
+
+<form
+  id="contact-form"
+  action="https://api.magiform.anton.nirah.tech/form/trigger/2"
+  method="post"
+>
+  <div class="w-full flex flex-col">
+    <div class="flex justify-evenly">
+      <div>
+        <label for="email_from">From</label>
+        <input type="email" name="email_from" id="" required />
+      </div>
+      <div>
+        <label for="subject">Subject</label>
+        <input type="text" name="subject" required />
+      </div>
+    </div>
+    <div class="flex flex-col w-full">
+      <label for="content">Content</label>
+      <textarea name="content"></textarea>
+    </div>
+    <button type="submit">Send</button>
+  </div>
+</form>
+
+<script>
+  const contactForm = document.querySelector("form#contact-form");
+  contactForm.addEventListener("submit", async (ev) => {
+    ev.preventDefault();
+    console.log(contactForm.action);
+    contactForm.querySelector("button[type=submit]").disabled = true;
+    await fetch(contactForm.action, {
+      method: contactForm.method,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        emailFrom: contactForm.elements["email_from"].value,
+        subject: contactForm.elements["subject"].value,
+        content: contactForm.elements["content"].value,
+      }),
+    });
+    contactForm.querySelector("button[type=submit]").disabled = false;
+    contactForm.reset();
+  });
+</script>
