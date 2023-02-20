@@ -1,24 +1,31 @@
 ---
-import {getCollection} from 'astro:content';
-import {Image} from '@astrojs/image/components';
-import Layout from '../layouts/Layout.astro';
-import {get} from './api/articles';
-import type {Article} from '../utils/article.type';
-import ProjectCard from '../components/ProjectCard.astro';
-import ArticleCard from '../components/ArticleCard.astro';
-import profilePic from '../images/profile.webp';
-import EducationCard from '../components/EducationCard.astro';
-import CertificateCard from '../components/CertificateCard.astro';
-import ExpCard from '../components/ExpCard.astro';
+import { getCollection } from "astro:content";
+import { Image } from "@astrojs/image/components";
+import Layout from "../layouts/Layout.astro";
+import { get } from "./api/articles";
+import type { Article } from "../utils/article.type";
+import ProjectCard from "../components/ProjectCard.astro";
+import ArticleCard from "../components/ArticleCard.astro";
+import profilePic from "../images/profile.webp";
+import EducationCard from "../components/EducationCard.astro";
+import CertificateCard from "../components/CertificateCard.astro";
+import ExpCard from "../components/ExpCard.astro";
+import ContactCard from "../components/ContactCard.astro";
 
-const {articles} = await (await get()).json();
-const projects = (await getCollection('projects'))
+const { articles } = await (await get()).json();
+const projects = (await getCollection("projects"))
   .sort((a, b) => b.data.date - a.data.date)
   .slice(0, 3);
 
-const education = (await getCollection("education")).sort((a, b) => b.data.graduation - a.data.graduation).slice(0,3)
-const certicates = (await getCollection("certifications")).sort((a, b) => b.data.obtentionYear - a.data.obtentionYear).slice(0,3)
-const experiences = (await getCollection("experience")).sort((a, b) => b.data.begin - a.data.begin).slice(0,3)
+const education = (await getCollection("education"))
+  .sort((a, b) => b.data.graduation - a.data.graduation)
+  .slice(0, 3);
+const certicates = (await getCollection("certifications"))
+  .sort((a, b) => b.data.obtentionYear - a.data.obtentionYear)
+  .slice(0, 3);
+const experiences = (await getCollection("experience"))
+  .sort((a, b) => b.data.begin - a.data.begin)
+  .slice(0, 3);
 ---
 
 <Layout title="Matteo Gassend">
@@ -77,9 +84,7 @@ const experiences = (await getCollection("experience")).sort((a, b) => b.data.be
       <section id="skills"></section>
       <section id="projects">
         <h2 class="section__title">I worked on things like these</h2>
-        <div
-          class="section__grid"
-        >
+        <div class="section__grid">
           {projects.map((e) => <ProjectCard project={e} />)}
         </div>
         <div class="flex justify-center w-full">
@@ -109,7 +114,8 @@ const experiences = (await getCollection("experience")).sort((a, b) => b.data.be
         </div>
       </section>
       <section id="contact">
-
+        <h2 class="section__title">React Out</h2>
+        <ContactCard />
       </section>
     </div>
   </div>

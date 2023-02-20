@@ -1,25 +1,40 @@
 ---
-import type { CollectionEntry } from 'astro:content';
+import type { CollectionEntry } from "astro:content";
 
 export interface Props {
-	project: CollectionEntry<"projects">;
+  project: CollectionEntry<"projects">;
 }
 
 const { project } = Astro.props;
 ---
 
+<article
+  class="shadow-xl h-96 bg-cover bg-center transform duration-500 hover:-translate-y-2 group"
+  style={`background-image:url(${project.data.image})`}
+>
+  <div
+    class="bg-black bg-opacity-20 h-full px-10 flex flex-wrap flex-col justify-end hover:bg-opacity-75 transform duration-300"
+  >
+    <h1
+      class="text-3xl transform translate-y-2 group-hover:translate-y-0 duration-300"
+    >
+      {project.data.title}
+    </h1>
+    <div
+      class="opacity-0 text-white group-hover:opacity-80 transform duration-500"
+    >
+      <p class="text-xl">
+        {project.data.summary}
+      </p>
 
-  <article class="shadow-xl h-96 bg-cover bg-center transform duration-500 hover:-translate-y-2 group" style={`background-image:url(${project.data.image})`}>
-    <div class="bg-black bg-opacity-20 h-full px-10 flex flex-wrap flex-col justify-end hover:bg-opacity-75 transform duration-300">
-      <h1 class="text-3xl transform translate-y-2 group-hover:translate-y-0 duration-300">{project.data.title}</h1>
-      <div class="opacity-0 text-white group-hover:opacity-80 transform duration-500">
-        <p class=" text-xl  ">
-          {project.data.summary}
-        </p>
-
-        <div class="w-full flex justify-end mb-2">
-          <a rel="prefetch" href={`/projects/${project.slug}`} class="border border-transparent bg-indigo-400 rounded-full px-2 py-2" >Read More &rarr;</a>
-        </div>
+      <div class="w-full flex justify-end mb-2">
+        <a
+          rel="prefetch"
+          href={`/projects/${project.slug}`}
+          class="border border-transparent bg-indigo-400 rounded-full px-2 py-2"
+          >Read More &rarr;</a
+        >
       </div>
     </div>
-  </article>
+  </div>
+</article>
