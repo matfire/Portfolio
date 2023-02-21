@@ -45,18 +45,8 @@ const certificationCollection = defineCollection({
     })
 })
 
-const articlesCollection = defineCollection({
-    schema: z.object({
-        title: z.string(),
-        summary: z.string(),
-        image: z.string(),
-        tags: z.array(z.string())
-    })
-})
-
 export const collections = {
     'projects': projectsCollection,
-    'articles': articlesCollection,
     'education': educationCollection,
     'experience': experienceCollection,
     'certifications': certificationCollection
