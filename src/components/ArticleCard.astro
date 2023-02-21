@@ -9,7 +9,7 @@ const { article } = Astro.props;
 ---
 
 <article
-  class="relative bg-cover bg-center w-96 h-48"
+  class="relative bg-cover bg-center w-full h-48"
   style={`background-image: url(${article.coverImage})`}
 >
   <div
@@ -18,7 +18,7 @@ const { article } = Astro.props;
     <h1 class="font-bold">{article.title}</h1>
     <p>published {new Date(article.dateAdded).toLocaleDateString()}</p>
     <a
-      class="p-2 border-0 hover:border-2 border-white transition-[border]"
+      class="p-2 border-transparent border-2 hover:border-white transition-[border]"
       href={`https://blog.matteogassend.com/${article.slug}`}>Learn More</a
     >
   </div>

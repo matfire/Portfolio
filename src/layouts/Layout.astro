@@ -1,48 +1,46 @@
 ---
-import Footer from '../components/Footer.astro';
-import Header from '../components/Header.astro';
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
 
 export interface Props {
-	title: string;
+  title: string;
 }
 
 const { title } = Astro.props;
-const theme = "dark"
+const theme = "dark";
 ---
 
 <!DOCTYPE html>
-<html lang="en" class:list={[{dark: theme==="dark"}, "scroll-smooth"]}>
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
-		<header>
-			<Header />
-		</header>
-		<main>
-			<slot />
-		</main>
-		<footer>
-			<Footer />
-		</footer>
-	</body>
+<html lang="en" class:list={[{ dark: theme === "dark" }, "scroll-smooth"]}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <header>
+      <Header />
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer>
+      <Footer />
+    </footer>
+  </body>
 </html>
 <style is:global>
-	html, body {
-		padding: 0;
-		margin: 0;
-	}
-	body {
-		height: 100vh;
-		display: flex;
-		flex-direction: column;
-		@apply h-screen flex flex-col dark:text-white dark:bg-slate-600 bg-slate-300
-	}
-	main {
-		flex: 1;
-	}
+  html,
+  body {
+    padding: 0;
+    margin: 0;
+  }
+  body {
+    @apply h-screen flex flex-col dark:text-white dark:bg-slate-600 bg-slate-300;
+  }
+  main {
+    flex: 1;
+  }
 </style>
