@@ -11,8 +11,8 @@ import EducationCard from "../components/EducationCard.astro";
 import CertificateCard from "../components/CertificateCard.astro";
 import ExpCard from "../components/ExpCard.astro";
 import ContactCard from "../components/ContactCard.astro";
-const articles = [];
-// const { articles }: { articles: Article[] } = await (await get()).json();
+
+const { articles }: { articles: Article[] } = await (await get()).json();
 const projects = (await getCollection("projects")).sort(
   (a, b) => b.data.date - a.data.date
 );
@@ -53,14 +53,6 @@ const experiences = (await getCollection("experience"))
       <section id="about">
         <div class="flex flex-col md:flex-row items-center justify-evenly mt-3">
           <h1 class="text-3xl">Hello, my name is <b>Matteo</b></h1>
-          <Image
-            loading="eager"
-            src={profilePic}
-            alt="matteo gassend"
-            height={500}
-            aspectRatio={1.33}
-            class="order-first md:order-last rounded-full h-80 w-auto grayscale hover:grayscale-0 transition-all duration-200"
-          />
         </div>
         <p>
           I am a fullstack developer with {new Date().getFullYear() - 2018} years
@@ -97,7 +89,9 @@ const experiences = (await getCollection("experience"))
       </section>
       <section id="articles">
         <h2 class="section__title">I like to write things from time to time</h2>
-        {articles.map((e: Article) => <ArticleCard article={e} />)}
+        <div class="section__grid">
+          {articles.map((e: Article) => <ArticleCard article={e} />)}
+        </div>
       </section>
       <section id="experience">
         <h2 class="section__title">This is where I worked</h2>

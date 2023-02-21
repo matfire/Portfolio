@@ -11,7 +11,7 @@ const { project, side } = Astro.props;
 ---
 
 <article
-  class={`h-96 w-full lg:w-2/3 relative bg-center bg-cover ${
+  class={`h-96 w-full lg:w-2/3 relative bg-center bg-cover transition-all hover:shadow-lg hover:-translate-y-1  ${
     side === "left" ? "" : "self-end"
   }`}
   style={`background-image:url(${project.data.image})`}
