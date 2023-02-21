@@ -1,61 +1,61 @@
 ---
-import {Icon} from 'astro-icon';
+import { Icon } from "astro-icon";
 export interface Props {
   name: string;
 }
 
-const {name} = Astro.props;
+const { name } = Astro.props;
 
-let icon = 'iconoir:file-not-found';
+let icon = "iconoir:file-not-found";
 
 switch (name) {
-  case 'typescript':
-    icon = 'mdi:language-typescript';
+  case "typescript":
+    icon = "mdi:language-typescript";
     break;
-  case 'svelte':
-    icon = 'simple-icons:svelte';
+  case "svelte":
+    icon = "simple-icons:svelte";
     break;
-  case 'graphql':
-    icon = 'mdi:graphql';
+  case "graphql":
+    icon = "mdi:graphql";
     break;
-  case 'react':
-    icon = 'mdi:react';
+  case "react":
+    icon = "mdi:react";
     break;
-  case 'docker':
-    icon = 'mdi:docker';
+  case "docker":
+    icon = "mdi:docker";
     break;
-  case 'python':
-    icon = 'mdi:language-python';
+  case "python":
+    icon = "mdi:language-python";
     break;
-  case 'html':
-    icon = 'mdi:language-html5';
+  case "html":
+    icon = "mdi:language-html5";
     break;
-  case 'css':
-    icon = 'mdi:language-css3';
+  case "css":
+    icon = "mdi:language-css3";
     break;
-  case 'javascript':
-    icon = 'mdi:language-javascript';
+  case "javascript":
+    icon = "mdi:language-javascript";
     break;
-  case 'postgresql':
-    icon = 'carbon:database-postgresql';
+  case "postgresql":
+    icon = "simple-icons:postgresql";
     break;
-  case 'nodejs':
-    icon = 'mdi:nodejs';
+  case "nodejs":
+    icon = "mdi:nodejs";
     break;
-  case 'flutter':
-    icon = 'simple-icons:flutter';
+  case "flutter":
+    icon = "simple-icons:flutter";
     break;
-  case 'mongodb':
-    icon = 'simple-icons:mongodb';
+  case "mongodb":
+    icon = "simple-icons:mongodb";
     break;
   case "php":
-    icon = 'mdi:language-php'
-    break
+    icon = "mdi:language-php";
+    break;
   case "mysql":
-    icon = 'simple-icons:mysql'
-    break
+    icon = "simple-icons:mysql";
+    break;
   default:
-    icon = 'iconoir:file-not-found';
+    icon = "iconoir:file-not-found";
     break;
 }
 ---
