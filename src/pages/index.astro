@@ -35,7 +35,7 @@ const experiences = (await getCollection("experience"))
     >
       <nav class="md:hidden"></nav>
       <nav class="hidden md:block sticky top-0">
-        <ul class="flex flex-col">
+        <ul class="flex flex-col w-auto">
           <li class="menu__item"><a href="#about">About Me</a></li>
           <li class="menu__item"><a href="#skills">Skills</a></li>
           <li class="menu__item"><a href="#projects">Projects</a></li>
@@ -121,7 +121,10 @@ const experiences = (await getCollection("experience"))
 
 <style>
   .menu__item {
-    @apply px-2 py-3 hover:-translate-y-2 transform transition-all hover:shadow-md;
+    @apply px-2 py-3;
+  }
+  .menu__item > a {
+    @apply px-2 py-3 hover:-translate-y-2 transform transition-all hover:shadow-md border-transparent border-2 hover:border-white focus:border-blue-300;
   }
   .section__title {
     @apply text-center font-bold text-2xl;

@@ -1,5 +1,3 @@
-import type { APIRoute } from "astro"
-import type { Article } from "../../utils/article.type"
 
 export const get = async() => {
     const data = await (await (fetch("https://api.hashnode.com", {
