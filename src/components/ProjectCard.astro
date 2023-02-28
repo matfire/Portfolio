@@ -23,11 +23,13 @@ const { project, side } = Astro.props;
     <p>{project.data.summary}</p>
     <a
       href={`/projects/${project.slug}`}
+      aria-label={`read more about ${project.data.title}`}
       class="p-4 border-transparent hover:border-white transition-[border] duration-300"
       >Learn More</a
     >
   </div>
   <a
+    aria-label={`read more about ${project.data.title}`}
     href={`/projects/${project.slug}`}
     class={`opacity-0 lg:opacity-100 hidden lg:flex absolute bottom-1/2 bg-black p-4 hover:border-white transition-[border] duration-300 border-transparent border-2 w-36 h-16 flex-col items-center justify-center ${
       side === "left" ? "-right-12" : "-left-12"

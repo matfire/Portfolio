@@ -18,6 +18,7 @@ const { article } = Astro.props;
     <h1 class="font-bold">{article.title}</h1>
     <p>published {new Date(article.dateAdded).toLocaleDateString()}</p>
     <a
+      aria-label={`read more about ${article.title} on Hashnode`}
       class="p-2 border-transparent border-2 hover:border-white transition-[border]"
       href={`https://blog.matteogassend.com/${article.slug}`}>Learn More</a
     >
