@@ -1,6 +1,7 @@
 ---
 import { Icon } from "astro-icon";
 import type { CollectionEntry } from "astro:content";
+import StackElement from "./StackElement.astro";
 
 export interface Props {
   project: CollectionEntry<"projects">;
@@ -11,7 +12,7 @@ const { project, side } = Astro.props;
 ---
 
 <article
-  class={`h-96 w-full lg:w-2/3 relative bg-center bg-cover transition-all duration-300 hover:shadow-lg ${
+  class={`h-96 w-full lg:w-2/3 group relative bg-center bg-cover transition-all duration-300 hover:shadow-lg ${
     side === "left" ? "hover:translate-x-2" : "hover:-translate-x-2"
   }  ${side === "left" ? "" : "self-end"}`}
   style={`background-image:url(${project.data.image})`}
@@ -21,6 +22,9 @@ const { project, side } = Astro.props;
   >
     <h1>{project.data.title}</h1>
     <p>{project.data.summary}</p>
+    <div class="flex justify-evenly w-full my-2">
+      {project.data.stack.map((e) => <StackElement name={e} />)}
+    </div>
     <a
       href={`/projects/${project.slug}`}
       aria-label={`read more about ${project.data.title}`}
@@ -28,10 +32,18 @@ const { project, side } = Astro.props;
       >Learn More</a
     >
   </div>
+  <div
+    class="p-4 lg:flex flex-col items-center justify-evenly hidden w-full h-full opacity-0 transition-opacity group-hover:opacity-100 bg-black bg-opacity-70"
+  >
+    <p>{project.data.summary}</p>
+    <div class="flex justify-evenly w-full">
+      {project.data.stack.map((e) => <StackElement name={e} />)}
+    </div>
+  </div>
   <a
     aria-label={`read more about ${project.data.title}`}
     href={`/projects/${project.slug}`}
-    class={`opacity-0 lg:opacity-100 hidden lg:flex absolute bottom-1/2 bg-black p-4 hover:border-white transition-[border] duration-300 border-transparent border-2 w-36 h-16 flex-col items-center justify-center ${
+    class={`opacity-0 lg:opacity-100 hidden lg:flex absolute bottom-1/2 bg-black p-4 group-hover:border-white transition-[border] duration-300 border-transparent border-2 w-36 h-16 flex-col items-center justify-center ${
       side === "left" ? "-right-12" : "-left-12"
     }`}
   >
