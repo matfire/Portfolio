@@ -3,20 +3,20 @@ import { Icon } from "astro-icon";
 ---
 
 <footer class="items-center p-4">
-    <div>
-      <ul class="flex">
-        <li>
-          <a href="https://github.com/matfire"
-            ><Icon class="social__icon" name="mdi:github" /></a
-          >
-        </li>
-        <li>
-          <a href="https://twitter.com/matgassend"
-            ><Icon class="social__icon" name="mdi:twitter" /></a
-          >
-        </li>
-      </ul>
-    </div>
+  <div>
+    <ul class="flex">
+      <li>
+        <a href="https://github.com/matfire" aria-label="github"
+          ><Icon class="social__icon" name="mdi:github" /></a
+        >
+      </li>
+      <li>
+        <a href="https://twitter.com/matgassend" aria-label="twitter"
+          ><Icon class="social__icon" name="mdi:twitter" /></a
+        >
+      </li>
+    </ul>
+  </div>
   <div class="items-center grid-flow-col">
     <p>Copyright © {new Date().getFullYear()} - All right reserved</p>
   </div>
