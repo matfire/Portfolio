@@ -1,5 +1,4 @@
 ---
-import { Picture } from "@astrojs/image/components";
 import type { CollectionEntry } from "astro:content";
 
 export interface Props {
@@ -7,14 +6,12 @@ export interface Props {
 }
 
 const { education } = Astro.props;
-// const educationLogo = await import("../images/education" + education.data.logo)
 ---
 
-<div class="group w-full">
+<article class="group w-full border border-black p-4">
   <h2>{education.data.schoolName}</h2>
-  <!-- <Picture src={educationLogo} alt={education.data.schoolName} widths={[200]} aspectRatio="1:1" /> -->
   <p>{education.data.city},{education.data.country}</p>
-  <div class="hidden group-hover:block">
+  <div>
     <p>
       {education.data.begin.toDateString()} - {
         education.data.graduation.toDateString()
@@ -22,4 +19,4 @@ const { education } = Astro.props;
     </p>
     <p>{education.data.title}</p>
   </div>
-</div>
+</article>

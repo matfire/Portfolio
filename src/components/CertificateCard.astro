@@ -1,17 +1,16 @@
 ---
-import type { CollectionEntry } from 'astro:content';
+import type { CollectionEntry } from "astro:content";
 
 export interface Props {
-    certificate: CollectionEntry<"certifications">
+  certificate: CollectionEntry<"certifications">;
 }
 
-const {certificate} = Astro.props
-
+const { certificate } = Astro.props;
 ---
 
-<div>
-    <h4>{certificate.data.rank} {certificate.data.title}</h4>
-    <div>
-      <p>{certificate.data.institution} ({certificate.data.obtentionYear})</p>
-      </div>
+<article class="border border-black p-4">
+  <h4>{certificate.data.rank} {certificate.data.title}</h4>
+  <div>
+    <p>{certificate.data.institution} ({certificate.data.obtentionYear})</p>
   </div>
+</article>

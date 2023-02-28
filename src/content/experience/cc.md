@@ -3,8 +3,8 @@ companyName: Epitech
 begin: 2019-10-01
 end: 2020-03-31
 role: Coding Club Regional Manager
+type: internship
 skills:
-- php
 - mysql
 - javascript
 - html
@@ -12,3 +12,7 @@ skills:
 - mongodb
 - python
 ---
+
+- co-managed the Lyon's coding club activities
+- coordinated with the national direction
+- participated in rewriting (and creating) new activities proposals

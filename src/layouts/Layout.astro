@@ -20,7 +20,7 @@ const theme = "dark";
     <title>{title}</title>
   </head>
   <body>
-    <header>
+    <header class="fixed top-0 left-0 z-30 w-full">
       <Header />
     </header>
     <main>
@@ -42,5 +42,7 @@ const theme = "dark";
   }
   main {
     flex: 1;
+    position: relative;
+    @apply mt-[3rem] px-4;
   }
 </style>

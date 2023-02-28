@@ -7,42 +7,87 @@
   method="post"
 >
   <div class="w-full flex flex-col">
-    <div class="flex justify-evenly">
-      <div>
+    <div
+      class="flex lg:justify-evenly flex-col lg:flex-row space-y-5 lg:space-y-0"
+    >
+      <div class="flex lg:justify-start justify-end items-center">
         <label for="email_from">From</label>
-        <input type="email" name="email_from" id="" required />
+        <input
+          type="email"
+          name="email_from"
+          required
+          class="px-4 rounded bg-slate-500"
+        />
       </div>
-      <div>
+      <div class="flex lg:justify-start justify-end items-center">
         <label for="subject">Subject</label>
-        <input type="text" name="subject" required />
+        <input
+          type="text"
+          name="subject"
+          required
+          class="px-4 rounded bg-slate-500"
+        />
       </div>
     </div>
     <div class="flex flex-col w-full">
       <label for="content">Content</label>
-      <textarea name="content"></textarea>
+      <textarea name="content" class="bg-slate-500 px-4 rounded"></textarea>
     </div>
-    <button type="submit">Send</button>
+    <div class="w-full flex justify-center">
+      <button
+        type="submit"
+        class="p-4 border-2 border-white animate-pulse lg:animate-none lg:border-transparent hover:border-white text-xl transition-all"
+        >Send</button
+      >
+    </div>
   </div>
 </form>
 
 <script>
-  const contactForm = document.querySelector("form#contact-form");
-  contactForm.addEventListener("submit", async (ev) => {
+  import Swal from "sweetalert2";
+  const contactForm = document.querySelector<HTMLFormElement>("#contact-form")!;
+  contactForm!.addEventListener("submit", async (ev) => {
     ev.preventDefault();
-    console.log(contactForm.action);
-    contactForm.querySelector("button[type=submit]").disabled = true;
-    await fetch(contactForm.action, {
-      method: contactForm.method,
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        emailFrom: contactForm.elements["email_from"].value,
-        subject: contactForm.elements["subject"].value,
-        content: contactForm.elements["content"].value,
-      }),
-    });
-    contactForm.querySelector("button[type=submit]").disabled = false;
-    contactForm.reset();
+    const button = contactForm.querySelector<HTMLButtonElement>(
+      "button[type=submit]"
+    )!;
+    button.disabled = true;
+    button.classList.add("loading");
+    try {
+      const res = await fetch(contactForm.action, {
+        method: contactForm.method,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          emailFrom: contactForm.elements["email_from"].value,
+          subject: contactForm.elements["subject"].value,
+          content: contactForm.elements["content"].value,
+        }),
+      });
+      if (!res.ok) {
+        throw Error("could not send form");
+      }
+      Swal.fire("Sent!", "the message has been succesfully sent", "success");
+      contactForm.reset();
+    } catch (error) {
+      Swal.fire(
+        "Oops!",
+        "looks like this message could not be delivered",
+        "error"
+      );
+    }
+    button.disabled = false;
+    button.classList.remove("loading");
   });
 </script>
+
+<style>
+  .loading::before {
+    content: "";
+    width: 20px;
+    height: 20px;
+    display: inline-flex;
+    @apply bg-gradient-to-tr from-slate-200 to-slate-400 rounded-full animate-spin mr-2 self-center;
+  }
+</style>

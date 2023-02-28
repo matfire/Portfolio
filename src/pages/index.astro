@@ -23,99 +23,71 @@ const education = (await getCollection("education"))
 const certicates = (await getCollection("certifications"))
   .sort((a, b) => b.data.obtentionYear - a.data.obtentionYear)
   .slice(0, 3);
-const experiences = (await getCollection("experience"))
-  .sort((a, b) => b.data.begin - a.data.begin)
-  .slice(0, 3);
+const experiences = (await getCollection("experience")).sort(
+  (a, b) => b.data.begin - a.data.begin
+);
 ---
 
 <Layout title="Matteo Gassend">
-  <div class="w-full flex flex-col md:flex-row h-full">
-    <div
-      class="order-last sticky z-10 md:z-0 bottom-0 md:relative md:order-first md:w-1/5 md:h-full shadow-md pl-0 md:pl-2"
-    >
-      <nav class="md:hidden"></nav>
-      <nav class="hidden md:block sticky top-0">
-        <ul class="flex flex-col w-auto">
-          <li class="menu__item"><a href="#about">About Me</a></li>
-          <li class="menu__item"><a href="#skills">Skills</a></li>
-          <li class="menu__item"><a href="#projects">Projects</a></li>
-          <li class="menu__item"><a href="#articles">Articles</a></li>
-          <li class="menu__item"><a href="#experience">Experience</a></li>
-          <li class="menu__item"><a href="#education">Education</a></li>
-          <li class="menu__item">
-            <a href="#certifications">Certifications</a>
-          </li>
-          <li class="menu__item"><a href="#contact">Contacts</a></li>
-        </ul>
-      </nav>
-    </div>
-    <div class="w-full px-2 space-y-2 lg:space-y-12">
-      <section id="about">
-        <div class="flex flex-col md:flex-row items-center justify-evenly mt-3">
-          <h1 class="text-3xl">Hello, my name is <b>Matteo</b></h1>
-        </div>
-        <p>
-          I am a fullstack developer with {new Date().getFullYear() - 2018} years
-          of experience in the industry.
-        </p>
-        <p>
-          I have a passion for creating innovative and efficient solutions using
-          the latest technologies.
-        </p><p>
-          My expertise includes all things related to:
-          <ul class="list-disc">
-            <li>Javascript</li>
-            <li>HTML/CSS</li>
-            <li>Python</li>
-            <li>Relational (and not) Databases</li>
-          </ul>
-          and I have experience working on a variety of projects, from [examples
-          of types of projects you've worked on].
-        </p>
-      </section>
-      <section id="skills"></section>
-      <section id="projects">
-        <h2 class="section__title">I worked on things like these</h2>
-        <div class="flex flex-col space-y-4">
-          {
-            projects.map((e, idx) => (
-              <ProjectCard
-                project={e}
-                side={idx % 2 === 0 ? "left" : "right"}
-              />
-            ))
-          }
-        </div>
-      </section>
-      <section id="articles">
-        <h2 class="section__title">I like to write things from time to time</h2>
-        <div class="section__grid">
-          {articles.map((e: Article) => <ArticleCard article={e} />)}
-        </div>
-      </section>
-      <section id="experience">
-        <h2 class="section__title">This is where I worked</h2>
-        <div class="section__grid">
-          {experiences.map((e) => <ExpCard experience={e} />)}
-        </div>
-      </section>
-      <section id="education">
-        <h2 class="section__title">Here's where I studied</h2>
-        <div class="section__grid">
-          {education.map((e) => <EducationCard education={e} />)}
-        </div>
-      </section>
-      <section id="certifications">
-        <h2 class="section__title">Certificates</h2>
-        <div class="section__grid">
-          {certicates.map((e) => <CertificateCard certificate={e} />)}
-        </div>
-      </section>
-      <section id="contact">
-        <h2 class="section__title">React Out</h2>
-        <ContactCard />
-      </section>
-    </div>
+  <div class="w-full space-y-2 lg:space-y-12">
+    <section id="about">
+      <div class="flex flex-col md:flex-row items-center justify-evenly mt-3">
+        <h1 class="text-3xl text-center">Hello, my name is <b>Matteo</b></h1>
+      </div>
+      <p class="text-center text-xl">
+        I am a fullstack developer with {new Date().getFullYear() - 2020} years of
+        experience in the industry.
+      </p>
+    </section>
+    <section id="skills"></section>
+    <section id="projects">
+      <h2 class="section__title">I worked on things like these</h2>
+      <div class="flex flex-col space-y-4">
+        {
+          projects.map((e, idx) => (
+            <ProjectCard project={e} side={idx % 2 === 0 ? "left" : "right"} />
+          ))
+        }
+      </div>
+    </section>
+    <section id="experience">
+      <h2 class="section__title">This is where I worked</h2>
+      <div class="flex flex-col space-y-8">
+        {
+          experiences.map((e, idx) => (
+            <ExpCard experience={e} side={idx % 2 === 0 ? "left" : "right"} />
+          ))
+        }
+      </div>
+    </section>
+    <section id="articles">
+      <h2 class="section__title">I like to write things from time to time</h2>
+      <div class="section__grid">
+        {articles.map((e: Article) => <ArticleCard article={e} />)}
+      </div>
+      <div class="text-center w-full mt-2">
+        <a
+          class="p-2 border-transparent border-2 hover:border-white transition-[border]"
+          href="https://blog.matteogassend.com">Read More Articles</a
+        >
+      </div>
+    </section>
+    <section id="education">
+      <h2 class="section__title">Here's where I studied</h2>
+      <div class="section__grid">
+        {education.map((e) => <EducationCard education={e} />)}
+      </div>
+    </section>
+    <section id="certifications">
+      <h2 class="section__title">Certificates</h2>
+      <div class="flex justify-evenly">
+        {certicates.map((e) => <CertificateCard certificate={e} />)}
+      </div>
+    </section>
+    <section id="contact">
+      <h2 class="section__title">Reach Out</h2>
+      <ContactCard />
+    </section>
   </div>
 </Layout>
 
