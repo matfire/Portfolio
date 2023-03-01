@@ -7,6 +7,7 @@ date: 2023-02-14
 epitech: false
 stack:
 - typescript
+- nestjs
 - astro
 - mysql
 ---

@@ -7,6 +7,7 @@ image: /vivi_img.webp
 date: 2022-01-01
 stack:
 - typescript
+- nestjs
 - react
 - graphql
 - python

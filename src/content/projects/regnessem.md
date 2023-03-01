@@ -9,5 +9,7 @@ stack:
 - typescript
 - react
 - graphql
+- mongodb
+- nestjs
 ---
 

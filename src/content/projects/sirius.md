@@ -10,7 +10,9 @@ date: 2021-10-14
 stack:
 - typescript
 - graphql
-- svelte
+- react
+- nestjs
+- mysql
 ---
 
 This application allows users to track the ISS Position in the sky in near real time, and to setup notifications for when it crosses a marked point
