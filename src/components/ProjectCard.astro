@@ -6,12 +6,35 @@ import StackElement from "./StackElement.astro";
 export interface Props {
   project: CollectionEntry<"projects">;
   side: "left" | "right";
+  full: boolean;
 }
 
-const { project, side } = Astro.props;
+const { project, side, full } = Astro.props;
 ---
 
 <article
+  class={`min-h-[12rem] hover:scale-105 transition-all bg-slate-700 rounded group`}
+>
+  <div class="flex flex-col">
+    <img src={project.data.image} alt={project.data.title} />
+    <div class="flex flex-col p-4">
+      <div class="w-auto">
+        <a
+          class="text-xl group-hover:text-purple-400"
+          href={`/projects/${project.slug}`}
+        >
+          {project.data.title}
+        </a>
+      </div>
+      <p>{project.data.summary}</p>
+      <div class="flex justify-evenly">
+        {project.data.stack.map((e) => <StackElement name={e} />)}
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- <article
   class={`h-96 w-full lg:w-2/3 group relative bg-center bg-cover transition-all duration-300 hover:shadow-lg ${
     side === "left" ? "hover:translate-x-2" : "hover:-translate-x-2"
   }  ${side === "left" ? "" : "self-end"}`}
@@ -49,7 +72,7 @@ const { project, side } = Astro.props;
   >
     <h1>{project.data.title}</h1>
   </a>
-</article>
+</article> -->
 
 <!-- <article
   class="shadow-xl h-96 bg-cover bg-center transform duration-500 hover:-translate-y-2 group"
