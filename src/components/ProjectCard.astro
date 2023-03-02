@@ -13,22 +13,33 @@ const { project, side, full } = Astro.props;
 ---
 
 <article
-  class={`min-h-[12rem] hover:scale-105 transition-all bg-slate-700 rounded group`}
+  class={`min-h-[12rem] lg:hover:scale-105 transition-all bg-slate-700 rounded group`}
 >
   <div class="flex flex-col">
-    <img src={project.data.image} alt={project.data.title} />
+    <img
+      src={project.data.image}
+      alt={project.data.title}
+      class="p-2 rounded"
+    />
     <div class="flex flex-col p-4">
       <div class="w-auto">
         <a
-          class="text-xl group-hover:text-purple-400"
+          class="text-xl group-hover:text-purple-400 transition-all"
           href={`/projects/${project.slug}`}
         >
           {project.data.title}
         </a>
       </div>
       <p>{project.data.summary}</p>
-      <div class="flex justify-evenly">
+      <div class="flex justify-evenly mt-2">
         {project.data.stack.map((e) => <StackElement name={e} />)}
+      </div>
+      <div class="mt-4 flex justify-center lg:hidden">
+        <a
+          href={`/projects/${project.slug}`}
+          class="p-4 border border-transparent hover:border-white transition-all"
+          >Read More about {project.data.title}</a
+        >
       </div>
     </div>
   </div>
