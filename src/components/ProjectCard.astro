@@ -16,11 +16,7 @@ const { project, side, full } = Astro.props;
   class={`min-h-[12rem] lg:hover:scale-105 transition-all bg-slate-700 rounded group`}
 >
   <div class="flex flex-col">
-    <img
-      src={project.data.image}
-      alt={project.data.title}
-      class="p-2 rounded"
-    />
+    <img src={project.data.image} alt={project.data.title} class="rounded" />
     <div class="flex flex-col p-4">
       <div class="w-auto">
         <a
