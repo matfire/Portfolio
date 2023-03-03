@@ -4,17 +4,16 @@ import StackElement from "./StackElement.astro";
 
 export interface Props {
   experience: CollectionEntry<"experience">;
-  open?: boolean;
 }
 
-const { experience, open = false } = Astro.props;
+const { experience } = Astro.props;
 const { Content } = await experience!.render();
 ---
 
 <details
   class={`group w-full flex flex-col shadow-lg bg-slate-700 p-4 space-y-4 `}
 >
-  <summary>
+  <summary class="border-b border-transparent pb-2 group-open:border-slate-200">
     {experience.data.role}
     {
       `${("0" + experience.data.begin.getMonth()).slice(
@@ -26,15 +25,18 @@ const { Content } = await experience!.render();
       )}/${experience.data.end.getFullYear()}`
     }
   </summary>
-  <div class="w-full flex flex-col lg:flex-row">
-    <p class="self-end"></p>
-  </div>
   <div class="w-full flex flex-col space-y-4">
     <div class="flex space-x-4 h-full items-center flex-wrap justify-center">
       {experience.data.skills.map((e) => <StackElement name={e} />)}
     </div>
-    <div>
+    <div class="experience_details">
       <Content />
     </div>
   </div>
 </details>
+
+<style>
+  .experience_details > ul {
+    @apply list-disc !important;
+  }
+</style>
