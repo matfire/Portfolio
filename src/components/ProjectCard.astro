@@ -5,11 +5,9 @@ import StackElement from "./StackElement.astro";
 
 export interface Props {
   project: CollectionEntry<"projects">;
-  side: "left" | "right";
-  full: boolean;
 }
 
-const { project, side, full } = Astro.props;
+const { project } = Astro.props;
 ---
 
 <article

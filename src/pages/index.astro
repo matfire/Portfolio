@@ -37,20 +37,15 @@ const experiences = (await getCollection("experience")).sort(
         experience in the industry.
       </p>
     </section>
-    <section id="skills"></section>
     <section id="projects">
       <h2 class="section__title mb-4">I worked on things like these</h2>
       <div class="section__grid">
-        {
-          projects.map((e, idx) => (
-            <ProjectCard project={e} side={idx % 2 === 0 ? "left" : "right"} />
-          ))
-        }
+        {projects.map((e) => <ProjectCard project={e} />)}
       </div>
     </section>
     <section id="experience">
       <h2 class="section__title">This is where I worked</h2>
-      <div class="flex flex-col space-y-8">
+      <div class="section__grid">
         {
           experiences.map((e, idx) => (
             <ExpCard experience={e} side={idx % 2 === 0 ? "left" : "right"} />

@@ -4,32 +4,37 @@ import StackElement from "./StackElement.astro";
 
 export interface Props {
   experience: CollectionEntry<"experience">;
-  side: "left" | "right";
+  open?: boolean;
 }
 
-const { experience, side } = Astro.props;
+const { experience, open = false } = Astro.props;
 const { Content } = await experience!.render();
 ---
 
-<article
-  class={`group w-full lg:w-1/2 min-h-48 flex flex-col space-y-3 border border-black shadow-lg lg:p-8 ${
-    side === "right" ? "self-end" : ""
-  }`}
+<details
+  class={`group w-full flex flex-col shadow-lg bg-slate-700 p-4 space-y-4 `}
 >
-  <div
-    class="w-full flex lg:flex-row flex-col items-center lg:justify-between space-y-3 lg:space-y-0"
-  >
-    <h1>{experience.data.role}</h1>
-    <p>
-      {experience.data.begin.toDateString()} - {
-        experience.data.end.toDateString()
-      }
-    </p>
+  <summary>
+    {experience.data.role}
+    {
+      `${("0" + experience.data.begin.getMonth()).slice(
+        -2
+      )}/${experience.data.begin.getFullYear()}`
+    } - {
+      `${("0" + experience.data.end.getMonth()).slice(
+        -2
+      )}/${experience.data.end.getFullYear()}`
+    }
+  </summary>
+  <div class="w-full flex flex-col lg:flex-row">
+    <p class="self-end"></p>
   </div>
-  <div class="flex space-x-4 h-full items-center flex-wrap justify-center">
-    {experience.data.skills.map((e) => <StackElement name={e} />)}
+  <div class="w-full flex flex-col space-y-4">
+    <div class="flex space-x-4 h-full items-center flex-wrap justify-center">
+      {experience.data.skills.map((e) => <StackElement name={e} />)}
+    </div>
+    <div>
+      <Content />
+    </div>
   </div>
-  <div>
-    <Content />
-  </div>
-</article>
+</details>
