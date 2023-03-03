@@ -6,78 +6,41 @@ import StackElement from "./StackElement.astro";
 export interface Props {
   project: CollectionEntry<"projects">;
   side: "left" | "right";
+  full: boolean;
 }
 
-const { project, side } = Astro.props;
+const { project, side, full } = Astro.props;
 ---
 
 <article
-  class={`h-96 w-full lg:w-2/3 group relative bg-center bg-cover transition-all duration-300 hover:shadow-lg ${
-    side === "left" ? "hover:translate-x-2" : "hover:-translate-x-2"
-  }  ${side === "left" ? "" : "self-end"}`}
-  style={`background-image:url(${project.data.image})`}
+  class={`min-h-[12rem] hover:shadow-xl hover:scale-105  transition-all bg-slate-700 rounded group`}
 >
-  <div
-    class="lg:opacity-0 lg:hidden flex flex-col justify-center items-center bg-opacity-70 bg-black h-full"
-  >
-    <h1>{project.data.title}</h1>
-    <p>{project.data.summary}</p>
-    <div class="flex justify-evenly w-full my-2">
-      {project.data.stack.map((e) => <StackElement name={e} />)}
-    </div>
-    <a
-      href={`/projects/${project.slug}`}
-      aria-label={`read more about ${project.data.title}`}
-      class="p-4 border-transparent hover:border-white transition-[border] duration-300"
-      >Learn More</a
-    >
-  </div>
-  <div
-    class="p-4 lg:flex flex-col items-center justify-evenly hidden w-full h-full opacity-0 transition-opacity group-hover:opacity-100 bg-black bg-opacity-70"
-  >
-    <p>{project.data.summary}</p>
-    <div class="flex justify-evenly w-full">
-      {project.data.stack.map((e) => <StackElement name={e} />)}
-    </div>
-  </div>
-  <a
-    aria-label={`read more about ${project.data.title}`}
-    href={`/projects/${project.slug}`}
-    class={`opacity-0 lg:opacity-100 hidden lg:flex absolute bottom-1/2 bg-black p-4 group-hover:border-white transition-[border] duration-300 border-transparent border-2 w-36 h-16 flex-col items-center justify-center ${
-      side === "left" ? "-right-12" : "-left-12"
-    }`}
-  >
-    <h1>{project.data.title}</h1>
-  </a>
-</article>
-
-<!-- <article
-  class="shadow-xl h-96 bg-cover bg-center transform duration-500 hover:-translate-y-2 group"
-  style={`background-image:url(${project.data.image})`}
->
-  <div
-    class="bg-black bg-opacity-20 h-full px-10 flex flex-wrap flex-col justify-end hover:bg-opacity-75 transform duration-300"
-  >
-    <h1
-      class="text-3xl transform translate-y-2 group-hover:translate-y-0 duration-300"
-    >
-      {project.data.title}
-    </h1>
-    <div
-      class="opacity-0 text-white group-hover:opacity-80 transform duration-500"
-    >
-      <p class="text-xl">
-        {project.data.summary}
-      </p>
-
-      <div class="w-full flex justify-end mb-2">
+  <div class="flex flex-col">
+    <img
+      src={project.data.image}
+      alt={project.data.title}
+      class="w-full h-auto transition-transform rounded"
+    />
+    <div class="flex flex-col p-4">
+      <div class="w-auto">
         <a
-          rel="prefetch"
+          class="text-xl group-hover:text-purple-400 transition-all"
           href={`/projects/${project.slug}`}
-          class="border border-transparent bg-indigo-400 rounded-full px-2 py-2"
-          >Read More &rarr;</a
+        >
+          {project.data.title}
+        </a>
+      </div>
+      <p>{project.data.summary}</p>
+      <div class="flex justify-evenly mt-2">
+        {project.data.stack.map((e) => <StackElement name={e} />)}
+      </div>
+      <div class="mt-4 flex justify-center lg:hidden">
+        <a
+          href={`/projects/${project.slug}`}
+          class="p-4 border border-transparent hover:border-white transition-all"
+          >Read More about {project.data.title}</a
         >
       </div>
     </div>
   </div>
-</article> -->
+</article>

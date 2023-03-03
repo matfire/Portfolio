@@ -39,8 +39,8 @@ const experiences = (await getCollection("experience")).sort(
     </section>
     <section id="skills"></section>
     <section id="projects">
-      <h2 class="section__title">I worked on things like these</h2>
-      <div class="flex flex-col space-y-4">
+      <h2 class="section__title mb-4">I worked on things like these</h2>
+      <div class="section__grid">
         {
           projects.map((e, idx) => (
             <ProjectCard project={e} side={idx % 2 === 0 ? "left" : "right"} />
@@ -100,6 +100,6 @@ const experiences = (await getCollection("experience")).sort(
     @apply text-center font-bold text-2xl;
   }
   .section__grid {
-    @apply w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4;
+    @apply w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 space-y-6 lg:space-y-8;
   }
 </style>
