@@ -5,5 +5,5 @@ graduation: 2017-07-30
 schoolName: Lycée Français Victor Hugo
 city: Florence
 country: Italy
-logo: /epitech.webp
+logo: /florence.webp
 ---
