@@ -27,10 +27,12 @@ const experiences = (await getCollection("experience")).sort(
 ---
 
 <Layout title="Matteo Gassend">
-  <div class="w-full space-y-2 lg:space-y-12">
+  <div class="w-full space-y-2 lg:space-y-12 px-4">
     <section id="about">
       <div class="flex flex-col md:flex-row items-center justify-evenly mt-3">
-        <h1 class="text-3xl text-center">Hello, my name is <b>Matteo</b></h1>
+        <h1 class="text-3xl text-center font-black">
+          Hello, my name is <b>Matteo</b>
+        </h1>
       </div>
       <p class="text-center text-xl">
         I am a fullstack developer with {new Date().getFullYear() - 2020} years of

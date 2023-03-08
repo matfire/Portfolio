@@ -1,7 +1,7 @@
 ---
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
-
+import "../styles/global.css";
 export interface Props {
   title: string;
 }
@@ -22,6 +22,7 @@ const theme = "dark";
         new Date().getFullYear() - 2020
       } years of experience`}
     />
+
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
@@ -37,18 +38,3 @@ const theme = "dark";
     </footer>
   </body>
 </html>
-<style is:global>
-  html,
-  body {
-    padding: 0;
-    margin: 0;
-  }
-  body {
-    @apply h-screen flex flex-col dark:text-white dark:bg-slate-600 bg-slate-300;
-  }
-  main {
-    flex: 1;
-    position: relative;
-    @apply mt-[3rem] px-4;
-  }
-</style>

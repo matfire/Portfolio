@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@font-face {
+    font-family: "Montserrat";
+    src: url('/Montserrat.ttf');
+}
+
+@font-face {
+    font-family: "PlayFair Display";
+    src: url('/PlayfairDisplay.ttf');
+}
+
+@layer utilities {
+    .montserrat {
+        font-family: 'Montserrat', sans-serif;
+    }
+}
+
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+body {
+  @apply h-screen flex flex-col dark:text-white dark:bg-slate-600 bg-slate-300 montserrat;
+}
+main {
+  flex: 1;
+  position: relative;
+  @apply mt-[3rem];
+}
