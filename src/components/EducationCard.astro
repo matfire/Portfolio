@@ -1,13 +1,10 @@
 ---
 import type { CollectionEntry } from "astro:content";
+import { formatDate } from "../utils/date";
 
 export interface Props {
   education: CollectionEntry<"education">;
 }
-
-const formatDate = (date: Date) => {
-  return `${("0" + date.getMonth()).slice(-2)}/${date.getFullYear()}`;
-};
 
 const { education } = Astro.props;
 ---
