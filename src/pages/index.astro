@@ -6,7 +6,6 @@ import type { Article } from "../utils/article.type";
 import ProjectCard from "../components/ProjectCard.astro";
 import ArticleCard from "../components/ArticleCard.astro";
 import EducationCard from "../components/EducationCard.astro";
-import CertificateCard from "../components/CertificateCard.astro";
 import ExpCard from "../components/ExpCard.astro";
 import ContactCard from "../components/ContactCard.astro";
 
@@ -17,9 +16,6 @@ const projects = (await getCollection("projects")).sort(
 
 const education = (await getCollection("education"))
   .sort((a, b) => b.data.graduation - a.data.graduation)
-  .slice(0, 3);
-const certicates = (await getCollection("certifications"))
-  .sort((a, b) => b.data.obtentionYear - a.data.obtentionYear)
   .slice(0, 3);
 const experiences = (await getCollection("experience")).sort(
   (a, b) => b.data.begin - a.data.begin
@@ -71,12 +67,6 @@ const experiences = (await getCollection("experience")).sort(
       <h2 class="section__title">Here's where I studied</h2>
       <div class="section__grid">
         {education.map((e) => <EducationCard education={e} />)}
-      </div>
-    </section>
-    <section id="certifications">
-      <h2 class="section__title">Certificates</h2>
-      <div class="flex justify-evenly">
-        {certicates.map((e) => <CertificateCard certificate={e} />)}
       </div>
     </section>
     <section id="contact">
