@@ -42,7 +42,8 @@ const certificationCollection = defineCollection({
         title: z.string(),
         rank: z.string(),
         institution: z.string(),
-        obtentionYear: z.number()
+        obtentionYear: z.number(),
+        language: z.string()
     })
 })
 
