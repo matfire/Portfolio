@@ -58,7 +58,7 @@ const experiences = (await getCollection("experience")).sort(
     <section id="articles">
       <h2 class="section__title">I like to write things from time to time</h2>
       <div class="section__grid">
-        {articles.map((e: Article) => <ArticleCard article={e} />)}
+        {articles.slice(0, 3).map((e: Article) => <ArticleCard article={e} />)}
       </div>
       <div class="text-center w-full mt-2">
         <a
