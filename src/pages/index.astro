@@ -8,6 +8,7 @@ import ArticleCard from "../components/ArticleCard.astro";
 import EducationCard from "../components/EducationCard.astro";
 import ExpCard from "../components/ExpCard.astro";
 import ContactCard from "../components/ContactCard.astro";
+import { Icon } from "astro-icon";
 
 const { articles }: { articles: Article[] } = await (await get()).json();
 const projects = (await getCollection("projects")).sort(
@@ -57,7 +58,7 @@ const experiences = (await getCollection("experience")).sort(
         {articles.slice(0, 3).map((e: Article) => <ArticleCard article={e} />)}
       </div>
       <div class="text-center w-full mt-6">
-        <a class="button" href="https://blog.matteogassend.com"
+        <a class="button primary" href="https://blog.matteogassend.com"
           >Read More Articles</a
         >
       </div>
@@ -71,8 +72,11 @@ const experiences = (await getCollection("experience")).sort(
     <section id="contact">
       <h2 class="section__title">Reach Out</h2>
       <div class="w-full flex justify-center">
-        <a href="mailto:mgassend@gmail.com" class="button uppercase"
-          >get in touch</a
+        <a
+          href="mailto:mgassend@gmail.com"
+          class="button primary uppercase flex"
+        >
+          <Icon name="vaadin:paperplane" class="h-8 w-8 mr-2" /> get in touch</a
         >
       </div>
       <!-- <ContactCard /> -->

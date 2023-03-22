@@ -13,8 +13,8 @@ const { Content } = await experience!.render();
 <details
   class={`group w-full flex flex-col shadow-lg bg-slate-700 p-4 space-y-4 `}
 >
-  <summary class="border-b border-transparent pb-2 group-open:border-slate-200">
-    {experience.data.role}
+  <summary class="">
+    <span class="font-bold">{experience.data.role}</span>
     {
       `${("0" + experience.data.begin.getMonth()).slice(
         -2
