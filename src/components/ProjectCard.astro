@@ -1,5 +1,7 @@
 ---
 import { Icon } from "astro-icon";
+import { Image } from "astro:assets";
+
 import type { CollectionEntry } from "astro:content";
 import StackElement from "./StackElement.astro";
 
@@ -18,7 +20,7 @@ const { project } = Astro.props;
       >
         {project.data.stack.map((e) => <StackElement name={e} />)}
       </div>
-      <img
+      <Image
         src={project.data.image}
         alt={project.data.title}
         class="w-full h-auto transition-transform rounded"

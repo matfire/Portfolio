@@ -5,5 +5,5 @@ graduation: 2017-07-30
 schoolName: Lycée Français Victor Hugo
 city: Florence
 country: Italy
-logo: /florence.webp
+logo: ./education/florence.webp
 ---

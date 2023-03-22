@@ -3,7 +3,7 @@ title: Vivi
 githubUrl: https://github.com/vivitek
 summary: network monitoring made easy
 epitech: true
-image: /vivi_img.webp
+image: ./projects/vivi_img.webp
 date: 2022-01-01
 stack:
 - typescript

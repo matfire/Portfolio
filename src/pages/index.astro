@@ -82,19 +82,19 @@ const experiences = (await getCollection("experience")).sort(
       <!-- <ContactCard /> -->
     </section>
   </div>
-</Layout>
 
-<style>
-  .menu__item {
-    @apply px-2 py-3;
-  }
-  .menu__item > a {
-    @apply px-2 py-3 hover:-translate-y-2 transform transition-all hover:shadow-md border-transparent border-2 hover:border-white focus:border-blue-300;
-  }
-  .section__title {
-    @apply text-center font-bold text-2xl;
-  }
-  .section__grid {
-    @apply w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 space-y-6 lg:space-y-8;
-  }
-</style>
+  <style>
+    .menu__item {
+      @apply px-2 py-3;
+    }
+    .menu__item > a {
+      @apply px-2 py-3 hover:-translate-y-2 transform transition-all hover:shadow-md border-transparent border-2 hover:border-white focus:border-blue-300;
+    }
+    .section__title {
+      @apply text-center font-bold text-2xl;
+    }
+    .section__grid {
+      @apply w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 space-y-6 lg:space-y-8;
+    }
+  </style>
+</Layout>
