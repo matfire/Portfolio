@@ -1,5 +1,6 @@
 
 export const get = async() => {
+  try {
     const data = await (await (fetch("https://api.hashnode.com", {
       method:"POST",
         headers: {
@@ -26,5 +27,8 @@ export const get = async() => {
         "Content-Type":"application/json"
       }
     })
+  } catch (error) {
+    return new Response(JSON.stringify({articles: []}))
+  }
 
 }
