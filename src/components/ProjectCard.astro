@@ -10,34 +10,56 @@ export interface Props {
 const { project } = Astro.props;
 ---
 
-<article
-  class={`min-h-[12rem] duration-300 hover:shadow-xl hover:scale-105  transition-all bg-slate-700 rounded group`}
->
+<article class={`min-h-[12rem] bg-slate-700 rounded group`}>
   <div class="flex flex-col">
-    <img
-      src={project.data.image}
-      alt={project.data.title}
-      class="w-full h-auto transition-transform rounded"
-    />
-    <div class="flex flex-col p-4">
-      <div class="w-auto">
-        <a
-          class="text-xl group-hover:text-purple-400 transition-all"
-          href={`/projects/${project.slug}`}
-        >
-          {project.data.title}
-        </a>
-      </div>
-      <p>{project.data.summary}</p>
-      <div class="flex justify-evenly mt-2">
+    <div class="w-full h-auto relative">
+      <div
+        class="absolute duration-300 translate-y-4 group-hover:translate-y-0 transition-all opacity-0 group-hover:opacity-100 bottom-0 h-1/4 w-full z-10 bg-black/50 hidden justify-evenly items-center md:flex"
+      >
         {project.data.stack.map((e) => <StackElement name={e} />)}
       </div>
-      <div class="mt-4 flex justify-center lg:hidden">
-        <a
-          href={`/projects/${project.slug}`}
-          class="p-4 border border-transparent hover:border-white transition-all"
-          >Read More about {project.data.title}</a
-        >
+      <img
+        src={project.data.image}
+        alt={project.data.title}
+        class="w-full h-auto transition-transform rounded"
+      />
+    </div>
+    <div class="flex flex-col p-4">
+      <div class="w-auto">
+        <h1 class="text-xl font-semibold">
+          {project.data.title}
+        </h1>
+      </div>
+      <p>{project.data.summary}</p>
+      <div class="flex justify-evenly mt-2 md:hidden">
+        {project.data.stack.map((e) => <StackElement name={e} />)}
+      </div>
+      <div
+        class="flex flex-col md:flex-row justify-evenly mt-2 space-y-4 md:space-y-0"
+      >
+        {
+          project.data.productionUrl && (
+            <a
+              target="_blank"
+              class="button primary flex justify-center"
+              href={project.data.productionUrl}
+            >
+              See it live
+            </a>
+          )
+        }
+        {
+          project.data.githubUrl && (
+            <a
+              aria-label="see source code"
+              target="_blank"
+              href={project.data.githubUrl}
+              class="button secondary flex justify-center"
+            >
+              <Icon name="mdi:github" class="h-8 w-8" />
+            </a>
+          )
+        }
       </div>
     </div>
   </div>

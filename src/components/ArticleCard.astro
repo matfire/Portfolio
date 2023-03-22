@@ -21,8 +21,10 @@ const { article } = Astro.props;
       published {formatDate(new Date(article.dateAdded))}
     </p>
     <a
-      aria-label={`read more about ${article.title} on Hashnode`}
-      class="p-2 border-transparent border-2 hover:border-white transition-[border]"
+      aria-label={`read more about ${article.title}`}
+      class="button"
+      target="_blank"
+      rel="noreferrer"
       href={`https://blog.matteogassend.com/${article.slug}`}>Learn More</a
     >
   </div>

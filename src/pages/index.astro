@@ -56,10 +56,9 @@ const experiences = (await getCollection("experience")).sort(
       <div class="section__grid">
         {articles.slice(0, 3).map((e: Article) => <ArticleCard article={e} />)}
       </div>
-      <div class="text-center w-full mt-2">
-        <a
-          class="p-2 border-transparent border-2 hover:border-white transition-[border]"
-          href="https://blog.matteogassend.com">Read More Articles</a
+      <div class="text-center w-full mt-6">
+        <a class="button" href="https://blog.matteogassend.com"
+          >Read More Articles</a
         >
       </div>
     </section>
@@ -71,7 +70,12 @@ const experiences = (await getCollection("experience")).sort(
     </section>
     <section id="contact">
       <h2 class="section__title">Reach Out</h2>
-      <ContactCard />
+      <div class="w-full flex justify-center">
+        <a href="mailto:mgassend@gmail.com" class="button uppercase"
+          >get in touch</a
+        >
+      </div>
+      <!-- <ContactCard /> -->
     </section>
   </div>
 </Layout>
