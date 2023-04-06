@@ -13,7 +13,7 @@ import { Icon } from "astro-icon";
 const { articles }: { articles: Article[] } = await (await get()).json();
 const projects = (await getCollection("projects")).sort(
   (a, b) => b.data.date - a.data.date
-).slice(0, 1);
+);
 
 const education = (await getCollection("education"))
   .sort((a, b) => b.data.graduation - a.data.graduation)
@@ -42,7 +42,7 @@ const experiences = (await getCollection("experience")).sort(
         {projects.map((e) => <ProjectCard project={e} />)}
       </div>
     </section>
-   <!--  <section id="experience">
+    <section id="experience">
       <h2 class="section__title">This is where I worked</h2>
       <div class="section__grid">
         {
@@ -68,7 +68,7 @@ const experiences = (await getCollection("experience")).sort(
       <div class="section__grid">
         {education.map((e) => <EducationCard education={e} />)}
       </div>
-    </section> -->
+    </section>
     <section id="contact">
       <h2 class="section__title">Reach Out</h2>
       <div class="w-full flex justify-center">
