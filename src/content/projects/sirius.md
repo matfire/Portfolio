@@ -5,7 +5,7 @@ githubUrl: https://github.com/matfire/Sirius
 summary: your eye in the sky
 epitech: true
 personal: true
-image: ./projects/sirius_img.webp
+image: ./images/sirius_img.webp
 date: 2021-10-14
 stack:
 - typescript

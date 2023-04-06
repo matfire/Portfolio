@@ -5,5 +5,5 @@ graduation: 2021-08-01
 schoolName: Högskolan i Halmstad
 country: Sweden
 city: Halmstad
-logo: ./education/halmstad.webp
+logo: ./images/halmstad.webp
 ---

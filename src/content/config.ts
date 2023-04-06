@@ -1,7 +1,7 @@
-import { defineCollection, z, image } from "astro:content"
+import { defineCollection, z } from "astro:content"
 
 const projectsCollection = defineCollection({
-    schema: z.object({
+    schema: ({image}) => z.object({
         title: z.string(),
         summary: z.string(),
         date: z.date().transform((v) => new Date(v)),
@@ -15,7 +15,7 @@ const projectsCollection = defineCollection({
 })
 
 const educationCollection = defineCollection({
-    schema: z.object({
+    schema: ({image}) => z.object({
         title:z.string(),
         begin: z.date().transform((v) => new Date(v)),
         graduation: z.date().transform((v) => new Date(v)),
