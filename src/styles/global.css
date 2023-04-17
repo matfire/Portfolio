@@ -4,32 +4,30 @@
 
 
 @font-face {
-    font-family: "Montserrat";
-    src: url('/Montserrat.ttf');
+  font-family: "Montserrat";
+  src: url('/Montserrat.ttf');
+  font-display: swap;
 }
 
-@font-face {
-    font-family: "PlayFair Display";
-    src: url('/PlayfairDisplay.ttf');
-}
 
 @layer components {
   .button {
-    @apply p-4 border-2 bg-slate-700 text-white  rounded-lg border-transparent hover:border-white text-xl transition-all
+    @apply p-4 border-2 bg-slate-700 text-white rounded-lg border-transparent hover:border-white text-xl transition-all
   }
 }
 
 @layer utilities {
-    .montserrat {
-        font-family: 'Montserrat', sans-serif;
-    }
-    .primary {
-      @apply bg-neutral-800
-    }
+  .montserrat {
+    font-family: 'Montserrat', sans-serif;
+  }
 
-    .secondary {
-      @apply bg-neutral-600;
-    }
+  .primary {
+    @apply bg-neutral-800
+  }
+
+  .secondary {
+    @apply bg-neutral-600;
+  }
 }
 
 
@@ -38,9 +36,11 @@ body {
   padding: 0;
   margin: 0;
 }
+
 body {
   @apply h-screen flex flex-col dark:text-white dark:bg-neutral-800 bg-neutral-300 montserrat;
 }
+
 main {
   flex: 1;
   position: relative;

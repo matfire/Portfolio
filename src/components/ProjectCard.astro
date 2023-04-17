@@ -13,7 +13,7 @@ const { project } = Astro.props;
 ---
 
 <article class={`min-h-[12rem] bg-slate-700 rounded group`}>
-  <div class="flex flex-col">
+  <div class="flex flex-col h-full">
     <div class="w-full h-auto relative">
       <div
         class="absolute duration-300 translate-y-4 group-hover:translate-y-0 transition-all opacity-0 group-hover:opacity-100 bottom-0 h-1/4 w-full z-10 bg-black/50 hidden justify-evenly items-center md:flex"
@@ -26,18 +26,18 @@ const { project } = Astro.props;
         class="w-full h-auto transition-transform rounded"
       />
     </div>
-    <div class="flex flex-col p-4">
-      <div class="w-auto">
+    <div class="grid grid-flow-row p-4 h-full">
+      <div class="w-full text-center">
         <h1 class="text-xl font-semibold">
           {project.data.title}
         </h1>
       </div>
-      <p>{project.data.summary}</p>
+      <p class="text-center">{project.data.summary}</p>
       <div class="flex justify-evenly mt-2 md:hidden">
         {project.data.stack.map((e) => <StackElement name={e} />)}
       </div>
       <div
-        class="flex flex-col md:flex-row justify-evenly mt-2 space-y-4 md:space-y-0"
+        class="flex flex-col md:flex-row justify-evenly mt-2 space-y-4 md:space-y-0 self-end"
       >
         {
           project.data.productionUrl && (
