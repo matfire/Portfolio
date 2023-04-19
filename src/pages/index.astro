@@ -37,9 +37,9 @@ const experiences = (await getCollection("experience")).sort(
       </p>
     </section>
     <section id="projects">
-      <h2 class="section__title mb-4">I worked on things like these</h2>
-      <div class="flex overflow-x-auto gap-4 snap-x snap-mandatory scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100">
-        {projects.map((e) => <div class="min-w-[100%] md:min-w-[33%] lg:min-w-[25%] snap-center"><ProjectCard project={e} /></div>)}
+      <h2 class="section__title mb-4">I built these projects</h2>
+      <div class="flex overflow-x-auto gap-8 snap-x snap-mandatory scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100">
+        {projects.map((e) => <div class="snap-center min-w-full md:min-w-[33%] mb-8"><ProjectCard project={e} /></div>)}
       </div>
     </section>
     <section id="experience">
