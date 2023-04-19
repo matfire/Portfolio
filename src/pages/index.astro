@@ -38,8 +38,8 @@ const experiences = (await getCollection("experience")).sort(
     </section>
     <section id="projects">
       <h2 class="section__title mb-4">I worked on things like these</h2>
-      <div class="section__grid">
-        {projects.map((e) => <ProjectCard project={e} />)}
+      <div class="flex overflow-x-auto gap-4 snap-x snap-mandatory scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100">
+        {projects.map((e) => <div class="min-w-[100%] md:min-w-[33%] lg:min-w-[25%] snap-center"><ProjectCard project={e} /></div>)}
       </div>
     </section>
     <section id="experience">
