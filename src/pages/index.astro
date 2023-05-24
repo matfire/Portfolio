@@ -26,59 +26,56 @@ const experiences = (await getCollection("experience")).sort(
 <Layout title="Matteo Gassend">
   <div class="w-full space-y-2 lg:space-y-12 px-4">
     <section id="about">
-      <div class="flex flex-col md:flex-row items-center justify-evenly mt-3">
-        <h1 class="text-3xl text-center font-black">
+      <div class="">
+        <h1 class="text-3xl font-black">
           Hello, my name is <b>Matteo</b>
         </h1>
       </div>
-      <p class="text-center text-xl">
+      <p class="text-xl">
         I am a fullstack developer with {new Date().getFullYear() - 2020} years of
-      experience. <br />I leverage web technologies to build web, mobile and desktop applications.
+        experience. <br />I leverage web technologies to build web, mobile and
+        desktop applications.
       </p>
     </section>
     <section id="projects">
-      <h2 class="section__title mb-4">I built these projects</h2>
-      <div class="flex overflow-x-auto gap-8 snap-x snap-mandatory scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100">
-        {projects.map((e) => <div class="snap-center min-w-full md:min-w-[33%] mb-8"><ProjectCard project={e} /></div>)}
-      </div>
+      <h2 class="section__title mb-4">Projects</h2>
+      <ul class="">
+        {
+          projects.map((e) => (
+            <div class="snap-center min-w-full md:min-w-[33%] mb-8">
+              <ProjectCard project={e} />
+            </div>
+          ))
+        }
+      </ul>
     </section>
     <section id="experience">
-      <h2 class="section__title">This is where I worked</h2>
-      <div class="flex flex-col space-y-2">
+      <h2 class="section__title">Experience</h2>
+      <ul class="flex flex-col">
         {
           experiences.map((e, idx) => (
             <ExpCard experience={e} side={idx % 2 === 0 ? "left" : "right"} />
           ))
         }
-      </div>
+      </ul>
     </section>
     <section id="education">
-      <h2 class="section__title">Here's where I studied</h2>
-      <div class="section__grid">
+      <h2 class="section__title">Education</h2>
+      <ul class="">
         {education.map((e) => <EducationCard education={e} />)}
-      </div>
+      </ul>
     </section>
     <section id="articles">
-      <h2 class="section__title">I like to write things from time to time</h2>
-      <div class="section__grid">
-        {articles.slice(0, 3).map((e: Article) => <ArticleCard article={e} />)}
-      </div>
-      <div class="text-center w-full mt-6">
-        <a class="button primary" href="https://blog.matteogassend.com"
-          >Read More Articles</a
-        >
-      </div>
+      <h2 class="section__title">Articles</h2>
+      <ul>
+        {articles.map((e: Article) => <ArticleCard article={e} />)}
+      </ul>
     </section>
     <section id="contact">
       <h2 class="section__title">Reach Out</h2>
-      <div class="w-full flex justify-center">
-        <a
-          href="mailto:mgassend@gmail.com"
-          class="button primary uppercase flex"
-        >
-          <Icon name="vaadin:paperplane" class="h-8 w-8 mr-2" /> get in touch</a
-        >
-      </div>
+
+      <a href="mailto:mgassend@gmail.com"> get in touch</a>
+
       <!-- <ContactCard /> -->
     </section>
   </div>
@@ -91,7 +88,7 @@ const experiences = (await getCollection("experience")).sort(
       @apply px-2 py-3 hover:-translate-y-2 transform transition-all hover:shadow-md border-transparent border-2 hover:border-white focus:border-blue-300;
     }
     .section__title {
-      @apply text-center font-bold text-2xl mb-2;
+      @apply font-bold text-2xl mb-2;
     }
     .section__grid {
       @apply w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 space-y-6 lg:space-y-8;

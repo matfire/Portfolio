@@ -10,12 +10,11 @@ const { experience } = Astro.props;
 const { Content } = await experience!.render();
 ---
 
-<details
-  class={`group w-full flex flex-col shadow-lg bg-slate-700 p-4 space-y-4 `}
->
-  <summary class="flex justify-between">
-    <p class="font-bold">{experience.data.role}</p>
-    <p>
+<li>
+  <p>
+    <span class="font-bold">{experience.data.role}</span>,
+    {experience.data.companyName}
+    <span>
       {
         `${("0" + experience.data.begin.getMonth()).slice(
           -2
@@ -24,15 +23,7 @@ const { Content } = await experience!.render();
         `${("0" + experience.data.end.getMonth()).slice(
           -2
         )}/${experience.data.end.getFullYear()}`
-      }
-    </p>
-  </summary>
-  <div class="w-full flex flex-col space-y-4">
-    <div class="flex space-x-4 h-full items-center flex-wrap justify-center">
-      {experience.data.skills.map((e) => <StackElement name={e} />)}
-    </div>
-    <div class="experience_details">
-      <Content />
-    </div>
-  </div>
-</details>
+      }</span
+    >
+  </p>
+</li>

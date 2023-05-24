@@ -38,7 +38,7 @@ body {
 }
 
 body {
-  @apply h-screen flex flex-col dark:text-white dark:bg-neutral-800 bg-neutral-300 montserrat;
+  @apply h-screen flex flex-col dark:text-white ;
 }
 
 main {

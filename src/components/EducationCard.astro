@@ -9,20 +9,10 @@ export interface Props {
 const { education } = Astro.props;
 ---
 
-<article
-  class="min-h-[14rem] w-full bg-slate-700 bg-center bg-cover"
-  style={`background-image: url(${education.data.logo.src});`}
->
-  <div
-    class="w-full h-full bg-black bg-opacity-70 flex flex-col justify-center items-center text-center"
-  >
-    <h1 class="text-3xl font-extrabold">{education.data.schoolName}</h1>
-    <p class="text-2xl font-bold">{education.data.title}</p>
-    <p class="text-xl">{education.data.city}, {education.data.country}</p>
-    <p>
-      {formatDate(education.data.begin)} - {
-        formatDate(education.data.graduation)
-      }
-    </p>
-  </div>
-</article>
+<li>
+  <p>
+    <span class="font-bold">{education.data.title}</span>, {education.data.schoolName},       {formatDate(education.data.begin)} - {
+      formatDate(education.data.graduation)
+    }
+  </p>
+</li>

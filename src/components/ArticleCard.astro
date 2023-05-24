@@ -9,23 +9,15 @@ export interface Props {
 const { article } = Astro.props;
 ---
 
-<article
-  class="relative bg-cover bg-center w-full min-h-[14rem]"
-  style={`background-image: url(${article.coverImage})`}
->
-  <div
-    class="absolute text-center w-full h-full flex flex-col justify-center items-center bg-opacity-70 bg-black"
+<li>
+  <p>
+    <span class="font-bold">{article.title}</span>
+    published {formatDate(new Date(article.dateAdded))}
+  </p>
+  <a
+    aria-label={`read more about ${article.title}`}
+    target="_blank"
+    rel="noreferrer"
+    href={`https://blog.matteogassend.com/${article.slug}`}>Learn More</a
   >
-    <h1 class="text-2xl font-extrabold">{article.title}</h1>
-    <p class="text-xl">
-      published {formatDate(new Date(article.dateAdded))}
-    </p>
-    <a
-      aria-label={`read more about ${article.title}`}
-      class="button primary"
-      target="_blank"
-      rel="noreferrer"
-      href={`https://blog.matteogassend.com/${article.slug}`}>Learn More</a
-    >
-  </div>
-</article>
+</li>
