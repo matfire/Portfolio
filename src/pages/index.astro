@@ -33,7 +33,7 @@ const experiences = (await getCollection("experience")).sort(
       </div>
       <p class="text-center text-xl">
         I am a fullstack developer with {new Date().getFullYear() - 2020} years of
-        experience in the industry.
+      experience. <br />I leverage web technologies to build web, mobile and desktop applications.
       </p>
     </section>
     <section id="projects">
@@ -44,12 +44,18 @@ const experiences = (await getCollection("experience")).sort(
     </section>
     <section id="experience">
       <h2 class="section__title">This is where I worked</h2>
-      <div class="section__grid">
+      <div class="flex flex-col space-y-2">
         {
           experiences.map((e, idx) => (
             <ExpCard experience={e} side={idx % 2 === 0 ? "left" : "right"} />
           ))
         }
+      </div>
+    </section>
+    <section id="education">
+      <h2 class="section__title">Here's where I studied</h2>
+      <div class="section__grid">
+        {education.map((e) => <EducationCard education={e} />)}
       </div>
     </section>
     <section id="articles">
@@ -61,12 +67,6 @@ const experiences = (await getCollection("experience")).sort(
         <a class="button primary" href="https://blog.matteogassend.com"
           >Read More Articles</a
         >
-      </div>
-    </section>
-    <section id="education">
-      <h2 class="section__title">Here's where I studied</h2>
-      <div class="section__grid">
-        {education.map((e) => <EducationCard education={e} />)}
       </div>
     </section>
     <section id="contact">
@@ -91,7 +91,7 @@ const experiences = (await getCollection("experience")).sort(
       @apply px-2 py-3 hover:-translate-y-2 transform transition-all hover:shadow-md border-transparent border-2 hover:border-white focus:border-blue-300;
     }
     .section__title {
-      @apply text-center font-bold text-2xl;
+      @apply text-center font-bold text-2xl mb-2;
     }
     .section__grid {
       @apply w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 space-y-6 lg:space-y-8;
