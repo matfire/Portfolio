@@ -1,7 +1,7 @@
 ---
 companyName: Epitech
 begin: 2019-10-01
-end: 2020-03-31
+end: 2020-07-03
 role: Coding Club Regional Manager
 type: internship
 skills:
