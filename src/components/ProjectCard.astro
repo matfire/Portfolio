@@ -16,8 +16,8 @@ const { project } = Astro.props;
   <h4 class="font-bold text-[90px] uppercase text-white opacity-40">{project.data.title}<span class="font-normal">_</span></h4>
   <p class="text-white">{project.data.summary}</p>
   <div class="flex w-full mt-auto gap-4">
-    {project.data.githubUrl && <a target="_blank" rel="noreferrer" class="text-[35px] border-2 border-white text-white p-4" href={project.data.githubUrl}>See Source Code</a>}
-    {project.data.productionUrl && <a target="_blank" rel="noreferrer" class="text-[35px] border-2 border-white text-white p-4" href={project.data.productionUrl}>See it Live</a>}
+    {project.data.githubUrl && <a target="_blank" rel="noreferrer" class="button" href={project.data.githubUrl}>See Source Code</a>}
+    {project.data.productionUrl && <a target="_blank" rel="noreferrer" class="button" href={project.data.productionUrl}>See it Live</a>}
   </div>
   
 </article>

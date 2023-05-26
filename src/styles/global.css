@@ -16,7 +16,7 @@
 
 @layer components {
   .button {
-    @apply p-4 border-2 bg-slate-700 text-white rounded-lg border-transparent hover:border-white text-xl transition-all
+    @apply text-[35px] border-2 border-white text-white p-4;
   }
 }
 

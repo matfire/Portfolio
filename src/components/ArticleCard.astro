@@ -9,15 +9,12 @@ export interface Props {
 const { article } = Astro.props;
 ---
 
-<li>
-  <p>
-    <span class="font-bold">{article.title}</span>
-    published {formatDate(new Date(article.dateAdded))}
-  </p>
-  <a
-    aria-label={`read more about ${article.title}`}
-    target="_blank"
-    rel="noreferrer"
-    href={`https://blog.matteogassend.com/${article.slug}`}>Learn More</a
-  >
-</li>
+<article class="w-[620px] h-[565px] relative bg-cover bg-center" style={`background-image:url("${article.coverImage}")`}>
+  <div class="absolute top-0 left-0 w-full min-h-full bg-[#374053] bg-opacity-40 flex flex-col p-6">
+    <p class="font-bold text-[50px] opacity-80 text-white">{article.title}</p>
+    <p class="text-[20px] opacity-80 text-white mt-4">Published {formatDate(new Date(article.dateAdded))}</p>
+    <div class="mt-auto">
+      <a class="button" href={`https://blog.matteogassend.com/${article.slug}`}>Learn More</a>
+    </div>
+  </div>
+</article>
