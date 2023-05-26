@@ -1,29 +1,27 @@
 ---
 import { Icon } from "astro-icon";
+import {location} from "../utils/data.json"
 ---
 
-<footer class="items-center p-4 container mx-auto">
-  <div>
-    <ul class="flex">
-      <li>
-        <a href="https://github.com/matfire" aria-label="github"
-          ><Icon class="social__icon" name="mdi:github" /></a
-        >
-      </li>
-      <li>
-        <a href="https://twitter.com/matgassend" aria-label="twitter"
-          ><Icon class="social__icon" name="mdi:twitter" /></a
-        >
-      </li>
-    </ul>
+<footer class="w-full h-[186px] bg-[#374053] flex text-[20px] p-6 text-white">
+  <div class="flex flex-col">
+    <p class="footer-header">matteo<span>_</span></p>
+    <p>Copyright &copy; {new Date().getFullYear()} - All rights reserved</p>
   </div>
-  <div class="items-center grid-flow-col">
-    <p>Copyright © {new Date().getFullYear()} - All right reserved</p>
+  <div class="flex flex-col">
+    <p class="footer-header">Location<span>_</span></p>
+    <p>{location.country}</p>
+  </div>
+  <div class="flex flex-col ml-auto">
+    <p class="footer-header">Social<span>_</span></p>
   </div>
 </footer>
 
 <style>
-  .social__icon {
-    @apply h-8 w-8;
+  .footer-header {
+    @apply text-white opacity-80 font-bold uppercase;
+  }
+  .footer-header > span {
+    @apply font-normal;
   }
 </style>

@@ -16,7 +16,7 @@
 
 @layer components {
   .button {
-    @apply text-[35px] border-2 border-white text-white p-4;
+    @apply text-[35px] border-2 border-white text-white p-4 bg-white bg-opacity-20;
   }
 }
 

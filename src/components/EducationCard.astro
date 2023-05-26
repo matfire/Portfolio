@@ -4,15 +4,22 @@ import { formatDate } from "../utils/date";
 
 export interface Props {
   education: CollectionEntry<"education">;
+  index: number;
 }
 
-const { education } = Astro.props;
+const { education, index } = Astro.props;
+
+function zeroPad(num, places) {
+  const zero = places - num.toString().length + 1;
+  return Array(+(zero > 0 && zero)).join("0") + num;
+}
+
 ---
 
-<li>
-  <p>
-    <span class="font-bold">{education.data.title}</span>, {education.data.schoolName},       {formatDate(education.data.begin)} - {
-      formatDate(education.data.graduation)
-    }
-  </p>
-</li>
+<article class="flex flex-col">
+  <p>{zeroPad(index, 2)}_</p>
+  <p class="font-bold text-[40px]">{education.data.schoolName}<span class="font-normal">_</span></p>
+  <p class="font-bold text-[35px]">{education.data.title}</p>
+  <p class="text-[#6B6B6B]">{education.data.city} - {education.data.country}</p>
+<p class="text-[35px] text-[#6B6B6B]">{zeroPad(education.data.begin.getMonth(), 2)}-{education.data.begin.getFullYear()} | {zeroPad(education.data.graduation.getMonth(), 2)}-{education.data.graduation.getFullYear()}</p>
+</article>

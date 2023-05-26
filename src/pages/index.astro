@@ -12,7 +12,7 @@ import { Icon } from "astro-icon";
 import { Image } from "astro:assets";
 import profilePic from "../assets/profile.jpg";
 import skills from "../utils/skills.json";
-import { map } from "astro/zod";
+import { contact } from "../utils/data.json";
 
 const { articles }: { articles: Article[] } = await (await get()).json();
 const projects = (await getCollection("projects")).sort(
@@ -122,7 +122,10 @@ const experiences = (await getCollection("experience")).sort(
       {
         Object.entries(skills).map(([category, list]) => (
           <div>
-            <p class="text-[23px] font-bold capitalize">{category}<span class="font-normal">_</span></p>
+            <p class="text-[23px] font-bold capitalize">
+              {category}
+              <span class="font-normal">_</span>
+            </p>
             <ul>
               {list.map((skill) => (
                 <li class="capitalize">{skill}</li>
@@ -137,13 +140,45 @@ const experiences = (await getCollection("experience")).sort(
     <p class="section-header">Blog <span class="font-normal">_</span></p>
     <p class="section-title">sometimes I write</p>
     <div class="flex w-full gap-4">
-      {articles.slice(0,3).map((article) => (
-          <ArticleCard article={article} />
-      ))}
+      {articles.slice(0, 3).map((article) => <ArticleCard article={article} />)}
     </div>
     <div class="text-center">
-      <a href="https://blog.matteogassend.com" class="font-bold text-[35px]">Read More Articles</a>
+      <a
+        href="https://blog.matteogassend.com"
+        target="_blank"
+        rel="noreferrer"
+        class="font-bold text-[35px]">Read More Articles</a
+      >
     </div>
+  </section>
+  <section class="p-6" id="education">
+    <p class="section-header">education<span class="font-normal">_</span></p>
+    <p class="section-title">here's where I studied</p>
+    <div
+      class="flex overflow-x-auto gap-4 scrollbar-thin scrollbar-track-black scrollbar-thumb-amber-500"
+    >
+      {
+        education.map((education, index) => (
+          <div class="w-full h-full">
+            <EducationCard education={education} index={index + 1} />
+          </div>
+        ))
+      }
+    </div>
+  </section>
+  <section class="p-6" id="contact">
+    <p class="section-header">reach out<span class="font-normal">_</span></p>
+    <p class="section-title">get in touch</p>
+    <div class="flex flex-col">
+      <a href={`mailto:${contact.email}`} class="text-[80px] text-[#A1A1A2]"
+        >{contact.email}</a
+      >
+      <a
+        href={`tel:${contact.phone.replace(/\s+/g, "")}`}
+        class="font-bold text-[35px]">{contact.phone}</a
+      >
+    </div>
+    <p class="text-[20px]">I'll get in touch ASAP, I promise</p>
   </section>
 </Layout>
 
