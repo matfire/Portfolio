@@ -2,13 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @font-face {
-  font-family: "Montserrat";
-  src: url('/Montserrat.ttf');
-  font-display: swap;
+  font-family: "Altinn-Din";
+  src: url("/fonts/din/Altinn-DIN-Bold.woff2") format("woff2");
+  font-weight: bold;
 }
 
+@font-face {
+  font-family: "Altinn-Din";
+  src: url("/fonts/din/Altinn-DIN.woff2") format("woff2");
+  font-weight: normal;
+}
 
 @layer components {
   .button {
@@ -38,7 +42,7 @@ body {
 }
 
 body {
-  @apply h-screen flex flex-col dark:text-white ;
+  @apply h-screen flex flex-col dark:text-white text-[30px];
 }
 
 main {

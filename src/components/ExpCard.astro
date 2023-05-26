@@ -4,26 +4,27 @@ import StackElement from "./StackElement.astro";
 
 export interface Props {
   experience: CollectionEntry<"experience">;
+  index: number;
 }
 
-const { experience } = Astro.props;
-const { Content } = await experience!.render();
+const { experience, index } = Astro.props;
+
+const {Content} = await experience.render()
+
+
+function zeroPad(num, places) {
+  const zero = places - num.toString().length + 1;
+  return Array(+(zero > 0 && zero)).join("0") + num;
+}
+
 ---
 
-<li>
-  <p>
-    <span class="font-bold">{experience.data.role}</span>,
-    {experience.data.companyName}
-    <span>
-      {
-        `${("0" + experience.data.begin.getMonth()).slice(
-          -2
-        )}/${experience.data.begin.getFullYear()}`
-      } - {
-        `${("0" + experience.data.end.getMonth()).slice(
-          -2
-        )}/${experience.data.end.getFullYear()}`
-      }</span
-    >
-  </p>
-</li>
+<article class="flex flex-col">
+  <p>{zeroPad(index, 2)}_</p>
+  <p class="font-bold text-[40px]">{experience.data.companyName}<span class="font-normal">_</span></p>
+  <p class="font-bold text-[35px]">{experience.data.role}</p>
+<p>
+  <Content />
+</p>
+<p class="text-[35px]">{zeroPad(experience.data.end.getMonth(), 2)}-{experience.data.begin.getFullYear()}|{zeroPad(experience.data.begin.getMonth(), 2)}-{experience.data.end.getFullYear()}</p>
+</article>

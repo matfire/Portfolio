@@ -12,35 +12,12 @@ export interface Props {
 const { project } = Astro.props;
 ---
 
-<li>
-  <p>
-    <span class="font-bold">{project.data.title}</span>
-    <p>{project.data.summary}</p>
-    <p>
-      <span class="font-semibold">Stack:</span>
-      {project.data.stack.join(", ")}
-    </p>
-
-    {
-      project.data.productionUrl && (
-        <a target="_blank" href={project.data.productionUrl}>
-          See it live
-        </a>
-        <br />
-      )
-    }
-
-
-    {
-      project.data.githubUrl && (
-        <a
-          aria-label="see source code"
-          target="_blank"
-          href={project.data.githubUrl}
-        >
-          See source code
-        </a>
-      )
-    }
-  </p>
-</li>
+<article class="w-[620px] h-[450px] bg-[#374053] px-6 py-3 flex flex-col">
+  <h4 class="font-bold text-[90px] uppercase text-white opacity-40">{project.data.title}<span class="font-normal">_</span></h4>
+  <p class="text-white">{project.data.summary}</p>
+  <div class="flex w-full mt-auto gap-4">
+    {project.data.githubUrl && <a target="_blank" rel="noreferrer" class="text-[35px] border-2 border-white text-white p-4" href={project.data.githubUrl}>See Source Code</a>}
+    {project.data.productionUrl && <a target="_blank" rel="noreferrer" class="text-[35px] border-2 border-white text-white p-4" href={project.data.productionUrl}>See it Live</a>}
+  </div>
+  
+</article>
