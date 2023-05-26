@@ -122,10 +122,10 @@ const experiences = (await getCollection("experience")).sort(
       {
         Object.entries(skills).map(([category, list]) => (
           <div>
-            <p class="text-[23px] font-bold">{category}<span class="font-normal">_</span></p>
+            <p class="text-[23px] font-bold capitalize">{category}<span class="font-normal">_</span></p>
             <ul>
               {list.map((skill) => (
-                <li>{skill}</li>
+                <li class="capitalize">{skill}</li>
               ))}
             </ul>
           </div>
