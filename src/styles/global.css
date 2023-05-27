@@ -3,15 +3,19 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: "Altinn-Din";
-  src: url("/fonts/din/Altinn-DIN-Bold.woff2") format("woff2");
-  font-weight: bold;
+  font-display: swap;
+  font-family: Altinn-Din;
+  font-style: normal;
+  font-weight: 400;
+  src: url("/fonts/din/Altinn-DINExp.woff2") format("woff2")
 }
 
 @font-face {
-  font-family: "Altinn-Din";
-  src: url("/fonts/din/Altinn-DIN.woff2") format("woff2");
-  font-weight: normal;
+  font-display: swap;
+  font-family: Altinn-Din;
+  font-style: normal;
+  font-weight: 700;
+  src: url("/fonts/din/Altinn-DINExp-Bold.woff2") format("woff2");
 }
 
 @layer components {

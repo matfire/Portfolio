@@ -1,29 +1,84 @@
-<div class="w-full h-[80px] flex justify-between items-center text-[23px] fixed bg-[#FCFDFF] z-20 p-6">
+<nav
+  class="flex flex-wrap items-center justify-between w-full py-4 md:px-16 px-4 text-lg bg-primary fixed z-40"
+>
   <div>
-    <a href="#">Matteo_</a>
+    <a href="#" class="text-gray-900">Matteo_</a>
   </div>
-  <div class="flex space-x-[50px]">
-    <a href="#about">About_</a>
-    <a href="#projects">Projects_</a>
-    <a href="#work">Work_</a>
-    <a href="#blog">Blog_</a>
-    <a href="#contact">Let's talk_</a>
+  <input type="checkbox" name="menu-toggle" id="menu-toggle" class="hidden" />
+  <label
+    for="menu-toggle"
+    id="menu-toggle-label"
+    class="md:hidden"
+    tabindex="0"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      id="menu-button"
+      class="h-6 w-6 cursor-pointer md:hidden block animate-pulse"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M4 6h16M4 12h16M4 18h16"></path>
+    </svg>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      id="menu-button-close"
+      class="h-6 w-6 cursor-pointer hidden animate-pulse"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M21 21L12 12M12 12L3 3M12 12L21.0001 3M12 12L3 21.0001"
+      >
+      </path>
+    </svg>
+  </label>
+  <div
+    class="hidden w-full md:flex md:items-center md:w-auto bg-primary"
+    id="menu"
+  >
+    <ul
+      class="pt-4 pr-8 text-gray-600 md:flex md:justify-between text-right md:p-0"
+    >
+      <li>
+        <a class="md:p-4 py-2 block hover:text-black" href="#about">About_</a>
+      </li>
+      <li>
+        <a class="md:p-4 py-2 block hover:text-black" href="#projects"
+          >Projects_</a
+        >
+      </li>
+      <li>
+        <a class="md:p-4 py-2 block hover:text-black" href="#work">Work_</a>
+      </li>
+      <li>
+        <a class="md:p-4 py-2 block hover:text-black" href="#blog">Blog_</a>
+      </li>
+      <li>
+        <a class="md:p-4 py-2 block hover:text-black" href="#contact"
+          >Let's talk_</a
+        >
+      </li>
+    </ul>
   </div>
-</div>
-<!-- 
-<script>
-  const nav = document.querySelector("#nav")!;
-  let lastScrollTop = window.scrollY;
-
-  setInterval(() => {
-    const position = window.scrollY;
-    if (position > lastScrollTop && position > 0) {
-      nav.classList.add("-translate-y-12");
-    } else {
-      nav.classList.remove("-translate-y-12");
-      nav.classList.add("top-0");
-    }
-    lastScrollTop = position;
-  }, 250);
-</script>
- -->
+</nav>
+<style>
+  #menu-toggle:checked ~ #menu {
+    @apply block;
+  }
+  #menu-toggle:checked ~ #menu-toggle-label > #menu-button {
+    @apply hidden;
+  }
+  #menu-toggle:checked ~ #menu-toggle-label > #menu-button-close {
+    @apply block;
+  }
+</style>
