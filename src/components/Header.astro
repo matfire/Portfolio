@@ -51,37 +51,55 @@
     >
       <li>
         <a
-          class="md:p-4 py-2 block hover:text-white md:hover:text-black"
+          class="md:p-4 py-2 block hover:text-white md:hover:text-black transition-colors"
           href="#about">About_</a
         >
       </li>
       <li>
         <a
-          class="md:p-4 py-2 block hover:text-white md:hover:text-black"
+          class="md:p-4 py-2 block hover:text-white md:hover:text-black transition-colors"
           href="#projects">Projects_</a
         >
       </li>
       <li>
         <a
-          class="md:p-4 py-2 block hover:text-white md:hover:text-black"
+          class="md:p-4 py-2 block hover:text-white md:hover:text-black transition-colors"
           href="#work">Work_</a
         >
       </li>
       <li>
         <a
-          class="md:p-4 py-2 block hover:text-white md:hover:text-black"
+          class="md:p-4 py-2 block hover:text-white md:hover:text-black transition-colors"
           href="#blog">Blog_</a
         >
       </li>
       <li>
         <a
-          class="md:p-4 py-2 block hover:text-white md:hover:text-black"
+          class="md:p-4 py-2 block hover:text-white md:hover:text-black transition-colors"
           href="#contact">Let's talk_</a
         >
       </li>
     </ul>
   </div>
 </nav>
+
+<script>
+
+  document.querySelectorAll<HTMLAnchorElement>('#menu > ul > li > a').forEach((e:HTMLElement) => {
+    e.addEventListener('click', () => {
+      document.querySelectorAll<HTMLAnchorElement>('#menu > ul > li > a').forEach((e:HTMLElement) => {
+        e.dataset.active = "false"
+      })
+      toggleNav(e)
+    })
+  })
+
+
+  function toggleNav(e:HTMLElement) {
+    e.dataset.active = "true"
+  }
+</script>
+
 <style lang="scss">
   #menu-toggle {
     &:checked {
@@ -97,5 +115,8 @@
         }
       }
     }
+  }
+  #menu ul li a[data-active="true"] {
+    @apply text-white md:text-black;
   }
 </style>
