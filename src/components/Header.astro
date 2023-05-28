@@ -69,6 +69,13 @@
       </li>
       <li>
         <a
+          href="#skills"
+          class="md:p-4 py-2 block hover:text-white md:hover:text-black transition-colors"
+          >Skills_</a
+        >
+      </li>
+      <li>
+        <a
           class="md:p-4 py-2 block hover:text-white md:hover:text-black transition-colors"
           href="#blog">Blog_</a
         >
@@ -84,19 +91,21 @@
 </nav>
 
 <script>
+  document
+    .querySelectorAll<HTMLAnchorElement>("#menu > ul > li > a")
+    .forEach((e: HTMLElement) => {
+      e.addEventListener("click", () => {
+        document
+          .querySelectorAll<HTMLAnchorElement>("#menu > ul > li > a")
+          .forEach((e: HTMLElement) => {
+            e.dataset.active = "false";
+          });
+        toggleNav(e);
+      });
+    });
 
-  document.querySelectorAll<HTMLAnchorElement>('#menu > ul > li > a').forEach((e:HTMLElement) => {
-    e.addEventListener('click', () => {
-      document.querySelectorAll<HTMLAnchorElement>('#menu > ul > li > a').forEach((e:HTMLElement) => {
-        e.dataset.active = "false"
-      })
-      toggleNav(e)
-    })
-  })
-
-
-  function toggleNav(e:HTMLElement) {
-    e.dataset.active = "true"
+  function toggleNav(e: HTMLElement) {
+    e.dataset.active = "true";
   }
 </script>
 

@@ -12,12 +12,14 @@ export interface Props {
 const { project } = Astro.props;
 ---
 
-<article class="w-[620px] h-[450px] bg-[#374053] px-6 py-3 flex flex-col">
-  <h4 class="font-bold text-[90px] uppercase text-white opacity-40">{project.data.title}<span class="font-normal">_</span></h4>
-  <p class="text-white">{project.data.summary}</p>
-  <div class="flex w-full mt-auto gap-4">
-    {project.data.githubUrl && <a target="_blank" rel="noreferrer" class="button" href={project.data.githubUrl}>See Source Code</a>}
-    {project.data.productionUrl && <a target="_blank" rel="noreferrer" class="button" href={project.data.productionUrl}>See it Live</a>}
+<article class="flex flex-col w-[390px] sm:w-[640px] md:w-[400px] h-[320px] md:h-[300px] bg-primary-darker px-6 pb-6 pt-3 border border-white">
+  <h3 class="font-bold uppercase text-white opacity-40">{project.data.title}<span class="font-normal">_</span></h3>
+  <p class="text-white text-base pt-6 pb-4">{project.data.summary}</p>
+  <div class="flex flex-wrap justify-items-start gap-4">
+    {project.data.stack.map((e) => <StackElement name={e} />)}
   </div>
-  
+  <div class="flex w-full mt-auto gap-4 pt-8">
+    {project.data.githubUrl && <a target="_blank" rel="noreferrer" class="p-2 text-gray-100 border border-white-70 border-opacity-25 bg-white bg-opacity-20 text-lg cursor-pointer hover:bg-opacity-80 hover:text-primary-darker" href={project.data.githubUrl}>See Source Code</a>}
+    {project.data.productionUrl && <a target="_blank" rel="noreferrer" class="p-2 text-gray-100 border border-white-70 border-opacity-25 bg-white bg-opacity-20 text-lg cursor-pointer hover:bg-opacity-80 hover:text-primary-darker" href={project.data.productionUrl}>See it Live</a>}
+  </div> 
 </article>

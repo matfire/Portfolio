@@ -10,7 +10,7 @@ import ExpCard from "../components/ExpCard.astro";
 import ContactCard from "../components/ContactCard.astro";
 import { Icon } from "astro-icon";
 import { Image } from "astro:assets";
-import profilePic from "../assets/profile.jpg";
+import profilePic from "../assets/matteo.jpg";
 import skills from "../utils/skills.json";
 import { contact } from "../utils/data.json";
 
@@ -28,45 +28,42 @@ const experiences = (await getCollection("experience")).sort(
 ---
 
 <Layout title="Matteo Gassend">
-  <section id="hero" class="flex flex-col">
-    <div class="flex">
-      <div class="flex flex-col w-full p-6">
-        <h1 class="uppercase font-bold text-[150px] leading-none">
-          matteo <br /><span class="font-normal text-[120px] tracking-[2px]"
-            >gassend</span
-          >
+  <section id="hero">
+    <div class="flex flex-wrap">
+      <div class="md:px-14 px-4 lg:w-1/2 w-full">
+        <h1 class="xl:pt-20 xl:pt-32 pt-14 uppercase font-bold text-7xl md:text-8xl xl:text-9xl leading-[0.6] md:leading-[0.7] xl:leading-[0.6] text-gray-800 md:tracking-tight antialiased">
+          Matteo<br />
+          <span class="tracking-[0.2em] text-5xl md:text-7xl xl:text-8xl tracking-[0.3em]">Gassend</span>
         </h1>
-        <h3>
-          I am a fullstack developer with 3 years of experience. I leverage web
-          technologies to build web, mobile and desktop applications.
-        </h3>
-        <div class="self-end place-self-end flex w-full">&darr;</div>
-      </div>
-      <div
-        class="w-full min-h-full bg-[#374053] flex items-end justify-end p-6"
-      >
-        <p
-          class="uppercase text-white opacity-20 text-[95px] font-bold leading-[0.8]"
-        >
-          <span class="pr-2">fullstack</span><br />developer<span
-            class="font-normal">_</span
-          >
+        <p class="pt-10 text-2xl text-gray-500">Hello!<br /
+          I am a fullstack developer with 3 years of experience.
+        </p>
+        <p class="xl:pb-48 md:pb-20 pb-12 text-2xl text-gray-500">
+          I leverage web technologies to build web, mobile and desktop
+          applications.
         </p>
       </div>
+      <div class="lg:w-1/2 w-full md:min-h-full bg-primary-darker md:flex md:items-end md:justify-end p-8">
+        <h3 class="uppercase text-white opacity-20 text-5xl md:text-7xl font-bold leading-[0.8] tracking-wider">
+          fullstack<br />developer<span class="font-normal">_</span>
+        </h3>
+      </div>
     </div>
-    <div class="w-full font-bold text-center">
-      <h3 class="uppercase">
-        in love with new technologies<br />and creating the best<br />performing
-        user experience
-      </h3>
+    <div class="container mx-auto md:w-3/4 xl:w-2/45 2xl:w-2/5 mt-16">
+      <p class="uppercase text-4xl xl:text-5xl font-bold text-center leading-tight text-gray-800">
+        In love with new technologies and creating the best performing user experience
+      </p>
     </div>
   </section>
-  <section id="about" class="p-6">
-    <p class="capitalize">About_</p>
-    <p class="font-bold uppercase">a fullstack developer with hobbies</p>
-    <div class="flex justify-between flex-col md:flex-row">
-      <div class="w-full">
-        <p>
+  <section id="about" class="container mx-auto my-28 md:my-44 md:px-16 px-4 lg:scroll-mt-24">
+    <h3 class="font-bold text-lg text-gray-400 pb-8">About_</h3>
+    <div class="flex flex-wrap">
+      <div class="lg:w-1/2 w-full lg:order-last">
+        <Image class="border border-gray-200 w-96 mx-auto mb-16" src={profilePic} alt="me" />
+      </div>
+      <div class="lg:w-1/2 w-full">
+        <p class="font-bold uppercase text-5xl md:text-7xl 2xl:text-8xl leading-[0.9] text-gray-800 md:tracking-tight antialiased">A fullstack developer with hobbies</p>
+        <p class="pt-10 text-base text-gray-500">
           I’m born in Florence 1999.02.05. Mission-driven full stack developer
           with a passion for thoughtful UI design, collaboration, and teaching.
           I love making side projects to improve on an existing skill or
@@ -75,22 +72,18 @@ const experiences = (await getCollection("experience")).sort(
           detail, my unequivocal love for making things, and my mission-driven
           work ethic to literally change the world.
         </p>
-      </div>
-      <div class="w-full flex justify-end">
-        <Image class="w-full md:w-1/2 h-auto" src={profilePic} alt="me" />
-      </div>
+        <p class="font-bold uppercase text-3xl xl:text-5xl my-12">All you need to know</p>
+        <a class="p-2 border-2 border-black font-bold text-lg cursor-pointer hover:text-white hover:bg-primary-darker">My CV Gooooo &rarr;</a>
+      </div>     
     </div>
-    <p class="section-header">Me_</p>
-    <p class="font-bold uppercase mb-2">all you need to know</p>
-    <a class="capitalize p-2 border-2 border-black">my CV &rarr;</a>
   </section>
-  <section id="projects" class="p-6">
-    <p class="section-header">Projects_</p>
-    <p class="section-title">Projects</p>
-    <p>I built these</p>
-    <div
-      class="flex overflow-x-auto gap-4 scrollbar-thin scrollbar-track-black scrollbar-thumb-amber-500"
-    >
+  <section id="projects" class="container mx-auto mt-28 md:mt-44 md:px-16 px-4 lg:scroll-mt-24">
+    <h3 class="font-bold text-lg text-gray-400 pb-8">Projects_</h3>
+    <p class="font-bold uppercase text-5xl md:text-7xl 2xl:text-8xl leading-[0.9] text-gray-800 md:tracking-tight antialiased">What I do</p>
+    <p class="text-base text-gray-500 my-12">I built these: use scrollbar ;-)</p>
+  </section>
+  <section id="projects-list" class="mb-28 md:mb-44">
+    <div class="flex overflow-x-auto scrollbar-thin scrollbar-track-primary-lighter scrollbar-thumb-primary-darker" >
       {
         projects.map((project) => (
           <div class="w-full h-full">
@@ -100,12 +93,11 @@ const experiences = (await getCollection("experience")).sort(
       }
     </div>
   </section>
-  <section id="work" class="p-6">
-    <p class="section-header">Work_</p>
-    <p class="section-title">This is where I worked</p>
-    <div
-      class="flex overflow-x-auto gap-4 scrollbar-thin scrollbar-track-black scrollbar-thumb-amber-500"
-    >
+  <section id="work" class="container mx-auto my-28 md:my-44 md:px-16 px-4 lg:scroll-mt-24">
+    <h3 class="font-bold text-lg text-gray-400 pb-8">Work_</h3>
+    <p class="font-bold uppercase text-5xl md:text-7xl 2xl:text-8xl leading-[0.9] text-gray-800 md:tracking-tight antialiased">Where</p>
+    <p class="text-base text-gray-500 my-12">This is where I worked</p>
+    <div class="flex overflow-x-auto scrollbar-thin scrollbar-track-primary-lighter scrollbar-thumb-primary-darker" >
       {
         experiences.map((experience, index) => (
           <div class="w-full h-full">
@@ -115,6 +107,30 @@ const experiences = (await getCollection("experience")).sort(
       }
     </div>
   </section>
+  <section id="skills" class="w-full bg-primary-lighter my-28 md:my-44 md:px-16 px-4 lg:scroll-mt-24">
+    <p class="section-title">how i do it</p>
+    <p class="section-heaeder">Skills, systems & tools oh my</p>
+    <div class="w-full flex justify-evenly">
+      {
+        Object.entries(skills).map(([category, list]) => (
+          <div>
+            <p class="text-[23px] font-bold capitalize">
+              {category}
+              <span class="font-normal">_</span>
+            </p>
+            <ul>
+              {list.map((skill) => (
+                <li class="capitalize">{skill}</li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+  <!--  
+
+  
   <section id="skills" class="bg-[#878C97] bg-opacity-40 p-6">
     <p class="section-title">how i do it</p>
     <p class="section-heaeder">Skills, systems & tools oh my</p>
@@ -179,14 +195,5 @@ const experiences = (await getCollection("experience")).sort(
       >
     </div>
     <p class="text-[20px]">I'll get in touch ASAP, I promise</p>
-  </section>
+  </section> -->
 </Layout>
-
-<style>
-  .section-header {
-    @apply text-[23px] text-[#6B6B6B] capitalize;
-  }
-  .section-title {
-    @apply text-[80px] font-bold uppercase;
-  }
-</style>

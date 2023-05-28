@@ -11,7 +11,7 @@ const theme = "light";
 ---
 
 <!DOCTYPE html>
-<html lang="en" class:list={[{ dark: theme === "dark" }, "scroll-smooth"]}>
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -26,15 +26,15 @@ const theme = "light";
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body class="bg-[#FCFDFF]">
-    <header class="">
+  <body class="bg-primary">
+    <header>
       <Header />
     </header>
-    <main class="">
+    <main>
       <slot />
     </main>
     <footer>
-      <Footer />
+      <!-- <Footer /> -->
     </footer>
   </body>
 </html>

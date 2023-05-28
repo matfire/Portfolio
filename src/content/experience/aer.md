@@ -10,6 +10,9 @@ skills:
 - html
 - css
 - python
+des: 
+- Accompanied students.
+- Updated subjects.
 ---
 
 - accompanied students

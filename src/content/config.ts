@@ -33,6 +33,7 @@ const experienceCollection = defineCollection({
         end: z.date().transform((v) => new Date(v)),
         role: z.string(),
         skills: z.array(z.string()),
+        des: z.array(z.string()),
         type: z.enum(["internship", "fixed-term contract", "permanent contract"])
     })
 })
