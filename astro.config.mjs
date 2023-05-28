@@ -6,11 +6,6 @@ import vercel from "@astrojs/vercel/serverless";
 // https://astro.build/config
 import tailwind from "@astrojs/tailwind";
 
-// https://astro.build/config
-import sitemap from "@astrojs/sitemap";
-
-// https://astro.build/config
-import prefetch from "@astrojs/prefetch";
 
 // https://astro.build/config
 import robotsTxt from "astro-robots-txt";
@@ -26,5 +21,5 @@ export default defineConfig({
   image: {
     service: "astro/assets/services/sharp",
   },
-  integrations: [tailwind(), sitemap(), prefetch(), robotsTxt()],
+  integrations: [tailwind(), robotsTxt({policy: [{ userAgent: '*', allow: '/' }]})],
 });

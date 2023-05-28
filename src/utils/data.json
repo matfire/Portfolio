@@ -1,0 +1,14 @@
+{
+    "location": {
+        "country":"France"
+    },
+    "contact": {
+        "email":"mgassend@gmail.com",
+        "phone":"+33 7 81 91 66 84"
+    },
+    "languages": {
+        "french":"native",
+        "italian": "native",
+        "english":"fluent"
+    }
+}

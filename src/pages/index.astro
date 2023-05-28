@@ -9,6 +9,10 @@ import EducationCard from "../components/EducationCard.astro";
 import ExpCard from "../components/ExpCard.astro";
 import ContactCard from "../components/ContactCard.astro";
 import { Icon } from "astro-icon";
+import { Image } from "astro:assets";
+import profilePic from "../assets/matteo.jpg";
+import skills from "../utils/skills.json";
+import { contact } from "../utils/data.json";
 
 const { articles }: { articles: Article[] } = await (await get()).json();
 const projects = (await getCollection("projects")).sort(
@@ -24,77 +28,141 @@ const experiences = (await getCollection("experience")).sort(
 ---
 
 <Layout title="Matteo Gassend">
-  <div class="w-full space-y-2 lg:space-y-12 px-4">
-    <section id="about">
-      <div class="flex flex-col md:flex-row items-center justify-evenly mt-3">
-        <h1 class="text-3xl text-center font-black">
-          Hello, my name is <b>Matteo</b>
+  <section id="hero">
+    <div class="flex flex-wrap">
+      <div class="md:px-14 px-4 lg:w-1/2 w-full">
+        <h1 class="xl:pt-32 pt-14 uppercase font-bold text-7xl md:text-8xl xl:text-9xl leading-[0.6] md:leading-[0.7] xl:leading-[0.6] text-gray-800 md:tracking-tight antialiased">
+          Matteo<br />
+          <span class="text-5xl md:text-7xl xl:text-8xl tracking-[0.3em]">Gassend</span>
         </h1>
+        <p class="pt-10 text-2xl text-gray-500">Hello!<br />
+          I am a fullstack developer with 3 years of experience.
+        </p>
+        <p class="xl:pb-40 md:pb-20 pb-12 text-2xl text-gray-500">
+          I leverage web technologies to build web, mobile and desktop
+          applications.
+        </p>
       </div>
-      <p class="text-center text-xl">
-        I am a fullstack developer with {new Date().getFullYear() - 2020} years of
-      experience. <br />I leverage web technologies to build web, mobile and desktop applications.
+      <div class="lg:w-1/2 w-full md:min-h-full bg-primary-darker md:flex md:items-end md:justify-end p-8">
+        <h2 class="uppercase text-white opacity-40 text-5xl md:text-7xl font-bold leading-[0.8] tracking-wider">
+          fullstack<br />developer<span class="font-normal">_</span>
+        </h2>
+      </div>
+    </div>
+    <div class="container mx-auto w-auto lg:w-1/2 mt-16">
+      <p class="uppercase text-4xl xl:text-5xl font-bold text-center leading-tight text-gray-800">
+        In love with new technologies and creating the best performing user experience
       </p>
-    </section>
-    <section id="projects">
-      <h2 class="section__title mb-4">I built these projects</h2>
-      <div class="flex overflow-x-auto gap-8 snap-x snap-mandatory scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100">
-        {projects.map((e) => <div class="snap-center min-w-full md:min-w-[33%] mb-8"><ProjectCard project={e} /></div>)}
+    </div>
+  </section>
+  <section id="about" class="section-container">
+    <h3 class="title">About<span class="font-normal">_</span></h3>
+    <div class="flex flex-wrap">
+      <div class="lg:w-1/2 w-full lg:order-last">
+        <Image class="border border-gray-200 w-96 mx-auto mb-16" src={profilePic} alt="me" />
       </div>
-    </section>
-    <section id="experience">
-      <h2 class="section__title">This is where I worked</h2>
-      <div class="flex flex-col space-y-2">
+      <div class="lg:w-1/2 w-full">
+        <p class="lead">A fullstack developer with hobbies</p>
+        <p class="section">
+          Born in Florence on February 5th, 1999, I'm a mission-driven fullstack developer with a passion for collaboration and teaching.
+          I love making side projects in my spare time to solve personal problems and (hopefully) help others. 
+          As a web developer, I enjoy using my obsessive attention to
+          detail and my mission-driven
+          work ethic to make stuff. Sometimes, I also play music (or I try)
+        </p>
+        <p class="font-bold uppercase text-3xl xl:text-5xl my-12">All you need to know</p>
+        <a class="p-2 border-2 border-black font-bold text-lg cursor-pointer hover:text-white hover:bg-primary-darker" href="/cv_fr.pdf" download="CV_Matteo_Gassend.pdf">My CV &rarr;</a>
+      </div>     
+    </div>
+  </section>
+  <section id="education" class="section-container" >
+    <p class="lead">Here's where I studied</p>
+    <p class="section">From Italy to France (and Sweden for a while).</p>
+    <div class="scroll-item" >
+      {
+        education.map((education, index) => (
+          <div class="w-full h-full">
+            <EducationCard education={education} index={index + 1} />
+          </div>
+        ))
+      }
+    </div>
+  </section>
+  <section id="skills" class="section-full bg-primary-lighter">
+    <div class="container-section-full">
+      <p class="lead">skills</p>
+      <p class="section">Systems & tools oh my</p>
+      <div class="flex flex-wrap justify-start">
         {
-          experiences.map((e, idx) => (
-            <ExpCard experience={e} side={idx % 2 === 0 ? "left" : "right"} />
+          Object.entries(skills).map(([category, list]) => (
+            <div class="pr-8 pb-8">
+              <p class="text-xl font-bold uppercase">
+                {category}
+                <span class="font-normal">_</span>
+              </p>
+              <ul>
+                {list.map((skill) => (
+                  <li class="text-lg capitalize">{skill}</li>
+                ))}
+              </ul>
+            </div>
           ))
         }
       </div>
-    </section>
-    <section id="education">
-      <h2 class="section__title">Here's where I studied</h2>
-      <div class="section__grid">
-        {education.map((e) => <EducationCard education={e} />)}
-      </div>
-    </section>
-    <section id="articles">
-      <h2 class="section__title">I like to write things from time to time</h2>
-      <div class="section__grid">
-        {articles.slice(0, 3).map((e: Article) => <ArticleCard article={e} />)}
-      </div>
-      <div class="text-center w-full mt-6">
-        <a class="button primary" href="https://blog.matteogassend.com"
-          >Read More Articles</a
-        >
-      </div>
-    </section>
-    <section id="contact">
-      <h2 class="section__title">Reach Out</h2>
-      <div class="w-full flex justify-center">
-        <a
-          href="mailto:mgassend@gmail.com"
-          class="button primary uppercase flex"
-        >
-          <Icon name="vaadin:paperplane" class="h-8 w-8 mr-2" /> get in touch</a
-        >
-      </div>
-      <!-- <ContactCard /> -->
-    </section>
-  </div>
-
-  <style>
-    .menu__item {
-      @apply px-2 py-3;
-    }
-    .menu__item > a {
-      @apply px-2 py-3 hover:-translate-y-2 transform transition-all hover:shadow-md border-transparent border-2 hover:border-white focus:border-blue-300;
-    }
-    .section__title {
-      @apply text-center font-bold text-2xl mb-2;
-    }
-    .section__grid {
-      @apply w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 space-y-6 lg:space-y-8;
-    }
-  </style>
+    </div> 
+  </section> 
+  <section id="work" class="section-container">
+    <h3 class="title">Work_</h3>
+    <p class="lead">Here's where I worked</p>
+    <p class="section">All the previous entities</p>
+    <div class="scroll-item" >
+      {
+        experiences.map((experience, index) => (
+          <div class="w-full h-full">
+            <ExpCard experience={experience} index={index + 1} />
+          </div>
+        ))
+      }
+    </div>
+  </section>
+  <section id="projects" class="section-full">
+    <div class="container-section-full">
+      <h3 class="title">Projects<span class="font-normal">_</span></h3>
+      <p class="lead">What I do</p>
+     <p class="section">I built these: use scrollbar ;-)</p>
+    </div>
+    <div class="scroll-item" >
+      {
+        projects.map((project) => (
+          <div class="w-full h-full">
+            <ProjectCard project={project} />
+          </div>
+        ))
+      }
+    </div>
+  </section>
+  <section class="section-container" id="blog">
+    <h3 class="title">Blog<span class="font-normal">_</span></h3>
+    <p class="lead">Hashnode</p>
+    <p class="section">Sometimes I write</p>
+    <div class="flex flex-wrap">
+      {articles.slice(0, 3).map((article) => <ArticleCard article={article} />)}
+    </div>
+    <div class="text-center pt-8">
+      <a
+        href="https://blog.matteogassend.com"
+        target="_blank"
+        rel="noreferrer"
+        class="font-bold text-2xl text-primary-darker hover:text-black">Read More Articles</a
+      >
+    </div>
+  </section>
+  <section class="section-container" id="contact">
+    <h3 class="title">reach out<span class="font-normal">_</span></h3>
+    <p class="lead">get in touch</p>
+    <p class="text-2xl md:text-7xl 2xl:text-8xl pt-10"><a href={`mailto:${contact.email}`} class="text-gray-400 hover:text-primary-darker">{contact.email}</a ></p>
+    <p class="text-2xl md:text-5xl 2xl:text-6xl pt-6"><a href={`tel:${contact.phone.replace(/\s+/g, "")}`} class="hover:text-primary-darker">{contact.phone}</a></p>
+    <p class="section">I'll get in touch ASAP, I promise</p>
+    </div>
+  </section>
 </Layout>

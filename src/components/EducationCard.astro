@@ -4,25 +4,22 @@ import { formatDate } from "../utils/date";
 
 export interface Props {
   education: CollectionEntry<"education">;
+  index: number;
 }
 
-const { education } = Astro.props;
+const { education, index } = Astro.props;
+
+function zeroPad(num, places) {
+  const zero = places - num.toString().length + 1;
+  return Array(+(zero > 0 && zero)).join("0") + num;
+}
+
 ---
 
-<article
-  class="min-h-[14rem] w-full bg-slate-700 bg-center bg-cover"
-  style={`background-image: url(${education.data.logo.src});`}
->
-  <div
-    class="w-full h-full bg-black bg-opacity-70 flex flex-col justify-center items-center text-center"
-  >
-    <h1 class="text-3xl font-extrabold">{education.data.schoolName}</h1>
-    <p class="text-2xl font-bold">{education.data.title}</p>
-    <p class="text-xl">{education.data.city}, {education.data.country}</p>
-    <p>
-      {formatDate(education.data.begin)} - {
-        formatDate(education.data.graduation)
-      }
-    </p>
-  </div>
+<article class="w-[390px] sm:w-[640px] md:w-[400px] px-6 py-3">
+  <p class="text-gray-400 text-2xl pb-2">{zeroPad(index, 2)}_</p>
+  <p class="font-bold uppercase text-gray-800 leading-none">{education.data.schoolName}<span class="font-normal">_</span></p>
+  <p class="pt-4 font-bold text-2xl">{education.data.title}</p>
+  <p class="text-2xl text-gray-500">{education.data.city} - {education.data.country}</p>
+  <p class="text-xl text-gray-500 my-12]">{zeroPad(education.data.begin.getMonth(), 2)}-{education.data.begin.getFullYear()} | {zeroPad(education.data.graduation.getMonth(), 2)}-{education.data.graduation.getFullYear()}</p>
 </article>

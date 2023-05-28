@@ -11,6 +11,10 @@ skills:
 - css
 - mongodb
 - python
+des: 
+- Co-managed the Lyon's coding club activities.
+- Coordinated with the national.
+- Participated in rewriting (and creating) new activities proposals.
 ---
 
 - co-managed the Lyon's coding club activities

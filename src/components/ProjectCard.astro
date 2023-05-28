@@ -12,55 +12,14 @@ export interface Props {
 const { project } = Astro.props;
 ---
 
-<article class="min-h-[16rem] h-full w-full bg-slate-700 rounded group">
-  <div class="flex flex-col h-full">
-<!--       <div
-        class="absolute duration-300 translate-y-4 group-hover:translate-y-0 transition-all opacity-0 group-hover:opacity-100 bottom-0 h-1/4 w-full z-10 bg-black/50 hidden justify-evenly items-center md:flex"
-      >
-        {project.data.stack.map((e) => <StackElement name={e} />)}
-      </div> -->
-      <Image
-        src={project.data.image}
-        alt={project.data.title}
-        class="w-full h-2/5 object-cover"
-      />
-    <div class="grid grid-flow-row p-4 h-full">
-      <div class="w-full text-center">
-        <h1 class="text-xl font-semibold">
-          {project.data.title}
-        </h1>
-      </div>
-      <p class="text-center">{project.data.summary}</p>
-      <div class="flex justify-evenly mt-2 flex-wrap items-center">
-        {project.data.stack.map((e) => <StackElement name={e} />)}
-      </div>
-      <div
-        class="flex flex-col md:flex-row justify-evenly mt-2 space-y-4 md:space-y-0 self-end"
-      >
-        {
-          project.data.productionUrl && (
-            <a
-              target="_blank"
-              class="button primary flex justify-center"
-              href={project.data.productionUrl}
-            >
-              See it live
-            </a>
-          )
-        }
-        {
-          project.data.githubUrl && (
-            <a
-              aria-label="see source code"
-              target="_blank"
-              href={project.data.githubUrl}
-              class="button secondary flex justify-center"
-            >
-              <Icon name="mdi:github" class="h-8 w-8" />
-            </a>
-          )
-        }
-      </div>
-    </div>
+<article class="flex flex-col w-[390px] sm:w-[640px] md:w-[400px] h-[320px] md:h-[300px] bg-primary-darker px-6 pb-6 pt-3 border border-white">
+  <h3 class="font-bold uppercase text-white opacity-40">{project.data.title}<span class="font-normal">_</span></h3>
+  <p class="text-white text-base pt-6 pb-4">{project.data.summary}</p>
+  <div class="flex flex-wrap justify-items-start gap-4">
+    {project.data.stack.map((e) => <StackElement name={e} />)}
   </div>
+  <div class="flex w-full mt-auto gap-4 pt-8">
+    {project.data.githubUrl && <a target="_blank" rel="noreferrer" class="little-btn-white" href={project.data.githubUrl}>See Source Code</a>}
+    {project.data.productionUrl && <a target="_blank" rel="noreferrer" class="little-btn-white" href={project.data.productionUrl}>See it Live</a>}
+  </div> 
 </article>

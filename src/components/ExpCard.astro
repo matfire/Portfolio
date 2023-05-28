@@ -1,38 +1,31 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import StackElement from "./StackElement.astro";
+import StackElement from "./StackElementDark.astro";
 
 export interface Props {
   experience: CollectionEntry<"experience">;
+  index: number;
 }
 
-const { experience } = Astro.props;
-const { Content } = await experience!.render();
----
+const { experience, index } = Astro.props;
 
-<details
-  class={`group w-full flex flex-col shadow-lg bg-slate-700 p-4 space-y-4 `}
->
-  <summary class="flex justify-between">
-    <p class="font-bold">{experience.data.role}</p>
-    <p>
-      {
-        `${("0" + experience.data.begin.getMonth()).slice(
-          -2
-        )}/${experience.data.begin.getFullYear()}`
-      } - {
-        `${("0" + experience.data.end.getMonth()).slice(
-          -2
-        )}/${experience.data.end.getFullYear()}`
-      }
-    </p>
-  </summary>
-  <div class="w-full flex flex-col space-y-4">
-    <div class="flex space-x-4 h-full items-center flex-wrap justify-center">
-      {experience.data.skills.map((e) => <StackElement name={e} />)}
-    </div>
-    <div class="experience_details">
-      <Content />
-    </div>
+const {Content} =  await experience.render()
+
+
+function zeroPad(num, places) {
+  const zero = places - num.toString().length + 1;
+  return Array(+(zero > 0 && zero)).join("0") + num;
+}
+
+---
+<article class="w-[390px] sm:w-[640px] md:w-[400px] px-6 py-3">
+  <p class="text-gray-400 text-2xl pb-2">{zeroPad(index, 2)}_</p>
+  <p class="font-bold uppercase text-gray-800 leading-none">{experience.data.companyName}<span class="font-normal">_</span></p>
+  <p class="pt-8 font-bold text-2xl">{experience.data.role}</p>
+  <ul class="text-base text-gray-500 my-120 pt-4">
+    {experience.data.des.map((e) => <li>{e}</li>)}</ul>
+  <div class="flex flex-wrap justify-items-start gap-4 my-8">
+    {experience.data.skills.map((e) => <StackElement name={e} />)}
   </div>
-</details>
+<p class="text-xl text-gray-500 my-12]">{zeroPad(experience.data.end.getMonth(), 2)}-{experience.data.begin.getFullYear()} | {zeroPad(experience.data.begin.getMonth(), 2)}-{experience.data.end.getFullYear()}</p>
+</article>

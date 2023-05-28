@@ -1,6 +1,6 @@
 ---
 title: Sirius
-githubUrl: https://github.com/matfire/Sirius
+githubUrl: https://github.com/MGTek5/Sirius
 summary: your eye in the sky
 epitech: true
 personal: true
