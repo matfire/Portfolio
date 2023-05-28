@@ -51,6 +51,32 @@ body {
 
 main {
   flex: 1;
-  position: relative;
   @apply mt-[3rem];
+}
+.section-container {
+  @apply container mx-auto py-14 md:py-24 md:px-16 px-4 lg:scroll-mt-24;
+}
+.section-full {
+  @apply w-full py-14 md:py-24 lg:scroll-mt-24;
+}
+.container-section-full{
+  @apply container mx-auto md:px-16 px-4;
+}
+h3.title{
+    @apply font-bold text-lg text-gray-400 pb-8;
+  }
+p.lead {
+  @apply font-bold uppercase text-5xl md:text-7xl 2xl:text-8xl leading-[0.9] text-gray-800 md:tracking-tight antialiased
+}
+p.section {
+  @apply text-base text-gray-500 my-12
+}
+.scroll-item {
+  @apply flex overflow-x-auto scrollbar-thin scrollbar-track-primary-lighter scrollbar-thumb-primary-darker
+}
+.little-btn-white {
+  @apply p-2 text-gray-100 border border-white border-opacity-25 bg-white bg-opacity-20 text-lg cursor-pointer 
+}
+.little-btn-white:hover{
+  @apply text-primary-darker bg-opacity-80
 }

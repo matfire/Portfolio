@@ -19,7 +19,7 @@ const { project } = Astro.props;
     {project.data.stack.map((e) => <StackElement name={e} />)}
   </div>
   <div class="flex w-full mt-auto gap-4 pt-8">
-    {project.data.githubUrl && <a target="_blank" rel="noreferrer" class="p-2 text-gray-100 border border-white-70 border-opacity-25 bg-white bg-opacity-20 text-lg cursor-pointer hover:bg-opacity-80 hover:text-primary-darker" href={project.data.githubUrl}>See Source Code</a>}
-    {project.data.productionUrl && <a target="_blank" rel="noreferrer" class="p-2 text-gray-100 border border-white-70 border-opacity-25 bg-white bg-opacity-20 text-lg cursor-pointer hover:bg-opacity-80 hover:text-primary-darker" href={project.data.productionUrl}>See it Live</a>}
+    {project.data.githubUrl && <a target="_blank" rel="noreferrer" class="little-btn-white" href={project.data.githubUrl}>See Source Code</a>}
+    {project.data.productionUrl && <a target="_blank" rel="noreferrer" class="little-btn-white" href={project.data.productionUrl}>See it Live</a>}
   </div> 
 </article>
