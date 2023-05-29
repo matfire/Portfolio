@@ -1,0 +1,47 @@
+---
+export interface Props {
+  title?: string;
+  lead?: string;
+  section?: string;
+  full?: boolean;
+  id: string;
+  className?: string;
+}
+
+const { lead, title, section, id, className, full = false } = Astro.props;
+---
+
+<section
+  id={id}
+  class:list={[{ "section-container": !full, "section-full": full }, className]}
+>
+  {
+    full ? (
+      <>
+        <div class="container-section-full">
+          {title && (
+            <h3 class="title">
+              {title}
+              <span class="font-normal">_</span>
+            </h3>
+          )}
+          {lead && <p class="lead">{lead}</p>}
+          {section && <p class="section">{section}</p>}
+        </div>
+        <slot />
+      </>
+    ) : (
+      <>
+        {title && (
+          <h3 class="title">
+            {title}
+            <span class="font-normal">_</span>
+          </h3>
+        )}
+        {lead && <p class="lead">{lead}</p>}
+        {section && <p class="section">{section}</p>}
+        <slot />
+      </>
+    )
+  }
+</section>

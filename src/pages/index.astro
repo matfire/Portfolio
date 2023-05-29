@@ -13,6 +13,7 @@ import { Image } from "astro:assets";
 import profilePic from "../assets/matteo.jpg";
 import skills from "../utils/skills.json";
 import { contact } from "../utils/data.json";
+import Section from "../components/Section.astro";
 
 const { articles }: { articles: Article[] } = await (await get()).json();
 const projects = (await getCollection("projects")).sort(
@@ -110,11 +111,8 @@ const experiences = (await getCollection("experience")).sort(
         }
       </div>
     </div> 
-  </section> 
-  <section id="work" class="section-container">
-    <h3 class="title">Work_</h3>
-    <p class="lead">Here's where I worked</p>
-    <p class="section">All the previous entities</p>
+  </section>
+  <Section id="work" title="Work" lead="Here's where I worked" section="All the previous entities">
     <div class="scroll-item" >
       {
         experiences.map((experience, index) => (
@@ -124,13 +122,8 @@ const experiences = (await getCollection("experience")).sort(
         ))
       }
     </div>
-  </section>
-  <section id="projects" class="section-full">
-    <div class="container-section-full">
-      <h3 class="title">Projects<span class="font-normal">_</span></h3>
-      <p class="lead">What I do</p>
-     <p class="section">I built these: use scrollbar ;-)</p>
-    </div>
+  </Section>
+  <Section full id="projects" title="Projects" lead="What I do" section="I built these: use scrollbar ;-)">
     <div class="scroll-item" >
       {
         projects.map((project) => (
@@ -140,11 +133,8 @@ const experiences = (await getCollection("experience")).sort(
         ))
       }
     </div>
-  </section>
-  <section class="section-container" id="blog">
-    <h3 class="title">Blog<span class="font-normal">_</span></h3>
-    <p class="lead">Hashnode</p>
-    <p class="section">Sometimes I write</p>
+  </Section>
+  <Section id="blog" title="Blog" lead="Hashnode" section="Sometimes I write">
     <div class="flex flex-wrap">
       {articles.slice(0, 3).map((article) => <ArticleCard article={article} />)}
     </div>
@@ -156,7 +146,7 @@ const experiences = (await getCollection("experience")).sort(
         class="font-bold text-2xl text-primary-darker hover:text-black">Read More Articles</a
       >
     </div>
-  </section>
+  </Section>
   <section class="section-container" id="contact">
     <h3 class="title">reach out<span class="font-normal">_</span></h3>
     <p class="lead">get in touch</p>
