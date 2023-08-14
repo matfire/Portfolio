@@ -15,9 +15,13 @@ import skills from "../utils/skills.json";
 import { contact } from "../utils/data.json";
 import Section from "../components/Section.astro";
 
-const { articles }: { articles: Article[] } = await (await get()).json();
+//const { articles }: { articles: Article[] } = await (await get()).json();
 const projects = (await getCollection("projects")).sort(
   (a, b) => b.data.date - a.data.date
+);
+
+const articles = (await getCollection("articles")).sort(
+  (a, b) => b.data.publishDate - a.data.publishDate
 );
 
 const education = (await getCollection("education"))
@@ -168,15 +172,18 @@ const experiences = (await getCollection("experience")).sort(
       }
     </div>
   </Section>
-  <Section id="blog" title="Blog" lead="Hashnode" section="Sometimes I write">
+  <Section
+    id="blog"
+    title="Blog"
+    lead="Latest Articles"
+    section="Sometimes I write"
+  >
     <div class="flex flex-wrap">
       {articles.slice(0, 3).map((article) => <ArticleCard article={article} />)}
     </div>
     <div class="text-center pt-8">
       <a
-        href="https://blog.matteogassend.com"
-        target="_blank"
-        rel="noreferrer"
+        href="/blog"
         class="font-bold text-2xl text-primary-darker hover:text-black"
         >Read More Articles</a
       >
@@ -188,12 +195,14 @@ const experiences = (await getCollection("experience")).sort(
     <p class="text-2xl md:text-7xl 2xl:text-8xl pt-10">
       <a
         href={`mailto:${contact.email}`}
-        class="text-gray-400 hover:text-primary-darker">{contact.email}</a>
+        class="text-gray-400 hover:text-primary-darker">{contact.email}</a
+      >
     </p>
     <p class="text-2xl md:text-5xl 2xl:text-6xl pt-6">
       <a
         href={`tel:${contact.phone.replace(/\s+/g, "")}`}
-        class="hover:text-primary-darker">{contact.phone}</a>
+        class="hover:text-primary-darker">{contact.phone}</a
+      >
     </p>
     <p class="section">I'll get in touch ASAP, I promise</p>
   </section>
