@@ -1,6 +1,6 @@
 ---
 import { getCollection } from "astro:content";
-import Layout from "../layouts/Layout.astro";
+import Layout from "@layouts/Layout.astro";
 import { get } from "./api/articles";
 import type { Article } from "../utils/article.type";
 import ProjectCard from "../components/ProjectCard.astro";
@@ -32,11 +32,16 @@ const experiences = (await getCollection("experience")).sort(
   <section id="hero">
     <div class="flex flex-wrap">
       <div class="md:px-14 px-4 lg:w-1/2 w-full">
-        <h1 class="xl:pt-32 pt-14 uppercase font-bold text-7xl md:text-8xl xl:text-9xl leading-[0.6] md:leading-[0.7] xl:leading-[0.6] text-gray-800 md:tracking-tight antialiased">
+        <h1
+          class="xl:pt-32 pt-14 uppercase font-bold text-7xl md:text-8xl xl:text-9xl leading-[0.6] md:leading-[0.7] xl:leading-[0.6] text-gray-800 md:tracking-tight antialiased"
+        >
           Matteo<br />
-          <span class="text-5xl md:text-7xl xl:text-8xl tracking-[0.3em]">Gassend</span>
+          <span class="text-5xl md:text-7xl xl:text-8xl tracking-[0.3em]"
+            >Gassend</span
+          >
         </h1>
-        <p class="pt-10 text-2xl text-gray-500">Hello!<br />
+        <p class="pt-10 text-2xl text-gray-500">
+          Hello!<br />
           I am a fullstack developer with 3 years of experience.
         </p>
         <p class="xl:pb-40 md:pb-20 pb-12 text-2xl text-gray-500">
@@ -44,15 +49,22 @@ const experiences = (await getCollection("experience")).sort(
           applications.
         </p>
       </div>
-      <div class="lg:w-1/2 w-full md:min-h-full bg-primary-darker md:flex md:items-end md:justify-end p-8">
-        <h2 class="uppercase text-white opacity-40 text-5xl md:text-7xl font-bold leading-[0.8] tracking-wider">
+      <div
+        class="lg:w-1/2 w-full md:min-h-full bg-primary-darker md:flex md:items-end md:justify-end p-8"
+      >
+        <h2
+          class="uppercase text-white opacity-40 text-5xl md:text-7xl font-bold leading-[0.8] tracking-wider"
+        >
           fullstack<br />developer<span class="font-normal">_</span>
         </h2>
       </div>
     </div>
     <div class="container mx-auto w-auto lg:w-1/2 mt-16">
-      <p class="uppercase text-4xl xl:text-5xl font-bold text-center leading-tight text-gray-800">
-        In love with new technologies and creating the best performing user experience
+      <p
+        class="uppercase text-4xl xl:text-5xl font-bold text-center leading-tight text-gray-800"
+      >
+        In love with new technologies and creating the best performing user
+        experience
       </p>
     </div>
   </section>
@@ -60,26 +72,37 @@ const experiences = (await getCollection("experience")).sort(
     <h3 class="title">About<span class="font-normal">_</span></h3>
     <div class="flex flex-wrap">
       <div class="lg:w-1/2 w-full lg:order-last">
-        <Image class="border border-gray-200 w-96 mx-auto mb-16" src={profilePic} alt="me" />
+        <Image
+          class="border border-gray-200 w-96 mx-auto mb-16"
+          src={profilePic}
+          alt="me"
+        />
       </div>
       <div class="lg:w-1/2 w-full">
         <p class="lead">A fullstack developer with hobbies</p>
         <p class="section">
-          Born in Florence on February 5th, 1999, I'm a mission-driven fullstack developer with a passion for collaboration and teaching.
-          I love making side projects in my spare time to solve personal problems and (hopefully) help others. 
-          As a web developer, I enjoy using my obsessive attention to
-          detail and my mission-driven
-          work ethic to make stuff. Sometimes, I also play music (or I try)
+          Born in Florence on February 5th, 1999, I'm a mission-driven fullstack
+          developer with a passion for collaboration and teaching. I love making
+          side projects in my spare time to solve personal problems and
+          (hopefully) help others. As a web developer, I enjoy using my
+          obsessive attention to detail and my mission-driven work ethic to make
+          stuff. Sometimes, I also play music (or I try)
         </p>
-        <p class="font-bold uppercase text-3xl xl:text-5xl my-12">All you need to know</p>
-        <a class="p-2 border-2 border-black font-bold text-lg cursor-pointer hover:text-white hover:bg-primary-darker" href="/cv_fr.pdf" download="CV_Matteo_Gassend.pdf">My CV &rarr;</a>
-      </div>     
+        <p class="font-bold uppercase text-3xl xl:text-5xl my-12">
+          All you need to know
+        </p>
+        <a
+          class="p-2 border-2 border-black font-bold text-lg cursor-pointer hover:text-white hover:bg-primary-darker"
+          href="/cv_fr.pdf"
+          download="CV_Matteo_Gassend.pdf">My CV &rarr;</a
+        >
+      </div>
     </div>
   </section>
-  <section id="education" class="section-container" >
+  <section id="education" class="section-container">
     <p class="lead">Here's where I studied</p>
     <p class="section">From Italy to France (and Sweden for a while).</p>
-    <div class="scroll-item" >
+    <div class="scroll-item">
       {
         education.map((education, index) => (
           <div class="w-full h-full">
@@ -110,10 +133,15 @@ const experiences = (await getCollection("experience")).sort(
           ))
         }
       </div>
-    </div> 
+    </div>
   </section>
-  <Section id="work" title="Work" lead="Here's where I worked" section="All the previous entities">
-    <div class="scroll-item" >
+  <Section
+    id="work"
+    title="Work"
+    lead="Here's where I worked"
+    section="All the previous entities"
+  >
+    <div class="scroll-item">
       {
         experiences.map((experience, index) => (
           <div class="w-full h-full">
@@ -123,8 +151,14 @@ const experiences = (await getCollection("experience")).sort(
       }
     </div>
   </Section>
-  <Section full id="projects" title="Projects" lead="What I do" section="I built these: use scrollbar ;-)">
-    <div class="scroll-item" >
+  <Section
+    full
+    id="projects"
+    title="Projects"
+    lead="What I do"
+    section="I built these: use scrollbar ;-)"
+  >
+    <div class="scroll-item">
       {
         projects.map((project) => (
           <div class="w-full h-full">
@@ -143,16 +177,24 @@ const experiences = (await getCollection("experience")).sort(
         href="https://blog.matteogassend.com"
         target="_blank"
         rel="noreferrer"
-        class="font-bold text-2xl text-primary-darker hover:text-black">Read More Articles</a
+        class="font-bold text-2xl text-primary-darker hover:text-black"
+        >Read More Articles</a
       >
     </div>
   </Section>
   <section class="section-container" id="contact">
     <h3 class="title">reach out<span class="font-normal">_</span></h3>
     <p class="lead">get in touch</p>
-    <p class="text-2xl md:text-7xl 2xl:text-8xl pt-10"><a href={`mailto:${contact.email}`} class="text-gray-400 hover:text-primary-darker">{contact.email}</a ></p>
-    <p class="text-2xl md:text-5xl 2xl:text-6xl pt-6"><a href={`tel:${contact.phone.replace(/\s+/g, "")}`} class="hover:text-primary-darker">{contact.phone}</a></p>
+    <p class="text-2xl md:text-7xl 2xl:text-8xl pt-10">
+      <a
+        href={`mailto:${contact.email}`}
+        class="text-gray-400 hover:text-primary-darker">{contact.email}</a>
+    </p>
+    <p class="text-2xl md:text-5xl 2xl:text-6xl pt-6">
+      <a
+        href={`tel:${contact.phone.replace(/\s+/g, "")}`}
+        class="hover:text-primary-darker">{contact.phone}</a>
+    </p>
     <p class="section">I'll get in touch ASAP, I promise</p>
-    </div>
   </section>
 </Layout>
