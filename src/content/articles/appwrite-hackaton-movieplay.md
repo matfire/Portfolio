@@ -1,6 +1,6 @@
 ---
 title: "Appwrite Hackaton: MoviePlay"
-publishDate: 2023-10-06
+publishDate: 2023-06-10
 cover: https://cdn.hashnode.com/res/hashnode/image/stock/unsplash/tV80374iytg/upload/0ba31d6430f0e72ac3416e8afee0cb3b.jpeg
 tags: 
 - reactjs
