@@ -11,7 +11,7 @@ const articles = (await getCollection("articles")).sort(
 
 <Layout title="Blog | Matteo Gassend">
     <BlogHeader slot="header" transition:persist />
-    <div class="w-full container mx-auto flex flex-wrap mt-[3rem]">
+    <div class="w-full container mx-auto flex flex-wrap md:mt-[3rem]">
         {
             articles.map((article, i) => (
                 <ArticleCard article={article} extraClass="mt-2" />
