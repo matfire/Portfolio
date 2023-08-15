@@ -4,14 +4,15 @@ import { formatDate } from "../utils/date";
 
 export interface Props {
   article: CollectionEntry<"articles">;
+  extraClass?: String;
 }
 
-const { article } = Astro.props;
+const { article, extraClass } = Astro.props;
 ---
 
 <article
   transition:name={`article-${article.slug}`}
-  class="w-full lg:w-1/3 h-[300px] relative bg-cover bg-center border border-white"
+  class={`w-full lg:w-1/3 h-[300px] relative bg-cover bg-center border border-white ${extraClass}`}
   style={`background-image:url("${article.data.cover}")`}
 >
   <div
