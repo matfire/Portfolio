@@ -30,13 +30,15 @@ const theme = "light";
   </head>
   <body class="bg-primary">
     <header>
-      <Header />
+      <slot name="header" />
     </header>
     <main>
       <slot />
     </main>
     <footer>
-      <Footer />
+      <slot name="footer">
+        <Footer />
+      </slot>
     </footer>
   </body>
 </html>
