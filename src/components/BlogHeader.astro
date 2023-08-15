@@ -1,0 +1,106 @@
+<nav
+    class="flex flex-wrap items-center justify-between w-full md:px-16 p-4 text-lg bg-primary-darker md:bg-primary fixed z-40"
+>
+    <div>
+        <a href="/" class="text-white md:text-gray-900">Matteo_</a>
+    </div>
+    <input type="checkbox" name="menu-toggle" id="menu-toggle" class="hidden" />
+    <label
+        for="menu-toggle"
+        id="menu-toggle-label"
+        class="md:hidden"
+        tabindex="0"
+    >
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            id="menu-button"
+            class="h-6 w-6 cursor-pointer md:hidden block animate-pulse"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="white"
+        >
+            <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            id="menu-button-close"
+            class="h-6 w-6 cursor-pointer hidden animate-pulse"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="white"
+        >
+            <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M21 21L12 12M12 12L3 3M12 12L21.0001 3M12 12L3 21.0001"
+            >
+            </path>
+        </svg>
+    </label>
+    <div
+        class="hidden w-full md:flex md:items-center md:w-auto bg-primary"
+        id="menu"
+    >
+        <ul
+            class="pt-4 pr-8 text-gray-300 md:text-gray-600 md:flex md:justify-between text-right md:p-0"
+        >
+            <li>
+                <a
+                    class="md:p-4 py-2 block hover:text-white md:hover:text-black transition-colors"
+                    href="/blog">Articles_</a
+                >
+            </li>
+            <li>
+                <a
+                    class="md:p-4 py-2 block hover:text-white md:hover:text-black transition-colors"
+                    href="/blog/categories">Categories_</a
+                >
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<script>
+    document
+        .querySelectorAll<HTMLAnchorElement>("#menu > ul > li > a")
+        .forEach((e: HTMLElement) => {
+            e.addEventListener("click", () => {
+                document
+                    .querySelectorAll<HTMLAnchorElement>("#menu > ul > li > a")
+                    .forEach((e: HTMLElement) => {
+                        e.dataset.active = "false";
+                    });
+                toggleNav(e);
+            });
+        });
+
+    function toggleNav(e: HTMLElement) {
+        e.dataset.active = "true";
+    }
+</script>
+
+<style lang="scss">
+    #menu-toggle {
+        &:checked {
+            ~ #menu {
+                @apply block bg-primary-darker;
+            }
+            ~ #menu-toggle-label {
+                #menu-button {
+                    @apply hidden;
+                }
+                #menu-button-close {
+                    @apply block;
+                }
+            }
+        }
+    }
+    #menu ul li a[data-active="true"] {
+        @apply text-white md:text-black;
+    }
+</style>
