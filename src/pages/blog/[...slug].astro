@@ -18,6 +18,16 @@ if (entry === undefined) {
 const { Content, headings } = await entry.render();
 ---
 
+<meta slot="head" property="og:title" value={entry.data.title} />
+<meta slot="head" property="og:image" value={entry.data.cover} />
+<meta slot="head" property="og:description" value={entry.data.description} />
+<meta slot="head" property="og:type" value="article" />
+<meta
+    slot="head"
+    property="og:url"
+    value={`https://matteogassend.com/blog/${entry.slug}`}
+/>
+
 <Layout title={`${entry.data.title} | Matteo Gassend`}>
     <BlogHeader slot="header" />
     <div class="container mx-auto prose">

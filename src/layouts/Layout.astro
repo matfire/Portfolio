@@ -27,6 +27,7 @@ const theme = "light";
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <ViewTransitions />
+    <slot name="head" />
   </head>
   <body class="bg-primary">
     <header>
