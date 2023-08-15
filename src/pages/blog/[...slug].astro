@@ -1,0 +1,49 @@
+---
+import { getEntry } from "astro:content";
+import Layout from "@layouts/Layout.astro";
+import BlogHeader from "@components/BlogHeader.astro";
+import TableOfContents from "@components/TableOfContents/TableOfContents.astro";
+import { formatDate } from "@utils/date";
+// 1. Get the slug from the incoming server request
+const { slug } = Astro.params;
+if (slug === undefined) {
+    throw new Error("Slug is required");
+}
+// 2. Query for the entry directly using the request slug
+const entry = await getEntry("articles", slug);
+// 3. Redirect if the entry does not exist
+if (entry === undefined) {
+    return Astro.redirect("/404");
+}
+// 4. (Optional) Render the entry to HTML in the template
+const { Content, headings } = await entry.render();
+---
+
+<meta slot="head" property="og:title" value={entry.data.title} />
+<meta slot="head" property="og:image" value={entry.data.cover} />
+<meta slot="head" property="og:description" value={entry.data.description} />
+<meta slot="head" property="og:type" value="article" />
+<meta
+    slot="head"
+    property="og:url"
+    value={`https://matteogassend.com/blog/${entry.slug}`}
+/>
+
+<Layout title={`${entry.data.title} | Matteo Gassend`}>
+    <BlogHeader slot="header" transition:persist />
+    <div class="container mx-auto md:mt-[3rem]">
+        <img transition:name={`article-${entry.slug}`} src={entry.data.cover} />
+    </div>
+    <div class="container mx-auto prose md:mt-[3rem] px-4 md:px-0">
+        <h1>{entry.data.title}</h1>
+        <div>
+            <p class="capitalize">
+                published {formatDate(entry.data.publishDate)}
+            </p>
+        </div>
+        <TableOfContents {headings} />
+        <div class="w-full">
+            <Content />
+        </div>
+    </div>
+</Layout>

@@ -1,4 +1,4 @@
-import { defineConfig } from "astro/config";
+import { defineConfig, sharpImageService } from "astro/config";
 
 // https://astro.build/config
 import vercel from "@astrojs/vercel/serverless";
@@ -6,9 +6,14 @@ import vercel from "@astrojs/vercel/serverless";
 // https://astro.build/config
 import tailwind from "@astrojs/tailwind";
 
-
 // https://astro.build/config
 import robotsTxt from "astro-robots-txt";
+
+import remarkEmbedder from "@remark-embedder/core";
+import {
+  CodeSandboxTransformer,
+  YoutubeTransformer,
+} from "./src/utils/embedTransformers";
 
 // https://astro.build/config
 export default defineConfig({
@@ -17,9 +22,21 @@ export default defineConfig({
   adapter: vercel(),
   experimental: {
     assets: true,
+    viewTransitions: true,
   },
   image: {
-    service: "astro/assets/services/sharp",
+    service: sharpImageService(),
   },
-  integrations: [tailwind(), robotsTxt({policy: [{ userAgent: '*', allow: '/' }]})],
+  markdown: {
+    remarkPlugins: [
+      [
+        remarkEmbedder,
+        { transformers: [CodeSandboxTransformer, YoutubeTransformer] },
+      ],
+    ],
+  },
+  integrations: [
+    tailwind(),
+    robotsTxt({ policy: [{ userAgent: "*", allow: "/" }] }),
+  ],
 });

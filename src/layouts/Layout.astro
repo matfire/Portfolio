@@ -1,6 +1,7 @@
 ---
-import Footer from "../components/Footer.astro";
-import Header from "../components/Header.astro";
+import Footer from "@components/Footer.astro";
+import Header from "@components/Header.astro";
+import ViewTransitions from "astro/components/ViewTransitions.astro";
 import "../styles/global.css";
 export interface Props {
   title: string;
@@ -25,16 +26,20 @@ const theme = "light";
 
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <ViewTransitions />
+    <slot name="head" />
   </head>
   <body class="bg-primary">
     <header>
-      <Header />
+      <slot name="header" />
     </header>
     <main>
       <slot />
     </main>
     <footer>
-      <Footer /> 
+      <slot name="footer">
+        <Footer />
+      </slot>
     </footer>
   </body>
 </html>
