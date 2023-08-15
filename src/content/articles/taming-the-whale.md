@@ -52,7 +52,7 @@ this should download and install docker on your machine (if this does not work, 
 
 For the sake of an example, we will be using this example
 
-%[https://codesandbox.io/p/sandbox/trusting-knuth-cd1up7?selection=%5B%7B%22endColumn%22%3A29%2C%22endLineNumber%22%3A5%2C%22startColumn%22%3A29%2C%22startLineNumber%22%3A5%7D%5D] 
+https://codesandbox.io/p/sandbox/trusting-knuth-cd1up7?selection=%5B%7B%22endColumn%22%3A29%2C%22endLineNumber%22%3A5%2C%22startColumn%22%3A29%2C%22startLineNumber%22%3A5%7D%5D
 
 It's a simple application running an HTTP server. **Let's dockerize it!**
 
