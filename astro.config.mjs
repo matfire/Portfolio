@@ -10,7 +10,10 @@ import tailwind from "@astrojs/tailwind";
 import robotsTxt from "astro-robots-txt";
 
 import remarkEmbedder from "@remark-embedder/core";
-import { CodeSandboxTransformer } from "./src/utils/embedTransformers";
+import {
+  CodeSandboxTransformer,
+  YoutubeTransformer,
+} from "./src/utils/embedTransformers";
 
 // https://astro.build/config
 export default defineConfig({
@@ -26,7 +29,10 @@ export default defineConfig({
   },
   markdown: {
     remarkPlugins: [
-      [remarkEmbedder, { transformers: [CodeSandboxTransformer] }],
+      [
+        remarkEmbedder,
+        { transformers: [CodeSandboxTransformer, YoutubeTransformer] },
+      ],
     ],
   },
   integrations: [

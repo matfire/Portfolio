@@ -51,7 +51,7 @@ You can see the code [here](https://github.com/matfire/movieplay) and see it liv
 
 ## Demo
 
-%[https://youtu.be/8GJyqRNkZrA] 
+https://www.youtube.com/watch?v=8GJyqRNkZrA 
 
 ## On the using of Appwrite
 

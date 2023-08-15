@@ -164,9 +164,9 @@ Other useful resources may be:
 * Learn Docker in 7 Easy Steps - Full Beginner's Tutorial - Fireship
     
 
-%[https://www.youtube.com/watch?v=gAkwW2tuIqE] 
+https://www.youtube.com/watch?v=gAkwW2tuIqE
 
 * Docker Tutorial for Beginners - Programming with Mosh
     
 
-%[https://www.youtube.com/watch?v=pTFZFxd4hOI]
+https://www.youtube.com/watch?v=pTFZFxd4hOI
