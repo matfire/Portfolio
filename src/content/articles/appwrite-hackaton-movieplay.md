@@ -17,7 +17,7 @@ Well, I recently quit my job so I got free time and this hackathon between [Hash
 
 Have you ever had a debate with someone as to what is the correct order to watch Star Wars? There's the chronological order, the release order, the machete order
 
-![](https://media.giphy.com/media/SRka2MLKzpzE6K24al/giphy.gif align="center")
+![enough already](https://media.giphy.com/media/SRka2MLKzpzE6K24al/giphy.gif)
 
 ## Team
 

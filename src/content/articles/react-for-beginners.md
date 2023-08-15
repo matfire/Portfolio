@@ -13,13 +13,13 @@ tags:
 So...
 You heard of this framework called React and want to know what all the fuss is about ? Well, wander no more ! Let's go for a spin with ReactJS and build a simple application that will let us see why everyone is talking about it.
 
-### Installing React
+## Installing React
 
-#### Prerequisites
+### Prerequisites
 
 Before installing React, make sure you have a correct development environment. I'm not talking about your IDE (Integrated Development Environment) - though I personally prefer Visual Studio Code, but whether or not you have NodeJS installed on your machine. If you do, that's great 👍! If you don't, I'd suggest using [nvm](https://github.com/nvm-sh/nvm) to install the latest LTS (long term support) version; you shouldn't need anything else for this guide.
 
-#### Creating a Project
+## Creating a Project
 
 Now that we have a **recent** version on NodeJS, and consequently npm, we can start bootstrapping our new React project. After you get to know better the framework you can have your own starter template, but for today's guide let's just use `create-react-app`. To start a new react project, just open up a terminal and type: `npx create-react-app <folderName>` where `<folderName>` is the name of the folder that will be created with your react project in it.
 **Here's a trick I found recently** : If you insert `.` instead of a folder name (`.` is the current directory), then the project will be instantiated in the current directory, without creating an addition subfolder.
@@ -28,7 +28,7 @@ Once that is done, you can move to that folder and run `npm start` to launch the
 
 Congrats ! You have created your first React project
 
-### Folder Structure
+## Folder Structure
 
 
 ![FolderStructure.PNG](https://cdn.hashnode.com/res/hashnode/image/upload/v1597411603872/6l9tHWSz8.png)
@@ -50,11 +50,11 @@ Now that we have had a look at how a React project is structured, we can start c
 
 The first step is to create a list of tasks. This list will be updated every time a new items gets added or an item is removed. It will composed of a simple unordered list, with each list item corresponding to a task.
 
-##### Creating a component
+## Creating a component
 
 For this guide, we will be using functional components and the latest addition to the React arsenal, hooks. To create a functional component you must first import React at the top of the file and create a function that returns some `JSX`.
 
-###### What is JSX ?
+### What is JSX ?
 
 From React's official documentation
 
@@ -69,7 +69,7 @@ It is called JSX, and it is a syntax extension to JavaScript. We recommend using
 
 You can learn more [here](https://reactjs.org/docs/introducing-jsx.html)
 
-##### Let's get back to the 'task' 🤣 at hand
+### Let's get back to the 'task' 🤣 at hand
 
 Let's remove all the code inside the return of the `App` component. It should now look like this:
 
@@ -80,7 +80,7 @@ let's begin by adding a `div` as the root of our component: **All React element 
 
 ![app with div and ul tag](https://cdn.hashnode.com/res/hashnode/image/upload/v1597414589017/FrdzYdWpa.png)
 
-###### Let's display some taks
+#### Let's display some taks
 
 Now that we have a list element, we need to add elements inside of it. We could add them one by one, but that is not the point of using React. Let's instead declare an array with some data in it:
 
