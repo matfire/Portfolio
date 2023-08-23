@@ -1,0 +1,30 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import ArticleCard from "@components/ArticleCard.astro";
+import BlogHeader from "../../components/BlogHeader.astro";
+
+const articles = (await getCollection("articles")).sort(
+    (a, b) => b.data.publishDate - a.data.publishDate
+);
+
+const categories = new Set<string>()
+
+articles.forEach((article) => {
+    article.tags.forEach((tag) => {
+        if (!categories.has(tag)) {
+            categories.add(tag)
+        }
+    })
+})
+
+---
+
+<Layout title="Blog | Matteo Gassend">
+    <BlogHeader slot="header" transition:persist />
+    <div class="w-full container mx-auto flex flex-wrap md:mt-[3rem]">
+        {
+            {categories.map((cat) => <p>{cat}</p>)}
+        }
+    </div>
+</Layout>
