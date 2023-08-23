@@ -12,10 +12,7 @@ const categories = new Map<string, number>();
 
 articles.forEach((article) => {
     article.data.tags.forEach((tag) => {
-        categories.set(
-            tag,
-            categories.has(tag) ? categories.get(tag) ?? 0 + 1 : 1
-        );
+        categories.set(tag, categories.has(tag) ? categories.get(tag)! + 1 : 1);
     });
 });
 ---
