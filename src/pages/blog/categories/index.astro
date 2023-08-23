@@ -8,20 +8,29 @@ const articles = (await getCollection("articles")).sort(
     (a, b) => b.data.publishDate - a.data.publishDate
 );
 
-const categories = new Set<string>();
+const categories = new Map<string, number>();
 
 articles.forEach((article) => {
     article.data.tags.forEach((tag) => {
-        if (!categories.has(tag)) {
-            categories.add(tag);
-        }
+        categories.set(
+            tag,
+            categories.has(tag) ? categories.get(tag) ?? 0 + 1 : 1
+        );
     });
 });
 ---
 
-<Layout title="Blog | Matteo Gassend">
+<Layout title="Blog Categories | Matteo Gassend">
     <BlogHeader slot="header" transition:persist />
     <div class="w-full container mx-auto flex flex-col flex-wrap md:mt-[3rem]">
-        {Array.from(categories).map((cat) => <p>{cat}</p>)}
+        {
+            Array.from(categories)
+                .sort((a, b) => b[1] - a[1])
+                .map((cat) => (
+                    <p>
+                        {cat[0]} - {cat[1]} article{cat[1] > 1 ? "s" : ""}
+                    </p>
+                ))
+        }
     </div>
 </Layout>
