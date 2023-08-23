@@ -24,9 +24,9 @@ articles.forEach((article) => {
             Array.from(categories)
                 .sort((a, b) => b[1] - a[1])
                 .map((cat) => (
-                    <p>
+                    <a href={`/blog/categories/${cat[0]}`}>
                         {cat[0]} - {cat[1]} article{cat[1] > 1 ? "s" : ""}
-                    </p>
+                    </a>
                 ))
         }
     </div>
