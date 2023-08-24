@@ -44,7 +44,7 @@ const { Content, headings } = await entry.render();
         </div>
         <div class="flex flex-wrap gap-4 my-2">
             {
-                entry.data.tags.map((tag) => (
+                entry.data.tags.sort().map((tag) => (
                     <a
                         class="hover:text-primary-darker transition-all duration-250"
                         href={`/blog/categories/${tag}`}
