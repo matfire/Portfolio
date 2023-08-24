@@ -1,7 +1,7 @@
 ---
 title: "React for Beginners: Build a To-Do List"
 publishDate: 2020-08-15
-cover: https://cdn.hashnode.com/res/hashnode/image/upload/v1677576000659/7dc52a71-c9b8-4fed-b6a9-ba2faeaaaeaf.webp
+cover: https://cdn.blog.matteogassend.com/react-for-beginners-cover.webp
 tags: 
 - tutorial
 - introduction

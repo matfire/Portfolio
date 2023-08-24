@@ -3,7 +3,7 @@ title: "Hook, line, and sinker"
 publishDate: 2022-01-25
 cuid: ckytwsg0f01n62vs18lyr91cu
 slug: hook-line-and-sinker
-cover: https://cdn.hashnode.com/res/hashnode/image/upload/v1677573756945/b86c7121-7833-4757-9efa-a03edabc2508.webp
+cover: https://cdn.blog.matteogassend.com/hook-line-sinker-cover.webp
 tags: 
 - javascript
 - reactjs
