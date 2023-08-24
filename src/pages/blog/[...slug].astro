@@ -23,6 +23,7 @@ const { Content, headings } = await entry.render();
 <meta slot="head" property="og:image" value={entry.data.cover} />
 <meta slot="head" property="og:description" value={entry.data.description} />
 <meta slot="head" property="og:type" value="article" />
+<meta slot="head" property="og:article:tag" value={entry.data.tags} />
 <meta
     slot="head"
     property="og:url"
