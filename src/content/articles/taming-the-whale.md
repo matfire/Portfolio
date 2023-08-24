@@ -1,14 +1,13 @@
 ---
 title: "Taming the whale: introduction to Docker"
 publishDate: 2023-03-09
-cover: https://cdn.hashnode.com/res/hashnode/image/stock/unsplash/GjKPTkhni6Y/upload/9bd7a815beddfee597bf0631b4c697c2.jpeg
+cover: https://cdn.blog.matteogassend.com/taming-the-whale-cover.jpeg
 tags: 
 - docker
 - programming
 - devops
 - beginners
-- general-advice
-
+- introduction
 ---
 
 Have you ever had to work on a project that requires lots of parts that need to be installed separately? And one of those parts refuses to work because maybe the other developer worked on Windows and you are on Linux? Well, what I told you that those problems can be (relatively) easily solved? Let's take a look at what Docker is and how we can use it.

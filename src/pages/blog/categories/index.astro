@@ -1,0 +1,38 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import ArticleCard from "@components/ArticleCard.astro";
+import BlogHeader from "@components/BlogHeader.astro";
+
+const articles = (await getCollection("articles")).sort(
+    (a, b) => b.data.publishDate - a.data.publishDate
+);
+
+const categories = new Map<string, number>();
+
+articles.forEach((article) => {
+    article.data.tags.forEach((tag) => {
+        categories.set(tag, categories.has(tag) ? categories.get(tag)! + 1 : 1);
+    });
+});
+---
+
+<Layout title="Blog Categories | Matteo Gassend">
+    <BlogHeader slot="header" transition:persist />
+    <div
+        class="w-full container mx-auto flex flex-col flex-wrap md:my-[3rem] space-y-4"
+    >
+        {
+            Array.from(categories)
+                .sort((a, b) => b[1] - a[1])
+                .map((cat) => (
+                    <a
+                        class="hover:text-primary-darker transition-all duration-250"
+                        href={`/blog/categories/${cat[0]}`}
+                    >
+                        #{cat[0]} - {cat[1]} article{cat[1] > 1 ? "s" : ""}
+                    </a>
+                ))
+        }
+    </div>
+</Layout>
