@@ -41,6 +41,18 @@ const { Content, headings } = await entry.render();
                 published {formatDate(entry.data.publishDate)}
             </p>
         </div>
+        <div class="flex flex-wrap gap-4 my-2">
+            {
+                entry.data.tags.map((tag) => (
+                    <a
+                        class="hover:text-primary-darker transition-all duration-250"
+                        href={`/blog/categories/${tag}`}
+                    >
+                        #{tag}
+                    </a>
+                ))
+            }
+        </div>
         <TableOfContents {headings} />
         <div class="w-full">
             <Content />

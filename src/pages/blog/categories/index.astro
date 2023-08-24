@@ -19,13 +19,18 @@ articles.forEach((article) => {
 
 <Layout title="Blog Categories | Matteo Gassend">
     <BlogHeader slot="header" transition:persist />
-    <div class="w-full container mx-auto flex flex-col flex-wrap md:mt-[3rem]">
+    <div
+        class="w-full container mx-auto flex flex-col flex-wrap md:my-[3rem] space-y-4"
+    >
         {
             Array.from(categories)
                 .sort((a, b) => b[1] - a[1])
                 .map((cat) => (
-                    <a href={`/blog/categories/${cat[0]}`}>
-                        {cat[0]} - {cat[1]} article{cat[1] > 1 ? "s" : ""}
+                    <a
+                        class="hover:text-primary-darker transition-all duration-250"
+                        href={`/blog/categories/${cat[0]}`}
+                    >
+                        #{cat[0]} - {cat[1]} article{cat[1] > 1 ? "s" : ""}
                     </a>
                 ))
         }
