@@ -7,7 +7,6 @@ tags:
 - typescript
 - tailwind-css
 - appwrite
-- appwritehackathon
 
 ---
 

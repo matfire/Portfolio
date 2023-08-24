@@ -7,8 +7,7 @@ tags:
 - programming
 - devops
 - beginners
-- general-advice
-
+- introduction
 ---
 
 Have you ever had to work on a project that requires lots of parts that need to be installed separately? And one of those parts refuses to work because maybe the other developer worked on Windows and you are on Linux? Well, what I told you that those problems can be (relatively) easily solved? Let's take a look at what Docker is and how we can use it.

@@ -7,6 +7,8 @@ tags:
 - introduction
 - javascript
 - reactjs
+- beginners
+- programming
 
 ---
 
