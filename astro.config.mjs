@@ -20,10 +20,6 @@ export default defineConfig({
   output: "server",
   site: "https://matteogassend.com",
   adapter: vercel(),
-  experimental: {
-    assets: true,
-    viewTransitions: true,
-  },
   image: {
     service: sharpImageService(),
   },
