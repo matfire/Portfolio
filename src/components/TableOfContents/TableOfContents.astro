@@ -5,7 +5,7 @@ import TableOfContentsHeading from "./TableOfContentsHeading.astro";
 const { headings } = Astro.props;
 const toc = buildToc(headings);
 ---
-
+<p>Table of Contents</p>
 <nav class="toc">
     <ul>
         {toc.map((heading) => <TableOfContentsHeading heading={heading} />)}

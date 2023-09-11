@@ -21,6 +21,7 @@ const articleCollection = defineCollection({
     publishDate: z.date().transform((v) => new Date(v)),
     tags: z.array(z.string()),
     cover_image: z.string().url(),
+    series: z.string().optional()
   }),
 });
 
