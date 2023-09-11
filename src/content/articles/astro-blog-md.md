@@ -2,7 +2,7 @@
 title: "Building an Astro Blog with View Transitions"
 description: "a tale of sweat, content collections, pages and storage"
 publishDate: 2023-08-24
-cover: https://cdn.blog.matteogassend.com/astro-blog-transitions-cover.jpg
+cover_image: https://cdn.blog.matteogassend.com/astro-blog-transitions-cover.jpg
 tags:
 - astro
 - markdown
