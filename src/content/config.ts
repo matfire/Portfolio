@@ -20,7 +20,7 @@ const articleCollection = defineCollection({
     title: z.string(),
     publishDate: z.date().transform((v) => new Date(v)),
     tags: z.array(z.string()),
-    cover: z.string().url(),
+    cover_image: z.string().url(),
   }),
 });
 
