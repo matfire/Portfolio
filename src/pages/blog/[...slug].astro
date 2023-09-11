@@ -69,18 +69,27 @@ const { Content, headings } = await entry.render();
             series.length > 0 && (
                 <div class="flex flex-col">
                     <p>This article is part of a series</p>
-                    <div class="flex flex-col">
+                    <ul>
                         {series
                             .sort(
                                 (a, b) =>
                                     a.data.publishDate - b.data.publishDate,
                             )
                             .map((e) => (
-                                <div class={entry.slug === e.slug ? "border-slate-500 border-b-2 max-w-fit" : ""}>
-                                    <a href={`/blog/${e.slug}`}>{e.data.title}</a>
-                                    </div>
+                                <li>
+                                    <a
+                                        class:list={[
+                                            "hover:text-primary-darker transition-all",
+                                            e.slug === entry.slug &&
+                                                "font-bold",
+                                        ]}
+                                        href={`/blog/${e.slug}`}
+                                    >
+                                        {e.data.title}
+                                    </a>
+                                </li>
                             ))}
-                    </div>
+                    </ul>
                 </div>
             )
         }
