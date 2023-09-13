@@ -9,10 +9,11 @@ tags:
 - reactjs
 - beginners
 - programming
+series: "React for Beginners"
 
 ---
 
-Following up on the [Beginner's guide to React](https://blog.matteogassend.com/a-beginners-guide-to-react-the-evergreen-to-do-list-ckdvrrpt301kcids1deticm5c), this article will cover the basic "hooks" that React offers.
+Following up on the [Beginner's guide to React](/blog/react-for-beginners), this article will cover the basic "hooks" that React offers.
 
 ## What are hooks?
 

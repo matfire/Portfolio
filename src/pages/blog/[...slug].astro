@@ -1,5 +1,5 @@
 ---
-import { getEntry } from "astro:content";
+import { getCollection, getEntry, type CollectionEntry } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 import BlogHeader from "@components/BlogHeader.astro";
 import TableOfContents from "@components/TableOfContents/TableOfContents.astro";
@@ -14,6 +14,13 @@ const entry = await getEntry("articles", slug);
 // 3. Redirect if the entry does not exist
 if (entry === undefined) {
     return Astro.redirect("/404");
+}
+let series: Array<CollectionEntry<"articles">> = [];
+if (entry.data.series) {
+    const seriesEntries = await getCollection("articles", ({ data }) => {
+        return data.series === entry.data.series;
+    });
+    if (seriesEntries) series = seriesEntries;
 }
 // 4. (Optional) Render the entry to HTML in the template
 const { Content, headings } = await entry.render();
@@ -33,7 +40,11 @@ const { Content, headings } = await entry.render();
 <Layout title={`${entry.data.title} | Matteo Gassend`}>
     <BlogHeader slot="header" transition:persist />
     <div class="flex justify-center md:mt-[3rem] mb-3 md:mb-0">
-        <img transition:name={`article-${entry.slug}`} src={entry.data.cover_image} class="h-96 w-auto" />
+        <img
+            transition:name={`article-${entry.slug}`}
+            src={entry.data.cover_image}
+            class="h-96 w-auto"
+        />
     </div>
     <div class="container mx-auto prose md:mt-[3rem] px-4 md:px-0">
         <h1>{entry.data.title}</h1>
@@ -54,6 +65,34 @@ const { Content, headings } = await entry.render();
                 ))
             }
         </div>
+        {
+            series.length > 1 && (
+                <div class="border-2 shadow-sm border-primary-lighter p-4">
+                    <span>This article is part of a series</span>
+                    <ul>
+                        {series
+                            .sort(
+                                (a, b) =>
+                                    a.data.publishDate - b.data.publishDate,
+                            )
+                            .map((e) => (
+                                <li>
+                                    <a
+                                        class:list={[
+                                            "hover:text-primary-darker transition-all",
+                                            e.slug === entry.slug &&
+                                                "font-bold",
+                                        ]}
+                                        href={`/blog/${e.slug}`}
+                                    >
+                                        {e.data.title}
+                                    </a>
+                                </li>
+                            ))}
+                    </ul>
+                </div>
+            )
+        }
         <TableOfContents {headings} />
         <div class="w-full">
             <Content />

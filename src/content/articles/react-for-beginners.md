@@ -9,7 +9,7 @@ tags:
 - reactjs
 - beginners
 - programming
-
+series: "React for Beginners"
 ---
 
 So...
