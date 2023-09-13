@@ -67,8 +67,8 @@ const { Content, headings } = await entry.render();
         </div>
         {
             series.length > 1 && (
-                <div class="flex flex-col">
-                    <p>This article is part of a series</p>
+                <div class="border-2 shadow-sm border-primary-lighter p-4">
+                    <span>This article is part of a series</span>
                     <ul>
                         {series
                             .sort(
