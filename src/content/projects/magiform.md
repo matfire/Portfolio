@@ -1,6 +1,6 @@
 ---
 title: Magiform
-githubUrl: https://github.com/magiform
+githubUrl: https://github.com/magitools/magiform
 summary: forms as a service, kind of
 image: ./images/magiform_img.webp
 date: 2023-02-14
