@@ -1,7 +1,7 @@
 {
     "backend": ["python", "django", "javascript", "typescript", "MySQL", "PostgresSQL", "MongoDB", "RabbitMQ", "GraphQL", "websocket"],
     "frontend": ["javascript", "typescript", "react", "svelte", "vue", "nextjs", "sveltekit", "tailwindcss"],
-    "mobile": ["react native", "flutter"],
+    "mobile": ["react native", "flutter", "kotlin", "java"],
     "devops": ["Docker", "Ansible"],
     "testing": ["jest", "vitest", "playwright", "cypress"],
     "tools": ["Git", "Linux", "Postman", "Insomnia"]

@@ -1,14 +1,10 @@
 ---
 import { getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
-import { get } from "./api/articles";
-import type { Article } from "../utils/article.type";
 import ProjectCard from "../components/ProjectCard.astro";
 import ArticleCard from "../components/ArticleCard.astro";
 import EducationCard from "../components/EducationCard.astro";
 import ExpCard from "../components/ExpCard.astro";
-import ContactCard from "../components/ContactCard.astro";
-import { Icon } from "astro-icon";
 import { Image } from "astro:assets";
 import profilePic from "../assets/matteo.jpg";
 import skills from "../utils/skills.json";
@@ -16,7 +12,6 @@ import { contact } from "../utils/data.json";
 import Section from "@components/Section.astro";
 import Header from "@components/Header.astro";
 
-//const { articles }: { articles: Article[] } = await (await get()).json();
 const projects = (await getCollection("projects")).sort(
   (a, b) => b.data.date - a.data.date
 );
