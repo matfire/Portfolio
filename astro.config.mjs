@@ -17,7 +17,7 @@ import {
 
 // https://astro.build/config
 export default defineConfig({
-  output: "server",
+  output: "hybrid",
   site: "https://matteogassend.com",
   adapter: vercel(),
   image: {

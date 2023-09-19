@@ -1,9 +1,17 @@
 ---
+import type { GetStaticPaths } from "astro";
 import { getCollection, getEntry, type CollectionEntry } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 import BlogHeader from "@components/BlogHeader.astro";
 import TableOfContents from "@components/TableOfContents/TableOfContents.astro";
 import { formatDate } from "@utils/date";
+
+export const prerender = true
+export const getStaticPaths = ( async() => {
+    const blogEntries = await getCollection('articles');
+
+    return blogEntries.map((e) => ({params: {slug: e.slug}, props: {entry: e}}));
+}) satisfies GetStaticPaths;
 // 1. Get the slug from the incoming server request
 const { slug } = Astro.params;
 if (slug === undefined) {

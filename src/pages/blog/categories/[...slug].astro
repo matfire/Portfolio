@@ -1,16 +1,30 @@
 ---
+import type { GetStaticPaths } from "astro";
 import Layout from "@layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import ArticleCard from "@components/ArticleCard.astro";
 import BlogHeader from "@components/BlogHeader.astro";
 
+export const getStaticPaths = (async() => {
+    const articles = (await getCollection("articles")).sort(
+        (a, b) => b.data.publishDate - a.data.publishDate
+    );
+
+    const categories = new Map<string, number>();
+    articles.forEach((article) => {
+        article.data.tags.forEach((tag) => {
+            categories.set(tag, categories.has(tag) ? categories.get(tag)! + 1 : 1);
+        });
+    });
+    return Array.from(categories).map(([key]) => ({params: {slug: key}, props: {articles: articles.filter((a) => a.data.tags.includes(key)).sort((a, b) => b.data.publishDate - a.data.publishDate)}}));
+}) satisfies GetStaticPaths;
+
 const { slug } = Astro.params;
 if (slug === undefined) {
     throw new Error("Slug is required");
 }
-const articles = (await getCollection("articles"))
-    .filter((a) => a.data.tags.includes(slug))
-    .sort((a, b) => b.data.publishDate - a.data.publishDate);
+const {articles} = Astro.props
+
 ---
 
 <Layout title="Blog Categories | Matteo Gassend">
