@@ -29,3 +29,14 @@ export const YoutubeTransformer = {
     }" style="width:100%; height:500px; frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
   },
 };
+
+export const StackblitzTransformer = {
+  name: "Stackblitz",
+  shouldTransform(url: string) {
+    const {host} = new URL(url);
+    return ["stackblitz.com"].includes(host)
+  },
+  getHTML (url: string) {
+    return `<iframe src="${url}" style="width:100%; height:500px;"></iframe>`
+  }
+}
