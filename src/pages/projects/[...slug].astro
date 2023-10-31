@@ -1,0 +1,24 @@
+---
+import type { GetStaticPaths } from "astro";
+import { getCollection, getEntry, type CollectionEntry } from "astro:content";
+import Layout from "@layouts/Layout.astro";
+
+export const prerender = true
+export const getStaticPaths = ( async() => {
+    const projectEntries = await getCollection('projects');
+    return projectEntries.map((e) => ({params: {slug: e.slug}, props: {entry: e}}));
+}) satisfies GetStaticPaths;
+
+const { slug } = Astro.params;
+if (slug === undefined) {
+    throw new Error("Slug is required");
+}
+
+const entry = await getEntry("projects", slug);
+if (entry === undefined) {
+    return Astro.redirect("/404");
+}
+---
+<Layout title={`${entry.data.title} | Matteo Gassend`}>
+    <h2>{entry.data.title}</h2>
+</Layout>
