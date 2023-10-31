@@ -18,7 +18,30 @@ const entry = await getEntry("projects", slug);
 if (entry === undefined) {
     return Astro.redirect("/404");
 }
+
+let stars = null
+
+if (entry.data.githubUrl) {
+    const regex = new RegExp("https:\/\/github\.com\/(.*)\/(.*)")
+    const githubParts = regex.exec(entry.data.githubUrl)
+    console.log(githubParts);
+    const githubData = await (await fetch(`https://api.github.com/repos/${githubParts[1]}/${githubParts[2]}`)).json()
+    console.log(githubData)
+    stars = githubData.stargazers_count > 0 ? githubData.stargazers_count : null
+}
 ---
 <Layout title={`${entry.data.title} | Matteo Gassend`}>
-    <h2>{entry.data.title}</h2>
+        <div class="md:px-14 px-4 lg:w-1/2 w-full">
+            <h1
+              class="xl:pt-32 pt-14 uppercase font-bold text-7xl md:text-8xl xl:text-9xl leading-[0.6] md:leading-[0.7] xl:leading-[0.6] text-gray-800 md:tracking-tight antialiased"
+            >
+              {entry.data.title}
+            </h1>
+            <p class="pt-10 text-2xl text-gray-500">
+                {entry.data.summary}
+            </p>
+        </div>
+        <section class="section-container">
+            {stars && <p class="">{stars} stars</p>}
+        </section>
 </Layout>
