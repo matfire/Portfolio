@@ -32,7 +32,9 @@ const theme = "light";
   </head>
   <body class="bg-primary">
     <header>
-      <slot name="header" />
+      <slot name="header">
+        <Header />
+      </slot>
     </header>
     <main>
       <slot />
