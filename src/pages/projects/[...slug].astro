@@ -5,7 +5,6 @@ import Layout from "@layouts/Layout.astro";
 import StackElement from "@components/StackElement.astro";
 
 
-export const prerender = false
 export const getStaticPaths = ( async() => {
     const projectEntries = await getCollection('projects');
     return projectEntries.map((e) => ({params: {slug: e.slug}, props: {entry: e}}));
@@ -38,6 +37,7 @@ const { Content } = await entry.render();
 <Layout title={`${entry.data.title} | Matteo Gassend`}>
         <div class="md:px-14 px-4 lg:w-1/2 w-full">
             <h1
+                transition:name={`project-${entry.slug}`}
               class="xl:pt-32 pt-14 uppercase font-bold text-7xl md:text-8xl xl:text-9xl leading-[0.6] md:leading-[0.7] xl:leading-[0.6] text-gray-800 md:tracking-tight antialiased"
             >
               {entry.data.title}
