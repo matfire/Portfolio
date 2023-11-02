@@ -5,7 +5,7 @@ import Layout from "@layouts/Layout.astro";
 import StackElement from "@components/StackElement.astro";
 
 
-export const prerender = true
+export const prerender = false
 export const getStaticPaths = ( async() => {
     const projectEntries = await getCollection('projects');
     return projectEntries.map((e) => ({params: {slug: e.slug}, props: {entry: e}}));
@@ -48,8 +48,8 @@ const { Content } = await entry.render();
         </div>
         <section class="section-container">
             <div class="flex flex-col md:flex-row">
-                {entry.data.githubUrl && <a target="_blank" rel="noreferrer" class="little-btn-white" href={entry.data.githubUrl}>See Source</a>}
-                {entry.data.productionUrl && <a target="_blank" rel="noreferrer" class="little-btn-white" href={entry.data.productionUrl}>See It Live</a>}
+                {entry.data.githubUrl && <a target="_blank" rel="noreferrer" class="" href={entry.data.githubUrl}>See Source</a>}
+                {entry.data.productionUrl && <a target="_blank" rel="noreferrer" class="" href={entry.data.productionUrl}>See It Live</a>}
             </div>
         </section>
         <section class="section-container">
