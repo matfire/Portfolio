@@ -2,6 +2,8 @@
 import type { GetStaticPaths } from "astro";
 import { getCollection, getEntry, type CollectionEntry } from "astro:content";
 import Layout from "@layouts/Layout.astro";
+import StackElement from "@components/StackElement.astro";
+
 
 export const prerender = true
 export const getStaticPaths = ( async() => {
@@ -20,15 +22,18 @@ if (entry === undefined) {
 }
 
 let stars = null
+let watchers = null
 
 if (entry.data.githubUrl) {
     const regex = new RegExp("https:\/\/github\.com\/(.*)\/(.*)")
     const githubParts = regex.exec(entry.data.githubUrl)
-    console.log(githubParts);
     const githubData = await (await fetch(`https://api.github.com/repos/${githubParts[1]}/${githubParts[2]}`)).json()
-    console.log(githubData)
     stars = githubData.stargazers_count > 0 ? githubData.stargazers_count : null
+    watchers = githubData.watchers_count > 0 ? githubData.watchers_count : null
 }
+
+const { Content } = await entry.render();
+
 ---
 <Layout title={`${entry.data.title} | Matteo Gassend`}>
         <div class="md:px-14 px-4 lg:w-1/2 w-full">
@@ -42,6 +47,23 @@ if (entry.data.githubUrl) {
             </p>
         </div>
         <section class="section-container">
-            {stars && <p class="">{stars} stars</p>}
+            <div class="flex flex-col md:flex-row">
+                {entry.data.githubUrl && <a target="_blank" rel="noreferrer" class="little-btn-white" href={entry.data.githubUrl}>See Source</a>}
+                {entry.data.productionUrl && <a target="_blank" rel="noreferrer" class="little-btn-white" href={entry.data.productionUrl}>See It Live</a>}
+            </div>
+        </section>
+        <section class="section-container">
+            <div class="flex flex-col md:flex-row gap-4">
+                {entry.data.stack.map((e) => <StackElement name={e} />)}
+            </div>
+        </section>
+{ stars || watchers &&        <section class="section-container">
+            <div class="flex flex-col md:flex-row">
+                {stars && <p class="">{stars} starts</p>}
+                {watchers && <p>{watchers} watchers</p>}
+            </div>
+        </section>}
+        <section class="section-container prose">
+            <Content />
         </section>
 </Layout>
