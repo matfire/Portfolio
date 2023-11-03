@@ -2,7 +2,7 @@
 import type { GetStaticPaths } from "astro";
 import { getCollection, getEntry, type CollectionEntry } from "astro:content";
 import Layout from "@layouts/Layout.astro";
-import StackElement from "@components/StackElementDark.astro";
+import StackElement from "@components/StackElement.astro";
 
 
 export const getStaticPaths = ( async() => {
@@ -36,15 +36,15 @@ const { Content } = await entry.render();
 ---
 <Layout title={`${entry.data.title} | Matteo Gassend`}>
     <div>
-        <div class="md:px-14 px-4 w-full">
+        <div class="md:px-14 px-4 w-full bg-primary-darker py-2 ">
             <h1
                 transition:name={`project-${entry.slug}`}
-              class="xl:pt-32 pt-14 uppercase font-bold text-7xl md:text-8xl xl:text-9xl leading-[0.6] md:leading-[0.7] xl:leading-[0.6] text-gray-800 md:tracking-tight antialiased"
+              class="xl:pt-32 pt-14 uppercase font-bold text-7xl md:text-8xl xl:text-9xl leading-[0.6] md:leading-[0.7] xl:leading-[0.6] text-gray-100 md:tracking-tight antialiased"
             >
               {entry.data.title}
-              <span>_</span>
+              <span class="text-gray-200">_</span>
             </h1>
-            <p class="pt-10 text-2xl text-gray-500">
+            <p class="pt-10 text-2xl text-gray-300">
                 {entry.data.summary}
             </p>
             <div class="flex flex-col md:flex-row mt-2 justify-between w-full">
@@ -52,8 +52,8 @@ const { Content } = await entry.render();
                     {entry.data.stack.map((e) => <StackElement className="fill-black" name={e} />)}
                 </div>
                 <div class="flex flex-col md:flex-row gap-4">
-                    {entry.data.githubUrl && <a target="_blank" rel="noreferrer" class="" href={entry.data.githubUrl}>See Source</a>}
-                    {entry.data.productionUrl && <a target="_blank" rel="noreferrer" class="" href={entry.data.productionUrl}>See It Live</a>}
+                    {entry.data.githubUrl && <a class="little-btn-white" target="_blank" rel="noreferrer" class="" href={entry.data.githubUrl}>See Source</a>}
+                    {entry.data.productionUrl && <a class="little-btn-white" target="_blank" rel="noreferrer" class="" href={entry.data.productionUrl}>See It Live</a>}
                 </div>
             </div>
         </div>
