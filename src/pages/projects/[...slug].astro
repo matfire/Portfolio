@@ -4,7 +4,7 @@ import { getCollection, getEntry, type CollectionEntry } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 import StackElement from "@components/StackElement.astro";
 
-
+export const prerender = true
 export const getStaticPaths = ( async() => {
     const projectEntries = await getCollection('projects');
     return projectEntries.map((e) => ({params: {slug: e.slug}, props: {entry: e}}));
@@ -20,23 +20,12 @@ if (entry === undefined) {
     return Astro.redirect("/404");
 }
 
-let stars = null
-let watchers = null
-
-if (entry.data.githubUrl) {
-    const regex = new RegExp("https:\/\/github\.com\/(.*)\/(.*)")
-    const githubParts = regex.exec(entry.data.githubUrl)
-    const githubData = await (await fetch(`https://api.github.com/repos/${githubParts[1]}/${githubParts[2]}`)).json()
-    stars = githubData.stargazers_count > 0 ? githubData.stargazers_count : null
-    watchers = githubData.watchers_count > 0 ? githubData.watchers_count : null
-}
-
 const { Content } = await entry.render();
 
 ---
 <Layout title={`${entry.data.title} | Matteo Gassend`}>
     <div>
-        <div class="md:px-14 px-4 w-full bg-primary-darker py-2 ">
+        <div class="md:px-14 px-4 w-full bg-primary-darker py-4 ">
             <h1
                 transition:name={`project-${entry.slug}`}
               class="xl:pt-32 pt-14 uppercase font-bold text-7xl md:text-8xl xl:text-9xl leading-[0.6] md:leading-[0.7] xl:leading-[0.6] text-gray-100 md:tracking-tight antialiased"
@@ -58,12 +47,6 @@ const { Content } = await entry.render();
             </div>
         </div>
     </div>
-{ stars || watchers &&        <section class="section-container">
-            <div class="flex flex-col md:flex-row">
-                {stars && <p class="">{stars} starts</p>}
-                {watchers && <p>{watchers} watchers</p>}
-            </div>
-        </section>}
         <section class="section-container prose">
             <Content />
         </section>
