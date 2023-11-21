@@ -34,11 +34,11 @@ During the development phase the router was based on a Raspberry PI 4 with some 
 
 #### Redis
 
-Stores temporary information for all services
+Stores temporary information for all services, including the initial configuration retrieved at boot time by the [Bridge](#bridge) service.
 
 #### RabbitMQ
 
-Handles realtime information retrieval from the [DHCP](#dhcp) and [Pcap](#pcap) services
+Handles realtime information retrieval from the [DHCP](#dhcp) and [Pcap](#pcap) services.
 
 #### DHCP
 
@@ -52,13 +52,25 @@ The PCap service runs a pcap (packet capture) service to determine where the tra
 
 The bridge service takes the information from the other services and acts as broker between the router and the central server. It sends data from the services to the server and applies what the server decides.
 
+#### OpenVivi embedded
+
+OpenVivi is the embedded API that allows each device to be controlled remotely from the server thanks to a secure reversed SSH tunnel.
+
 ## The Server
 
 The server is the brain of the whole project; it collects all the information from the deployed routers, sends them to the different clients, retrieves the clients' actions and dispatches instructions accordingly.
 
+### How
+
+Thanks to GraphQL, the server is able to retrieve and distribute in real time everything it receives 
+
 ### Services
 
-### Deployment
+- MongoDB: the main database provider for everything
+- Prometheus: data ingester
+- InfluxDB: timeseries data
+- Grafana: dashboard for data visualization
+- Traefik: HTTP Reverse Proxy
 
 ## The interface
 
