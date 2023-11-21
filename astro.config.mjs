@@ -1,25 +1,25 @@
-import { defineConfig, sharpImageService } from "astro/config";
+import { defineConfig } from "astro/config";
 
-import vercel from "@astrojs/vercel/serverless";
-
-// https://astro.build/config
 import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 import robotsTxt from "astro-robots-txt";
 import remarkEmbedder from "@remark-embedder/core";
-import { CodeSandboxTransformer, YoutubeTransformer, StackblitzTransformer  } from "./src/utils/embedTransformers";
+import { CodeSandboxTransformer, YoutubeTransformer, StackblitzTransformer } from "./src/utils/embedTransformers";
 
 // https://astro.build/config
 import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
+import cloudflare from "@astrojs/cloudflare";
+
+// https://astro.build/config
 export default defineConfig({
   output: "hybrid",
   site: "https://matteogassend.com",
-  adapter: vercel(),
+  adapter: cloudflare(),
   image: {
-    service: sharpImageService()
+    service: { entrypoint: 'astro/assets/services/sharp' },
   },
   markdown: {
     remarkPlugins: [[remarkEmbedder, {
