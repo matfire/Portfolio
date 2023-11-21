@@ -26,11 +26,35 @@ Vivi was the culmination of a 5 year masters degree program at [Epitech](https:/
 
 ## The router
 
-During the development phase the router was based on a Raspberry PI 4 with some customized tooling. The purpose of this object was to be placed at the root of a LAN (we did not support WAN and acting as a bridge between the two) and would be the one in charge of distributing IPv4 addresses and route traffic to the "real router" (or elsewhere)
+During the development phase the router was based on a Raspberry PI 4 with some customized tooling. The purpose of this object was to be placed at the root of a LAN (we did not support WAN and acting as a bridge between the two) and would be the one in charge of distributing IPv4 addresses and route traffic to the "real router" (or elsewhere).
+
+![a schema representing the router](https://cdn.blog.matteogassend.com/vivi_box_schema.png)
 
 ### Services
 
+#### Redis
+
+Stores temporary information for all services
+
+#### RabbitMQ
+
+Handles realtime information retrieval from the [DHCP](#dhcp) and [Pcap](#pcap) services
+
+#### DHCP
+
+The DHCP handles delivering ip addresses to connected devices.
+
+#### PCap
+
+The PCap service runs a pcap (packet capture) service to determine where the traffic is coming from and going to the observed network and sends its findings to the bridge.
+
+#### Bridge
+
+The bridge service takes the information from the other services and acts as broker between the router and the central server. It sends data from the services to the server and applies what the server decides.
+
 ## The Server
+
+The server is the brain of the whole project; it collects all the information from the deployed routers, sends them to the different clients, retrieves the clients' actions and dispatches instructions accordingly.
 
 ### Services
 
@@ -39,6 +63,8 @@ During the development phase the router was based on a Raspberry PI 4 with some 
 ## The interface
 
 ## Other Created Services
+
+### GodView
 
 ### X.A.N.A
 
