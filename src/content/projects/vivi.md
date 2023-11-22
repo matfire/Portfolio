@@ -58,19 +58,21 @@ OpenVivi is the embedded API that allows each device to be controlled remotely f
 
 ## The Server
 
-The server is the brain of the whole project; it collects all the information from the deployed routers, sends them to the different clients, retrieves the clients' actions and dispatches instructions accordingly.
+The server is the brain of the whole project; it collects all the information from the deployed routers, sends them to the different clients, retrieves the clients' actions and dispatches instructions accordingly. It all works from inside a Docker stack (docker compose), including a reverse proxy and ssl management using [Traefik](https://traefik.io/traefik/). The API is built using [NestJS](https://github.com/nestjs/nest)
 
 ### How
 
-Thanks to GraphQL, the server is able to retrieve and distribute in real time everything it receives 
 
-### Services
+### Internal Services
 
 - MongoDB: the main database provider for everything
 - Prometheus: data ingester
-- InfluxDB: timeseries data
 - Grafana: dashboard for data visualization
 - Traefik: HTTP Reverse Proxy
+
+### External Services
+
+- Pusher Beams: handle push notifications to users
 
 ## The interface
 
