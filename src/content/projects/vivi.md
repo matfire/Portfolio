@@ -78,8 +78,25 @@ The server is the brain of the whole project; it collects all the information fr
 
 ## Other Created Services
 
+Alongside the main products we built, we realized we needed some additional internal tools.
+
+### OpenVivi
+
+OpenVivi is the server that handles all [OpenVivi Embedded](#openvivi-embedded) instances.
+
+- when a router first starts, it sends a request to this server to receive a certificate and a port
+- the server creates an nginx configuration to match the router's identifier and proxies its request to the port it sent back to the router
+- the router, using the certificate and the port, opens a reverse ssh tunnel to the server
+- now, all traffic sent to the specified domain gets directly transferred to the router
+
+#### Why a reverse ssh tunnel
+
+Since the router may be setup inside a protected network, the server cannot be the one initializing the connection (it may get blocked). So the router is the one sending the initial connection request that gets "hijacked" by the server to be used instead.
+
 ### GodView
+
+The GodView was an internal tool used to see the status of all routers and users accross the whole organization. It could also be used to talk to OpenVivi's embedded instances and trigger reboots, updates etc.
 
 ### X.A.N.A
 
-### OpenVivi
+We decided to make available to our users a pregenerated list of domains we considered problematic. This list, however, is obviously not exhaustive and would have needed to get constantly updated. We decided to have an opt-in service where we would receive a noification whenever a domain name we hadn't yet categorized and could update the list, thus improving the experience for every current and future client. X.A.N.A. was basically a Discord bot that talked to a PostgreSQL database (the list I mentioned earlier)
