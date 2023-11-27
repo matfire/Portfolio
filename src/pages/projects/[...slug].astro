@@ -1,0 +1,53 @@
+---
+import type { GetStaticPaths } from "astro";
+import { getCollection, getEntry, type CollectionEntry } from "astro:content";
+import Layout from "@layouts/Layout.astro";
+import StackElement from "@components/StackElement.astro";
+
+export const prerender = true
+export const getStaticPaths = ( async() => {
+    const projectEntries = await getCollection('projects');
+    return projectEntries.map((e) => ({params: {slug: e.slug}, props: {entry: e}}));
+}) satisfies GetStaticPaths;
+
+const { slug } = Astro.params;
+if (slug === undefined) {
+    throw new Error("Slug is required");
+}
+
+const entry = await getEntry("projects", slug);
+if (entry === undefined) {
+    return Astro.redirect("/404");
+}
+
+const { Content } = await entry.render();
+
+---
+<Layout title={`${entry.data.title} | Matteo Gassend`}>
+    <div>
+        <div class="md:px-14 px-4 w-full bg-primary-darker py-4 ">
+            <h1
+                transition:name={`project-${entry.slug}`}
+              class="xl:pt-32 pt-14 uppercase font-bold text-7xl md:text-8xl xl:text-9xl leading-[0.6] md:leading-[0.7] xl:leading-[0.6] text-gray-100 md:tracking-tight antialiased"
+            >
+              {entry.data.title}
+              <span class="text-gray-200">_</span>
+            </h1>
+            <p class="pt-10 text-2xl text-gray-300">
+                {entry.data.summary}
+            </p>
+            <div class="flex flex-col md:flex-row mt-2 justify-between w-full">
+                <div class="flex flex-col md:flex-row gap-4">
+                    {entry.data.stack.map((e) => <StackElement className="fill-black" name={e} />)}
+                </div>
+                <div class="flex gap-4 justify-center mt-4 md:mt-0">
+                    {entry.data.githubUrl && <a class="little-btn-white" target="_blank" rel="noreferrer" class="" href={entry.data.githubUrl}>See Source</a>}
+                    {entry.data.productionUrl && <a class="little-btn-white" target="_blank" rel="noreferrer" class="" href={entry.data.productionUrl}>See It Live</a>}
+                </div>
+            </div>
+        </div>
+    </div>
+        <section class="section-container prose">
+            <Content />
+        </section>
+</Layout>
