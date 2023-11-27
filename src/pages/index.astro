@@ -5,7 +5,7 @@ import ProjectCard from "../components/ProjectCard.astro";
 import ArticleCard from "../components/ArticleCard.astro";
 import EducationCard from "../components/EducationCard.astro";
 import ExpCard from "../components/ExpCard.astro";
-import { Image } from "astro:assets";
+import { Picture } from "astro:assets";
 import profilePic from "../assets/matteo.jpg";
 import skills from "../utils/skills.json";
 import { contact } from "../utils/data.json";
@@ -73,7 +73,7 @@ const experiences = (await getCollection("experience")).sort(
     <h3 class="title">About<span class="font-normal">_</span></h3>
     <div class="flex flex-wrap">
       <div class="lg:w-1/2 w-full lg:order-last">
-        <Image
+        <Picture
           class="border border-gray-200 w-96 mx-auto mb-16"
           src={profilePic}
           alt="me"
