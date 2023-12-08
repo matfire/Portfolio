@@ -22,9 +22,13 @@ export default defineConfig({
     service: { entrypoint: 'astro/assets/services/sharp' },
   },
   markdown: {
-    remarkPlugins: [[remarkEmbedder, {
-      transformers: [CodeSandboxTransformer, YoutubeTransformer, StackblitzTransformer]
-    }]]
+    remarkPlugins: [
+      [remarkEmbedder.default, 
+        {
+        transformers: [CodeSandboxTransformer, YoutubeTransformer, StackblitzTransformer]
+        },
+      ],
+    ]
   },
   integrations: [tailwind(), robotsTxt({
     policy: [{
