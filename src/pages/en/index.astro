@@ -1,0 +1,211 @@
+---
+import { getCollection } from "astro:content";
+import { getRelativeLocaleUrl } from "astro:i18n";
+
+import Layout from "@layouts/Layout.astro";
+import ProjectCard from "@components/ProjectCard.astro";
+import ArticleCard from "@components/ArticleCard.astro";
+import EducationCard from "@components/EducationCard.astro";
+import ExpCard from "@components/ExpCard.astro";
+import { Picture } from "astro:assets";
+import profilePic from "@assets/matteo.jpg";
+import skills from "@utils/skills.json";
+import { contact } from "@utils/data.json";
+import Section from "@components/Section.astro";
+import Header from "@components/Header.astro";
+import traductions from "@utils/trads.json";
+
+const projects = (await getCollection("projects")).sort(
+  (a, b) => b.data.date - a.data.date,
+);
+
+const articles = (await getCollection("articles")).sort(
+  (a, b) => b.data.publishDate - a.data.publishDate,
+);
+
+const education = (await getCollection("education"))
+  .sort((a, b) => b.data.graduation - a.data.graduation)
+  .slice(0, 3);
+const experiences = (await getCollection("experience")).sort(
+  (a, b) => b.data.begin - a.data.begin,
+);
+const locale = "en";
+---
+
+<Layout title="Matteo Gassend">
+  <Header slot="header" />
+  <section id="hero">
+    <div class="flex flex-wrap">
+      <div class="md:px-14 px-4 lg:w-1/2 w-full">
+        <h1
+          class="xl:pt-32 pt-14 uppercase font-bold text-7xl md:text-8xl xl:text-9xl leading-[0.6] md:leading-[0.7] xl:leading-[0.6] text-gray-800 md:tracking-tight antialiased"
+        >
+          Matteo<br />
+          <span class="text-5xl md:text-7xl xl:text-8xl tracking-[0.3em]"
+            >Gassend</span
+          >
+        </h1>
+        <p class="pt-10 text-2xl text-gray-500">
+          Hello!<br />
+          {
+            traductions[locale]["home"]["intro1"].replace(
+              "%year%",
+              new Date().getFullYear() - 2020,
+            )
+          }
+        </p>
+        <p class="xl:pb-40 md:pb-20 pb-12 text-2xl text-gray-500">
+          {traductions[locale]["home"]["intro2"]}
+        </p>
+      </div>
+      <div
+        class="lg:w-1/2 w-full md:min-h-full bg-primary-darker md:flex md:items-end md:justify-end p-8"
+      >
+        <h2
+          class="uppercase text-white opacity-40 text-5xl md:text-7xl font-bold leading-[0.8] tracking-wider"
+        >
+          fullstack<br />developer<span class="font-normal">_</span>
+        </h2>
+      </div>
+    </div>
+    <div class="container mx-auto w-auto lg:w-1/2 mt-16">
+      <p
+        class="uppercase text-4xl xl:text-5xl font-bold text-center leading-tight text-gray-800"
+      >
+        {traductions[locale]["home"]["claim"]}
+      </p>
+    </div>
+  </section>
+  <section id="about" class="section-container">
+    <h3 class="title">About<span class="font-normal">_</span></h3>
+    <div class="flex flex-wrap">
+      <div class="lg:w-1/2 w-full lg:order-last">
+        <Picture
+          class="border border-gray-200 w-96 mx-auto mb-16"
+          src={profilePic}
+          alt="me"
+        />
+      </div>
+      <div class="lg:w-1/2 w-full">
+        <p class="lead">{traductions[locale]["home"]["bioClaim"]}</p>
+        <p class="section">
+          {traductions[locale]["home"]["bio"]}
+        </p>
+        <p class="font-bold uppercase text-3xl xl:text-5xl my-12">
+          {traductions[locale]["home"]["cvCTA"]}
+        </p>
+        <a
+          class="p-2 border-2 border-black font-bold text-lg cursor-pointer hover:text-white hover:bg-primary-darker"
+          href="/cv_fr.pdf"
+          data-astro-reload>My CV &rarr;</a
+        >
+      </div>
+    </div>
+  </section>
+  <section id="education" class="section-container">
+    <p class="lead">{traductions[locale]["home"]["education"]["lead"]}</p>
+    <p class="section">{traductions[locale]["home"]["education"]["sub"]}</p>
+    <div class="scroll-item">
+      {
+        education.map((education, index) => (
+          <div class="w-full h-full">
+            <EducationCard education={education} index={index + 1} />
+          </div>
+        ))
+      }
+    </div>
+  </section>
+  <section id="skills" class="section-full bg-primary-lighter">
+    <div class="container-section-full">
+      <p class="lead">{traductions[locale]["home"]["skills"]["lead"]}</p>
+      <p class="section">{traductions[locale]["home"]["skills"]["sub"]}</p>
+      <div class="flex flex-wrap justify-start">
+        {
+          Object.entries(skills).map(([category, list]) => (
+            <div class="pr-8 pb-8">
+              <p class="text-xl font-bold uppercase">
+                {category}
+                <span class="font-normal">_</span>
+              </p>
+              <ul>
+                {list.map((skill) => (
+                  <li class="text-lg capitalize">{skill}</li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+  <Section
+    id="work"
+    title={traductions[locale]["home"]["work"]["title"]}
+    lead={traductions[locale]["home"]["work"]["lead"]}
+    section={traductions[locale]["home"]["work"]["section"]}
+  >
+    <div class="scroll-item">
+      {
+        experiences.map((experience, index) => (
+          <div class="w-full h-full">
+            <ExpCard experience={experience} index={index + 1} />
+          </div>
+        ))
+      }
+    </div>
+  </Section>
+  <Section
+    full
+    id="projects"
+    title={traductions[locale]["home"]["projects"]["title"]}
+    lead={traductions[locale]["home"]["projects"]["lead"]}
+    section={traductions[locale]["home"]["projects"]["section"]}
+  >
+    <div class="scroll-item">
+      {
+        projects.map((project) => (
+          <div class="w-full h-full">
+            <ProjectCard project={project} />
+          </div>
+        ))
+      }
+    </div>
+  </Section>
+  <Section
+    id="blog"
+    title={traductions[locale]["home"]["blog"]["title"]}
+    lead={traductions[locale]["home"]["blog"]["lead"]}
+    section={traductions[locale]["home"]["blog"]["section"]}
+  >
+    <div class="flex flex-wrap">
+      {articles.slice(0, 3).map((article) => <ArticleCard article={article} />)}
+    </div>
+    <div class="text-center pt-8">
+      <a
+        href={getRelativeLocaleUrl(locale, "blog")}
+        class="font-bold text-2xl text-primary-darker hover:text-black"
+        >{traductions[locale]["home"]["blog"]["cta"]}</a
+      >
+    </div>
+  </Section>
+  <section class="section-container" id="contact">
+    <h3 class="title">
+      {traductions[locale]["home"]["contact"]["title"]}<span class="font-normal"
+        >_</span>
+    </h3>
+    <p class="lead">{traductions[locale]["home"]["contact"]["lead"]}</p>
+    <p class="text-2xl md:text-7xl 2xl:text-8xl pt-10">
+      <a
+        href={`mailto:${contact.email}`}
+        class="text-gray-400 hover:text-primary-darker">{contact.email}</a
+      >
+    </p>
+    <p class="text-2xl md:text-5xl 2xl:text-6xl pt-6">
+      <a
+        href={`tel:${contact.phone.replace(/\s+/g, "")}`}
+        class="hover:text-primary-darker">{contact.phone}</a
+      >
+    </p>
+    <p class="section">{traductions[locale]["home"]["contact"]["promise"]}</p>
+  </section>
+</Layout>

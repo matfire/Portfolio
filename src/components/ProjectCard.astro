@@ -7,9 +7,10 @@ import StackElement from "./StackElement.astro";
 
 export interface Props {
   project: CollectionEntry<"projects">;
+  locale?: String
 }
 
-const { project } = Astro.props;
+const { project, locale = "en" } = Astro.props;
 ---
 
 <article class="flex flex-col w-[390px] sm:w-[640px] md:w-[500px] h-[320px] md:h-[300px] bg-primary-darker px-6 pb-6 pt-3 border border-white">
@@ -20,7 +21,7 @@ const { project } = Astro.props;
     {project.data.stack.map((e) => <StackElement name={e} />)}
   </div>
   <div class="flex w-full mt-auto gap-4 pt-8">
-    <a class="little-btn-white" href={`/projects/${project.slug}`}>Read More</a>
+    <a class="little-btn-white" href={`/${locale}/projects/${project.slug}`}>Read More</a>
     {project.data.githubUrl && <a target="_blank" rel="noreferrer" class="little-btn-white" href={project.data.githubUrl}>See Source Code</a>}
     {project.data.productionUrl && <a target="_blank" rel="noreferrer" class="little-btn-white" href={project.data.productionUrl}>See it Live</a>}
   </div> 

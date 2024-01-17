@@ -5,9 +5,10 @@ import { formatDate } from "../utils/date";
 export interface Props {
   article: CollectionEntry<"articles">;
   extraClass?: String;
+  locale?: String;
 }
 
-const { article, extraClass } = Astro.props;
+const { article, extraClass, locale="en" } = Astro.props;
 ---
 
 <article
@@ -28,7 +29,7 @@ const { article, extraClass } = Astro.props;
       <a
         class="little-btn-white"
         rel="noreferrer"
-        href={`/blog/${article.slug}`}>Learn More</a
+        href={`/${locale}/blog/${article.slug}`}>Learn More</a
       >
     </div>
   </div>
