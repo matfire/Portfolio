@@ -21,6 +21,13 @@ export default defineConfig({
   image: {
     service: { entrypoint: 'astro/assets/services/sharp' },
   },
+  i18n: {
+    defaultLocale:"en",
+    locales: ["en", "fr"],
+    routing: {
+      prefixDefaultLocale:true
+    }
+  },
   markdown: {
     remarkPlugins: [
       [remarkEmbedder.default, 
