@@ -1,7 +1,7 @@
 {
   "en": {
     "home": {
-      "intro1": "I am a fullstack developer with 3 years of experience.",
+      "intro1": "I am a fullstack developer with %year% years of experience.",
       "intro2": "I leverage web technologies to build web, mobile and desktop applications.",
       "claim": "In love with new technologies and creating the best performing user experience",
       "bioClaim": "A fullstack developer with hobbies",
@@ -38,5 +38,43 @@
       }
     }
   },
-  "fr": {}
+  "fr": {
+    "home": {
+      "intro1": "Je suis un developpeur fullstack avec %year% années d'expérience.",
+      "intro2": "J'utilise les technologies web pour créer des applications web, mobiles et bureau.",
+      "claim": "Amoureux des nouvelles technologies et de la création des meilleures expériences utilisateur",
+      "bioClaim": "Un développeur fullstack avec des hobbies",
+      "bio": "Né à Florence le 5 février 1999, je suis un développeur fullstack motivé et passionné par la collaboration et l'enseignement. J'aime réaliser des projets parallèles pendant mon temps libre pour résoudre des problèmes personnels et (avec un peu de chance) aider les autres. En tant que développeur web, j'aime utiliser mon attention obsessionnelle pour les détails et mon éthique de travail pour créer des choses. Parfois, je joue aussi de la musique (ou j'essaie).",
+      "cvCTA": "Ce qu'il faut savoir",
+      "education": {
+        "lead": "Voici où j'ai étudié",
+        "sub": "De l'Italie à la France (en passant par la Suède)"
+      },
+      "skills": {
+        "lead": "compétences",
+        "sub": "Des systèmes, des langages et plus si affinité"
+      },
+      "work": {
+        "title": "Travail",
+        "lead": "Voici où j'ai travaillé",
+        "section": "il y a vraiment tout"
+      },
+      "projects": {
+        "title": "Projets",
+        "lead": "Ce que je fait pendant mon temps libre",
+        "section": "attention à la barre ;-)"
+      },
+      "blog": {
+        "title": "Blog",
+        "lead": "Derniers articles",
+        "section": "Parfois, j'écris",
+        "cta": "Lire la suite"
+      },
+      "contact": {
+        "title": "contact",
+        "lead": "Prendre Contact",
+        "promise": "Je vous contacterai dès que possible, c'est promis."
+      }
+    }
+  }
 }
