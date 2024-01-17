@@ -1,14 +1,16 @@
 ---
 import { getCollection } from "astro:content";
+import { getRelativeLocaleUrl } from "astro:i18n";
+
 import Layout from "@layouts/Layout.astro";
-import ProjectCard from "../components/ProjectCard.astro";
-import ArticleCard from "../components/ArticleCard.astro";
-import EducationCard from "../components/EducationCard.astro";
-import ExpCard from "../components/ExpCard.astro";
+import ProjectCard from "@components/ProjectCard.astro";
+import ArticleCard from "@components/ArticleCard.astro";
+import EducationCard from "@components/EducationCard.astro";
+import ExpCard from "@components/ExpCard.astro";
 import { Picture } from "astro:assets";
-import profilePic from "../assets/matteo.jpg";
-import skills from "../utils/skills.json";
-import { contact } from "../utils/data.json";
+import profilePic from "@assets/matteo.jpg";
+import skills from "@utils/skills.json";
+import { contact } from "@utils/data.json";
 import Section from "@components/Section.astro";
 import Header from "@components/Header.astro";
 
@@ -180,7 +182,7 @@ const experiences = (await getCollection("experience")).sort(
     </div>
     <div class="text-center pt-8">
       <a
-        href="/blog"
+        href={getRelativeLocaleUrl("en", "blog")}
         class="font-bold text-2xl text-primary-darker hover:text-black"
         >Read More Articles</a
       >
