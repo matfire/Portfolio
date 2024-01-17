@@ -13,6 +13,7 @@ import skills from "@utils/skills.json";
 import { contact } from "@utils/data.json";
 import Section from "@components/Section.astro";
 import Header from "@components/Header.astro";
+import traductions from "@utils/trads.json"
 
 const projects = (await getCollection("projects")).sort(
   (a, b) => b.data.date - a.data.date
@@ -28,6 +29,7 @@ const education = (await getCollection("education"))
 const experiences = (await getCollection("experience")).sort(
   (a, b) => b.data.begin - a.data.begin
 );
+const locale = "en"
 ---
 
 <Layout title="Matteo Gassend">
@@ -45,11 +47,10 @@ const experiences = (await getCollection("experience")).sort(
         </h1>
         <p class="pt-10 text-2xl text-gray-500">
           Hello!<br />
-          I am a fullstack developer with 3 years of experience.
+          {traductions[locale]["home"]["intro1"]}
         </p>
         <p class="xl:pb-40 md:pb-20 pb-12 text-2xl text-gray-500">
-          I leverage web technologies to build web, mobile and desktop
-          applications.
+          {traductions[locale]["home"]["intro2"]}
         </p>
       </div>
       <div
@@ -66,8 +67,7 @@ const experiences = (await getCollection("experience")).sort(
       <p
         class="uppercase text-4xl xl:text-5xl font-bold text-center leading-tight text-gray-800"
       >
-        In love with new technologies and creating the best performing user
-        experience
+        {traductions[locale]["home"]["claim"]}
       </p>
     </div>
   </section>
@@ -82,17 +82,12 @@ const experiences = (await getCollection("experience")).sort(
         />
       </div>
       <div class="lg:w-1/2 w-full">
-        <p class="lead">A fullstack developer with hobbies</p>
+        <p class="lead">{traductions[locale]["home"]["bioClaim"]}</p>
         <p class="section">
-          Born in Florence on February 5th, 1999, I'm a mission-driven fullstack
-          developer with a passion for collaboration and teaching. I love making
-          side projects in my spare time to solve personal problems and
-          (hopefully) help others. As a web developer, I enjoy using my
-          obsessive attention to detail and my mission-driven work ethic to make
-          stuff. Sometimes, I also play music (or I try)
+          {traductions[locale]["home"]["bio"]}
         </p>
         <p class="font-bold uppercase text-3xl xl:text-5xl my-12">
-          All you need to know
+          {traductions[locale]["home"]["cvCTA"]}
         </p>
         <a
           class="p-2 border-2 border-black font-bold text-lg cursor-pointer hover:text-white hover:bg-primary-darker"
@@ -103,8 +98,8 @@ const experiences = (await getCollection("experience")).sort(
     </div>
   </section>
   <section id="education" class="section-container">
-    <p class="lead">Here's where I studied</p>
-    <p class="section">From Italy to France (and Sweden for a while).</p>
+    <p class="lead">{traductions[locale]["home"]["education"]["lead"]}</p>
+    <p class="section">{traductions[locale]["home"]["education"]["sub"]}</p>
     <div class="scroll-item">
       {
         education.map((education, index) => (
@@ -117,8 +112,8 @@ const experiences = (await getCollection("experience")).sort(
   </section>
   <section id="skills" class="section-full bg-primary-lighter">
     <div class="container-section-full">
-      <p class="lead">skills</p>
-      <p class="section">Systems & tools oh my</p>
+      <p class="lead">{traductions[locale]["home"]["skills"]["lead"]}</p>
+      <p class="section">{traductions[locale]["home"]["skills"]["sub"]}</p>
       <div class="flex flex-wrap justify-start">
         {
           Object.entries(skills).map(([category, list]) => (
@@ -140,9 +135,9 @@ const experiences = (await getCollection("experience")).sort(
   </section>
   <Section
     id="work"
-    title="Work"
-    lead="Here's where I worked"
-    section="All the previous entities"
+    title={traductions[locale]["home"]["work"]["title"]}
+    lead={traductions[locale]["home"]["work"]["lead"]}
+    section={traductions[locale]["home"]["work"]["section"]}
   >
     <div class="scroll-item">
       {
@@ -157,9 +152,9 @@ const experiences = (await getCollection("experience")).sort(
   <Section
     full
     id="projects"
-    title="Projects"
-    lead="What I do"
-    section="I built these: use scrollbar ;-)"
+    title={traductions[locale]["home"]["projects"]["title"]}
+    lead={traductions[locale]["home"]["projects"]["lead"]}
+    section={traductions[locale]["home"]["projects"]["section"]}
   >
     <div class="scroll-item">
       {
@@ -173,24 +168,24 @@ const experiences = (await getCollection("experience")).sort(
   </Section>
   <Section
     id="blog"
-    title="Blog"
-    lead="Latest Articles"
-    section="Sometimes I write"
+    title={traductions[locale]["home"]["blog"]["title"]}
+    lead={traductions[locale]["home"]["blog"]["lead"]}
+    section={traductions[locale]["home"]["blog"]["section"]}
   >
     <div class="flex flex-wrap">
       {articles.slice(0, 3).map((article) => <ArticleCard article={article} />)}
     </div>
     <div class="text-center pt-8">
       <a
-        href={getRelativeLocaleUrl("en", "blog")}
+        href={getRelativeLocaleUrl(locale, "blog")}
         class="font-bold text-2xl text-primary-darker hover:text-black"
-        >Read More Articles</a
+        >{traductions[locale]["home"]["blog"]["cta"]}</a
       >
     </div>
   </Section>
   <section class="section-container" id="contact">
-    <h3 class="title">reach out<span class="font-normal">_</span></h3>
-    <p class="lead">get in touch</p>
+    <h3 class="title">{traductions[locale]["home"]["contact"]["title"]}<span class="font-normal">_</span></h3>
+    <p class="lead">{traductions[locale]["home"]["contact"]["lead"]}</p>
     <p class="text-2xl md:text-7xl 2xl:text-8xl pt-10">
       <a
         href={`mailto:${contact.email}`}
@@ -203,6 +198,6 @@ const experiences = (await getCollection("experience")).sort(
         class="hover:text-primary-darker">{contact.phone}</a
       >
     </p>
-    <p class="section">I'll get in touch ASAP, I promise</p>
+    <p class="section">{traductions[locale]["home"]["contact"]["promise"]}</p>
   </section>
 </Layout>

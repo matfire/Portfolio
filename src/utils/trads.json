@@ -1,0 +1,42 @@
+{
+  "en": {
+    "home": {
+      "intro1": "I am a fullstack developer with 3 years of experience.",
+      "intro2": "I leverage web technologies to build web, mobile and desktop applications.",
+      "claim": "In love with new technologies and creating the best performing user experience",
+      "bioClaim": "A fullstack developer with hobbies",
+      "bio": "Born in Florence on February 5th, 1999, I'm a mission-driven fullstack developer with a passion for collaboration and teaching. I love making side projects in my spare time to solve personal problems and (hopefully) help others. As a web developer, I enjoy using my obsessive attention to detail and my mission-driven work ethic to make stuff. Sometimes, I also play music (or I try)",
+      "cvCTA": "All you need to know",
+      "education": {
+        "lead": "Here's where I studied",
+        "sub": "From Italy to France (and Sweden for a while)"
+      },
+      "skills": {
+        "lead": "skills",
+        "sub": "Systems & tools oh my"
+      },
+      "work": {
+        "title": "Work",
+        "lead": "Here's where I worked",
+        "section": "All the previous entities"
+      },
+      "projects": {
+        "title": "Projects",
+        "lead": "What I do",
+        "section": "I built these: use scrollbar ;-)"
+      },
+      "blog": {
+        "title": "Blog",
+        "lead": "Latest Articles",
+        "section": "Sometimes I write",
+        "cta": "Read More"
+      },
+      "contact": {
+        "title": "reach out",
+        "lead": "get in touch",
+        "promise": "I'll get in touch ASAP, I promise"
+      }
+    }
+  },
+  "fr": {}
+}
