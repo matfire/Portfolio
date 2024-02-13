@@ -14,7 +14,7 @@ import Header from "@components/Header.astro";
 
 const projects = (await getCollection("projects")).sort(
   (a, b) => b.data.date - a.data.date
-);
+).slice(0,3)
 
 const articles = (await getCollection("articles")).sort(
   (a, b) => b.data.publishDate - a.data.publishDate
@@ -153,20 +153,24 @@ const experiences = (await getCollection("experience")).sort(
     </div>
   </Section>
   <Section
-    full
     id="projects"
     title="Projects"
     lead="What I do"
     section="I built these: use scrollbar ;-)"
   >
-    <div class="scroll-item">
+    <div class="flex flex-wrap w-full">
       {
         projects.map((project) => (
-          <div class="w-full h-full">
             <ProjectCard project={project} />
-          </div>
         ))
       }
+    <div class="text-center pt-8 w-full">
+      <a
+        href="/projects"
+        class="font-bold text-2xl text-primary-darker hover:text-black"
+        >See All Projects</a
+      >
+    </div>
     </div>
   </Section>
   <Section
