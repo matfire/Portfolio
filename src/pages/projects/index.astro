@@ -1,0 +1,15 @@
+---
+import Layout from "@layouts/Layout.astro"
+import ProjectCard from "@components/ProjectCard.astro"
+import { getCollection } from "astro:content";
+
+const projects = (await getCollection("projects")).sort(
+    (a, b) => b.data.date - a.data.date
+);
+---
+
+<Layout title="Projects | Matteo Gassend">
+    <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 mt-10">
+        {projects.map((p) => <ProjectCard project={p} />)} 
+    </div>
+</Layout>
