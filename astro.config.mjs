@@ -13,6 +13,8 @@ import sitemap from "@astrojs/sitemap";
 // https://astro.build/config
 import cloudflare from "@astrojs/cloudflare";
 
+import icon from "astro-icon";
+
 // https://astro.build/config
 export default defineConfig({
   output: "hybrid",
@@ -36,5 +38,5 @@ export default defineConfig({
       allow: "/"
     }],
     sitemap: `https://matteogassend.com/sitemap-index.xml`
-  }), sitemap()]
+  }), sitemap(), icon()]
 });
