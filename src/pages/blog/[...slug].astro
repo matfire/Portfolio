@@ -2,7 +2,6 @@
 import type { GetStaticPaths } from "astro";
 import { getCollection, getEntry, type CollectionEntry } from "astro:content";
 import Layout from "@layouts/Layout.astro";
-import BlogHeader from "@components/BlogHeader.astro";
 import TableOfContents from "@components/TableOfContents/TableOfContents.astro";
 import { formatDate } from "@utils/date";
 
@@ -46,7 +45,6 @@ const { Content, headings } = await entry.render();
 />
 
 <Layout title={`${entry.data.title} | Matteo Gassend`}>
-    <BlogHeader slot="header" transition:persist />
     <div class="flex justify-center md:mt-[3rem] mb-3 md:mb-0">
         <img
             transition:name={`article-${entry.slug}`}
