@@ -158,19 +158,20 @@ const experiences = (await getCollection("experience")).sort(
     lead="What I do"
     section="I built these: use scrollbar ;-)"
   >
-    <div class="flex flex-wrap w-full">
+    <div class="grid grid-cols-1 lg:grid-cols-3 w-full">
       {
         projects.map((project) => (
             <ProjectCard project={project} />
         ))
       }
+
+</div>
     <div class="text-center pt-8 w-full">
       <a
         href="/projects"
         class="font-bold text-2xl text-primary-darker hover:text-black"
         >See All Projects</a
       >
-    </div>
     </div>
   </Section>
   <Section
