@@ -10,8 +10,8 @@ export interface Props {
 const { project } = Astro.props;
 ---
 
-<article class="flex flex-col w-[390px] sm:w-[640px] md:w-[500px] h-[320px] md:h-[300px] bg-primary-darker px-6 pb-6 pt-3 border border-white">
-  <h3                 transition:name={`project-${project.slug}`}
+<article class="flex flex-col w-full h-[320px] md:h-[300px] bg-primary-darker px-6 pb-6 pt-3 border border-white">
+  <h3 transition:name={`project-${project.slug}`}
   class="font-bold uppercase text-white opacity-40">{project.data.title}<span class="font-normal">_</span></h3>
   <p class="text-white text-base pt-6 pb-4">{project.data.summary}</p>
   <div class="flex flex-wrap justify-items-start gap-4">
