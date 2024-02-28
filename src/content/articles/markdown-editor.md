@@ -48,4 +48,4 @@ The real magic is what happens once you generate the syntax trees; at that point
 
 Now that we have a basic understanding of how unified works, let's practice! I have already created a stackblitz example you can see just below this paragraph: try writing something in the textarea and it should be parsed and displayed in the preview next to it!
 
-https://stackblitz.com/edit/vitejs-vite-ss8mbr?file=src%2FApp.svelte
+https://stackblitz.com/edit/vitejs-vite-ss8mbr?embed=1&file=src%2FApp.svelte
