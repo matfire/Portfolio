@@ -118,4 +118,4 @@ This is the simplest way to make a file-based router in express js. This logic c
 
 You can see a working example below:
 
-https://codesandbox.io/p/sandbox/file-based-routing-only-files-3tnqfr
+https://stackblitz.com/edit/fbr-express-umc23i?embed=1&file=index.js
