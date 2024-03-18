@@ -30,7 +30,10 @@ export default defineConfig({
         transformers: [CodeSandboxTransformer, YoutubeTransformer, StackblitzTransformer]
         },
       ],
-    ]
+    ],
+    shikiConfig: {
+      theme: "catppuccin-macchiato"
+    }
   },
   integrations: [tailwind(), robotsTxt({
     policy: [{

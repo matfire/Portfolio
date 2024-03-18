@@ -11,15 +11,15 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/cloudflare": "^9.0.0",
-    "@astrojs/sitemap": "^3.0.5",
+    "@astrojs/cloudflare": "^9.1.0",
+    "@astrojs/sitemap": "^3.1.1",
     "@astrojs/tailwind": "^5.1.0",
     "@iconify-json/iconoir": "^1.1.41",
     "@iconify-json/mdi": "^1.1.64",
     "@iconify-json/simple-icons": "^1.1.91",
     "@remark-embedder/core": "^3.0.2",
     "@tailwindcss/container-queries": "^0.1.1",
-    "astro": "^4.4.0",
+    "astro": "^4.5.5",
     "astro-icon": "^1.1.0",
     "astro-robots-txt": "^0.3.11",
     "sass": "^1.62.1",
