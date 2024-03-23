@@ -7,7 +7,6 @@ const projectsCollection = defineCollection({
       summary: z.string(),
       date: z.date().transform((v) => new Date(v)),
       stack: z.array(z.string()),
-      image: image(),
       productionUrl: z.string().optional(),
       epitech: z.boolean().default(false),
       personal: z.boolean().default(false),
