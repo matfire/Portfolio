@@ -1,8 +1,6 @@
 import { defineConfig } from "astro/config";
-
 import tailwind from "@astrojs/tailwind";
 
-// https://astro.build/config
 import robotsTxt from "astro-robots-txt";
 import remarkEmbedder from "@remark-embedder/core";
 import { CodeSandboxTransformer, YoutubeTransformer, StackblitzTransformer } from "./src/utils/embedTransformers";
@@ -12,8 +10,10 @@ import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 import cloudflare from "@astrojs/cloudflare";
-
 import icon from "astro-icon";
+
+// https://astro.build/config
+import metaTags from "astro-meta-tags";
 
 // https://astro.build/config
 export default defineConfig({
@@ -21,16 +21,14 @@ export default defineConfig({
   site: "https://matteogassend.com",
   adapter: cloudflare(),
   image: {
-    service: { entrypoint: 'astro/assets/services/sharp' },
+    service: {
+      entrypoint: 'astro/assets/services/sharp'
+    }
   },
   markdown: {
-    remarkPlugins: [
-      [remarkEmbedder.default, 
-        {
-        transformers: [CodeSandboxTransformer, YoutubeTransformer, StackblitzTransformer]
-        },
-      ],
-    ],
+    remarkPlugins: [[remarkEmbedder.default, {
+      transformers: [CodeSandboxTransformer, YoutubeTransformer, StackblitzTransformer]
+    }]],
     shikiConfig: {
       theme: "catppuccin-macchiato"
     }
@@ -41,5 +39,5 @@ export default defineConfig({
       allow: "/"
     }],
     sitemap: `https://matteogassend.com/sitemap-index.xml`
-  }), sitemap(), icon()]
+  }), sitemap(), icon(), metaTags()]
 });
