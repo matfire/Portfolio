@@ -3,6 +3,7 @@ title: "Publishing articles to multiple platforms with decorators and interfaces
 cover_image: "https://cdn.blog.matteogassend.com/publishing-articles-to-multiple-platforms-with-decorators-and-interfaces.webp"
 publishDate: 2023-09-18
 series: "magiedit"
+summary: "typescript decorators, interfaces and classes to create publishers for multiple platforms"
 tags:
 - sveltekit
 - typescript

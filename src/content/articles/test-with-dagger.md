@@ -2,6 +2,7 @@
 title: "test everywhere with dagger.io"
 cover_image: "https://cdn.blog.matteogassend.com/dagger-test-cover.webp"
 publishDate: 2023-10-15
+summary: "How to use Dagger to create CI/CD pipelines that run everywhere"
 tags:
 - docker
 - devops

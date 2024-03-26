@@ -2,6 +2,7 @@
 title: "Appwrite Hackaton: MoviePlay"
 publishDate: 2023-06-10
 cover_image: https://cdn.blog.matteogassend.com/movieplay-cover.jpeg
+summary: "A postmortem of an Appwrite Hackaton to celebrate the launch of their cloud beta"
 tags: 
 - reactjs
 - typescript

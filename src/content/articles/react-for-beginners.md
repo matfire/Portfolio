@@ -2,6 +2,7 @@
 title: "React for Beginners: Build a To-Do List"
 publishDate: 2020-08-15
 cover_image: https://cdn.blog.matteogassend.com/react-for-beginners-cover.webp
+summary: "as with every web framework, the first step to mastery is a todo list"
 tags: 
 - tutorial
 - introduction

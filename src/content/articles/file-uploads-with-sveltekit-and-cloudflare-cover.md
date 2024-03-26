@@ -2,6 +2,7 @@
 title: "File Uploads with Sveltekit and Cloudflare"
 cover_image: https://cdn.blog.matteogassend.com/file-uploads-with-sveltekit-and-cloudflare-cover.webp
 publishDate: 2023-09-12
+summary: "how to upload to cloudflare (or S3 in general) using sveltekit"
 tags:
 - s3
 - cloudflare

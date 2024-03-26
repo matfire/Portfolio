@@ -1,7 +1,8 @@
 ---
-title: "How  filesystem-based routers work: building one for express"
+title: "How filesystem-based routers work: building one for express"
 cover_image: "https://cdn.blog.matteogassend.com/file-router-cover.webp"
 publishDate: 2023-10-22
+summary: "building a file-based router is easier than it seems"
 tags:
 - javascript
 - node

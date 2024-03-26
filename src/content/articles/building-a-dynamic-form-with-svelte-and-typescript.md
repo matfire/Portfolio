@@ -2,6 +2,7 @@
 title: "Building a dynamic form with Svelte and Typescript"
 series: "magiedit"
 cover_image: "https://cdn.blog.matteogassend.com/dynamic-form-cover.webp"
+summary: "generate forms based on user input with sveltekit and some typescript magic"
 publishDate: 2024-02-23
 tags:
 - typescript

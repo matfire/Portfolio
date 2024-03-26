@@ -2,6 +2,7 @@
 title: "Taming the whale: introduction to Docker"
 publishDate: 2023-03-09
 cover_image: https://cdn.blog.matteogassend.com/taming-the-whale-cover.jpeg
+summary: "An introduction to Docker, with examples"
 tags: 
 - docker
 - programming

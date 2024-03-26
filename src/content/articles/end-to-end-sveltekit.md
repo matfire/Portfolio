@@ -3,6 +3,7 @@ title: "end-to-end encryption with sveltekit"
 series: "magiedit"
 cover_image: "https://cdn.blog.matteogassend.com/end-to-end-encryption-cover.webp"
 publishDate: 2023-09-25
+summary: "what is end-to-end encryption and how to implement it with sveltekit"
 tags:
 - sveltekit
 - typescript

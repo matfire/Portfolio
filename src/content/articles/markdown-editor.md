@@ -3,6 +3,7 @@ title: "building a basic markdown editor: unified, trees and data"
 series: "magiedit"
 cover_image: "https://cdn.blog.matteogassend.com/markdown-editor-cover.webp"
 publishDate: 2023-10-02
+summary: "how to build a simple yet extensible markdown editor"
 tags:
 - svelte
 - sveltekit

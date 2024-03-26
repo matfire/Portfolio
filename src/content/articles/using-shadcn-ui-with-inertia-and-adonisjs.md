@@ -2,6 +2,7 @@
 title: "Using Shadcn-ui with Inertia and AdonisJS"
 cover_image: "https://cdn.blog.matteogassend.com/adonisjs_inertia_shadcn_cover.webp"
 publishDate: 2024-03-26
+summary: "A small guide to use shadcn/ui with Inertia and AdonisJS"
 tags:
 - adonisjs
 - reactjs

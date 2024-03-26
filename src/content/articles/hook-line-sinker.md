@@ -3,6 +3,7 @@ title: "Hook, line, and sinker"
 publishDate: 2022-01-25
 cuid: ckytwsg0f01n62vs18lyr91cu
 slug: hook-line-and-sinker
+summary: "A practical introduction to React hooks"
 cover_image: https://cdn.blog.matteogassend.com/hook-line-sinker-cover.webp
 tags: 
 - javascript
