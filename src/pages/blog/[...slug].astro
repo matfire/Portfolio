@@ -3,6 +3,7 @@ import type { GetStaticPaths } from "astro";
 import { getCollection, getEntry, type CollectionEntry } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 import TableOfContents from "@components/TableOfContents/TableOfContents.astro";
+import DisqusComments from "@components/DisqusComments.astro";
 import { formatDate } from "@utils/date";
 
 export const prerender = true
@@ -99,8 +100,9 @@ const { Content, headings } = await entry.render();
             )
         }
         <TableOfContents {headings} />
-        <div class="w-full">
+        <div class="w-full mb-4">
             <Content />
         </div>
+        <DisqusComments />
     </div>
 </Layout>
