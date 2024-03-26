@@ -32,19 +32,18 @@ if (entry.data.series) {
 // 4. (Optional) Render the entry to HTML in the template
 const { Content, headings } = await entry.render();
 ---
-
-<meta slot="head" property="og:title" value={entry.data.title} />
-<meta slot="head" property="og:image" value={entry.data.cover} />
-<meta slot="head" property="og:description" value={entry.data.description} />
-<meta slot="head" property="og:type" value="article" />
-<meta slot="head" property="og:article:tag" value={entry.data.tags} />
-<meta
-    slot="head"
-    property="og:url"
-    value={`https://matteogassend.com/blog/${entry.slug}`}
-/>
-
 <Layout title={`${entry.data.title} | Matteo Gassend`}>
+<Fragment slot="head">
+<meta property="og:title" content={entry.data.title} />
+<meta property="og:image" content={entry.data.cover_image} />
+<meta property="og:description" content={entry.data.description} />
+<meta property="og:type" content="article" />
+<meta property="og:article:tag" content={entry.data.tags} />
+<meta
+    property="og:url"
+    content={`https://matteogassend.com/blog/${entry.slug}`}
+/>
+</Fragment>
     <div class="flex justify-center md:mt-[3rem] mb-3 md:mb-0">
         <img
             transition:name={`article-${entry.slug}`}
