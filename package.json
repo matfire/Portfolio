@@ -14,23 +14,23 @@
     "@astrojs/cloudflare": "^10.2.3",
     "@astrojs/sitemap": "^3.1.4",
     "@astrojs/tailwind": "^5.1.0",
-    "@iconify-json/iconoir": "^1.1.41",
-    "@iconify-json/mdi": "^1.1.64",
-    "@iconify-json/simple-icons": "^1.1.91",
+    "@iconify-json/iconoir": "^1.1.43",
+    "@iconify-json/mdi": "^1.1.66",
+    "@iconify-json/simple-icons": "^1.1.100",
     "@remark-embedder/core": "^3.0.2",
     "@tailwindcss/container-queries": "^0.1.1",
     "astro": "^4.6.3",
     "astro-icon": "^1.1.0",
     "astro-meta-tags": "^0.2.2",
-    "astro-robots-txt": "^0.3.11",
-    "sass": "^1.62.1",
+    "astro-robots-txt": "^0.3.12",
+    "sass": "^1.75.0",
     "sharp": "^0.32.6",
-    "sweetalert2": "^11.7.2",
-    "tailwindcss": "^3.3.5"
+    "sweetalert2": "^11.10.8",
+    "tailwindcss": "^3.4.3"
   },
   "devDependencies": {
-    "@tailwindcss/forms": "^0.5.3",
-    "@tailwindcss/typography": "^0.5.9",
-    "tailwind-scrollbar": "^3.0.0"
+    "@tailwindcss/forms": "^0.5.7",
+    "@tailwindcss/typography": "^0.5.12",
+    "tailwind-scrollbar": "^3.1.0"
   }
 }
