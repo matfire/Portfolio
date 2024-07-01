@@ -28,7 +28,7 @@ const { article, extraClass } = Astro.props;
       <a
         class="little-btn-white"
         rel="noreferrer"
-        aria-label={article.data.title}
+        aria-label={`read more about ${article.data.title}`}
         title={article.data.title}
         href={`/blog/${article.slug}`}>Learn More</a
       >

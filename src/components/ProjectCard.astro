@@ -18,7 +18,7 @@ const { project } = Astro.props;
     {project.data.stack.map((e) => <StackElement name={e} />)}
   </div>
   <div class="flex w-full mt-auto gap-4 pt-8">
-    <a title={project.data.title} aria-label={project.data.title} class="little-btn-white" href={`/projects/${project.slug}`}>Read More</a>
+    <a title={project.data.title} aria-label={`read more about ${project.data.title}`} class="little-btn-white" href={`/projects/${project.slug}`}>Read More</a>
     {project.data.githubUrl && <a target="_blank" rel="noreferrer" class="little-btn-white" href={project.data.githubUrl}>See Source Code</a>}
     {project.data.productionUrl && <a target="_blank" rel="noreferrer" class="little-btn-white" href={project.data.productionUrl}>See it Live</a>}
   </div> 
